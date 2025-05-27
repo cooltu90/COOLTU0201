@@ -63,6 +63,18 @@ public class StringTool {
 //        }
 //        return new DecimalFormat(type).format(num);
 //    }
+    public static String floatToString(float num, int bit, boolean trim) {
+        return floatToString(num, bit, trim);
+    }
+
+    public static String floatToString(Float num, int bit, boolean trim) {
+        return doubleToString(Double.valueOf(num), bit, trim);
+    }
+
+    public static String doubleToString(double num, int bit, boolean trim) {
+        return doubleToString(Double.valueOf(num), bit, trim);
+    }
+
     public static String doubleToString(Double num, int bit, boolean trim) {
         if (bit < 0) {
             throw new RuntimeException("bit必须大于等于0");
