@@ -122,7 +122,16 @@ public class MsThreadBuilder extends MsThreadBuilderBase {
                 addLnTag(subThreadMethods, "    }");
                 addLnTag(subThreadMethods, sendMessageMethodsForSub.toString());
 
-                addLnTag(stop, "        subHandler[0].getLooper().quitSafely();", index);
+                StringBuilder stopSb = new StringBuilder();
+
+                addLnTag(stopSb, "        if (subHandler0 != null) {");
+                addLnTag(stopSb, "            subHandler0.getLooper().quitSafely();");
+                addLnTag(stopSb, "            subHandler0 = null;");
+                addLnTag(stopSb, "        }");
+                addLnTag(stopSb, "        mainHandler = null;");
+
+
+                addLnTag(stop, stopSb.toString(), index);
 
                 return false;
             }

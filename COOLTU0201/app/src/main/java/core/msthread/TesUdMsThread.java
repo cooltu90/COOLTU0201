@@ -51,7 +51,12 @@ public class TesUdMsThread extends CoreMultiMsThread {
     }
 
     public void stop() {
-        subHandler0.getLooper().quitSafely();
+        if (subHandler0 != null) {
+            subHandler0.getLooper().quitSafely();
+            subHandler0 = null;
+        }
+        mainHandler = null;
+
 
     }
     ///////////////////////////////////////////////////////

@@ -71,8 +71,18 @@ public class SubThreadActivityMsThread extends CoreMultiMsThread {
     }
 
     public void stop() {
-        subHandler0.getLooper().quitSafely();
-        subHandler1.getLooper().quitSafely();
+        if (subHandler0 != null) {
+            subHandler0.getLooper().quitSafely();
+            subHandler0 = null;
+        }
+        mainHandler = null;
+
+        if (subHandler0 != null) {
+            subHandler0.getLooper().quitSafely();
+            subHandler0 = null;
+        }
+        mainHandler = null;
+
 
     }
     ///////////////////////////////////////////////////////
