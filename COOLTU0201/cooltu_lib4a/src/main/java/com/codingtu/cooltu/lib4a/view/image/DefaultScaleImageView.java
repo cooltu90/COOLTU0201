@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import com.codingtu.cooltu.lib4a.bean.LTRB;
 import com.codingtu.cooltu.lib4a.image.FileBitmap;
 import com.codingtu.cooltu.lib4a.image.ImageTools;
+import com.codingtu.cooltu.lib4a.log.Logs;
 import com.codingtu.cooltu.lib4a.tools.AdjustTool;
 import com.codingtu.cooltu.lib4a.image.BitmapTool;
 
@@ -52,6 +53,7 @@ public class DefaultScaleImageView extends CoreScaleView {
 
 
     private void initBitmap(Bitmap bitmap) {
+        BitmapTool.destoryBitmap(oriBitmap);
         oriBitmap = bitmap;
         oriBitmapWH = BitmapTool.getBitmapWH(oriBitmap);
         initBitmap();
@@ -76,7 +78,6 @@ public class DefaultScaleImageView extends CoreScaleView {
             BitmapTool.drawBitmap(oriBitmap,
                     drawBitmap,
                     locInView.toRect(), bgColor);
-
             invalidate();
         }
     }
