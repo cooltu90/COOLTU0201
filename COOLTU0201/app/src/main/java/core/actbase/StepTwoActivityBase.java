@@ -8,6 +8,8 @@ import okhttp3.ResponseBody;
 import retrofit2.adapter.rxjava2.Result;
 
 public abstract class StepTwoActivityBase extends com.codingtu.cooltu.ui.base.BaseActivity implements View.OnClickListener, View.OnLongClickListener, com.codingtu.cooltu.lib4a.net.netback.NetBackI{
+    protected android.widget.LinearLayout ll;
+    protected android.widget.LinearLayout ll1;
 
     public String baseClassName = "StepTwoActivityBase";
 
@@ -16,6 +18,8 @@ public abstract class StepTwoActivityBase extends com.codingtu.cooltu.ui.base.Ba
         super.onCreate(savedInstanceState);
         setContentView(com.codingtu.cooltu.R.layout.activity_step_two);
 
+        ll = findViewById(com.codingtu.cooltu.R.id.ll);
+        ll1 = findViewById(com.codingtu.cooltu.R.id.ll1);
 
 
 
