@@ -22,56 +22,6 @@ public class StepTwoActivity extends StepTwoActivityBase {
     @Override
     public void onCreateComplete() {
         super.onCreateComplete();
-        RadioGroup.<Integer>viewGroup(this, ll)
-                .setOnSetItem(new RadioGroup.OnSetItem() {
-                    @Override
-                    public void setSelected(View view) {
-                        ((TextView) view).setTextColor(0xff00ff00);
-                    }
-
-                    @Override
-                    public void setSelectno(View view) {
-                        ((TextView) view).setTextColor(0xff000000);
-                    }
-                })
-                .addOnSelectChange(new RadioGroup.OnSelectChange<RadioGroup0<Integer>>() {
-                    @Override
-                    public void onChange(RadioGroup0<Integer> rg, int selected) {
-                        Integer currentItem = rg.getCurrentItem();
-                        Logs.i(currentItem);
-                    }
-                }).setItems(1, 2, 3, 4).setSelected(3);
-
-
-        RadioGroup.<Integer>xxx(this, ll1)
-                .setItems(8, 9, 10, 11)
-                .createItemViews(new RadioGroup.CreateItemViews<Integer>() {
-                    @Override
-                    public View createItemView(Context context, Integer item) {
-                        TextView textView = new TextView(context);
-                        textView.setText(item + "");
-                        return textView;
-                    }
-                }).setOnSetItem(new RadioGroup.OnSetItem() {
-                    @Override
-                    public void setSelected(View view) {
-                        Logs.i(view);
-                        ((TextView) view).setTextColor(0xff00ff00);
-                    }
-
-                    @Override
-                    public void setSelectno(View view) {
-                        ((TextView) view).setTextColor(0xff000000);
-                    }
-                }).addOnSelectChange(new RadioGroup.OnSelectChange<RadioGroup1<Integer>>() {
-                    @Override
-                    public void onChange(RadioGroup1<Integer> rg, int selected) {
-                        Integer currentItem = rg.getCurrentItem();
-                        Logs.i(currentItem);
-                    }
-                }).setSelected(1);
-
-
     }
 }
 

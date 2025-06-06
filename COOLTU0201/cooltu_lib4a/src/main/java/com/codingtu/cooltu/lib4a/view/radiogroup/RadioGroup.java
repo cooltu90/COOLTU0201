@@ -38,7 +38,7 @@ public class RadioGroup {
     //
     //
     ///////////////////////////////////////////////////////
-    public static <E> RadioGroup0<E> viewGroup(Destroys destroys, ViewGroup vp) {
+    public static <E> RadioGroup0<E> setViewItems(Destroys destroys, ViewGroup vp) {
         RadioGroup0<E> radioGroup = new RadioGroup0<>(vp);
         destroys.add(radioGroup);
         return radioGroup;
@@ -50,7 +50,7 @@ public class RadioGroup {
         return radioGroup;
     }
 
-    public static <E> RadioGroup1<E> xxx(Destroys destroys, ViewGroup vp) {
+    public static <E> RadioGroup1<E> createViewItems(Destroys destroys, ViewGroup vp) {
         RadioGroup1<E> radioGroup = new RadioGroup1<>(vp);
         destroys.add(radioGroup);
         return radioGroup;
