@@ -18,7 +18,7 @@ import com.codingtu.cooltu.lib4a.view.attrs.Attrs;
 import com.codingtu.cooltu.lib4a.view.attrs.AttrsTools;
 import com.codingtu.cooltu.lib4a.view.attrs.GetAttrs;
 import com.codingtu.cooltu.lib4a.view.base.CoreView;
-import com.codingtu.cooltu.lib4j.data.bean.CoreBean;
+import com.codingtu.cooltu.lib4j.data.xy.FloatXY;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,15 +30,15 @@ public class CoreScaleView extends CoreView {
     protected WH viewWH;
     protected float scale;
     private Integer fingers;
-    private List<P> lastPs;
-    private P lastP;
+    private List<FloatXY> lastPoints;
+    private FloatXY lastPoint;
     protected float maxScale;
     protected float minScale;
     protected WH adjustWH;
     protected LTRB locInView;
     protected LTRB showInView;
     protected LTRB showInBitmap;
-    protected P scaleCenterP;
+    protected FloatXY scaleCenterPoint;
     protected WH oriBitmapWH;
     protected int bgColor;
 
@@ -98,8 +98,8 @@ public class CoreScaleView extends CoreView {
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
                 fingers = null;
-                lastPs = null;
-                lastP = null;
+                lastPoints = null;
+                lastPoint = null;
                 actionDownTime = System.currentTimeMillis();
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -108,23 +108,23 @@ public class CoreScaleView extends CoreView {
                 }
                 if (fingers == null) {
 
-                    P p = getP(event);
-                    if (lastP != null) {
-                        onMoveSingle(event, p.x - lastP.x, p.y - lastP.y);
+                    FloatXY p = getP(event);
+                    if (lastPoint != null) {
+                        onMoveSingle(event, p.x - lastPoint.x, p.y - lastPoint.y);
                     } else {
                         onMoveSingleStart(event);
                     }
-                    lastP = p;
+                    lastPoint = p;
                 } else if (fingers == 2 && event.getPointerCount() == 2) {
-                    List<P> currentPs = getPs(event);
-                    if (lastPs != null) {
+                    List<FloatXY> currentPs = getPs(event);
+                    if (lastPoints != null) {
                         //处理
-                        float scaleAdd = calculateScale(currentPs, lastPs);
+                        float scaleAdd = calculateScale(currentPs, lastPoints);
                         onMoveMulti(event, scaleAdd);
                     } else {
                         onMoveMultiStart(event);
                     }
-                    lastPs = currentPs;
+                    lastPoints = currentPs;
                 }
                 break;
             case MotionEvent.ACTION_UP:
@@ -139,7 +139,7 @@ public class CoreScaleView extends CoreView {
                 } else if (fingers < event.getPointerCount()) {
                     fingers = event.getPointerCount();
                 }
-                lastPs = null;
+                lastPoints = null;
                 break;
             case MotionEvent.ACTION_POINTER_UP:
                 break;
@@ -153,7 +153,7 @@ public class CoreScaleView extends CoreView {
     private void onSingleClickDeal(MotionEvent event) {
         if (singleClickTime == null) {
             singleClickTime = System.currentTimeMillis();
-            P p = getP(event);
+            FloatXY p = getP(event);
             HandlerTool.getMainHandler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -172,17 +172,17 @@ public class CoreScaleView extends CoreView {
         }
     }
 
-    protected void onSingleClick(P p) {
+    protected void onSingleClick(FloatXY p) {
     }
 
-    protected void onMultiClick(P p) {
+    protected void onMultiClick(FloatXY p) {
     }
 
     protected void onMoveSingleStart(MotionEvent event) {
     }
 
     protected void onMoveMultiStart(MotionEvent event) {
-        scaleCenterP = getInAreaP(getScaleCenterP(event), showInView);
+        scaleCenterPoint = getInAreaP(getScaleCenterP(event), showInView);
     }
 
     protected void onMoveSingle(MotionEvent event, float dx, float dy) {
@@ -191,7 +191,7 @@ public class CoreScaleView extends CoreView {
     }
 
     protected void onMoveMulti(MotionEvent event, float scaleAdd) {
-        if (scaleCenterP == null)
+        if (scaleCenterPoint == null)
             return;
 
         scale *= scaleAdd;
@@ -211,8 +211,8 @@ public class CoreScaleView extends CoreView {
             newH = adjustWH.h;
         }
 
-        int l = (int) (scaleCenterP.x - newW * (scaleCenterP.x - locInView.l) / locInView.w());
-        int t = (int) (scaleCenterP.y - newH * (scaleCenterP.y - locInView.t) / locInView.h());
+        int l = (int) (scaleCenterPoint.x - newW * (scaleCenterPoint.x - locInView.l) / locInView.w());
+        int t = (int) (scaleCenterPoint.y - newH * (scaleCenterPoint.y - locInView.t) / locInView.h());
 
         calculateMove((int) newW, (int) newH, l, t);
 
@@ -295,7 +295,7 @@ public class CoreScaleView extends CoreView {
         showInBitmap.b = (int) (showInBitmap.t + showInView.h() / scale);
     }
 
-    protected float calculateScale(List<P> currentPs, List<P> lastPs) {
+    protected float calculateScale(List<FloatXY> currentPs, List<FloatXY> lastPs) {
         int size = currentPs.size();
 
         double d1 = 0;
@@ -314,36 +314,36 @@ public class CoreScaleView extends CoreView {
         return (float) (d1 / d2);
     }
 
-    protected double getDistance(P p1, P p2) {
+    protected double getDistance(FloatXY p1, FloatXY p2) {
         return Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
     }
 
 
-    protected P getP(MotionEvent event) {
-        return new P(event.getX(), event.getY());
+    protected FloatXY getP(MotionEvent event) {
+        return new FloatXY(event.getX(), event.getY());
     }
 
-    protected P getP(MotionEvent event, int index) {
-        return new P(event.getX(index), event.getY(index));
+    protected FloatXY getP(MotionEvent event, int index) {
+        return new FloatXY(event.getX(index), event.getY(index));
     }
 
-    protected List<P> getPs(MotionEvent event) {
-        ArrayList<P> ps = new ArrayList<>();
+    protected List<FloatXY> getPs(MotionEvent event) {
+        ArrayList<FloatXY> ps = new ArrayList<>();
         for (int i = 0; i < event.getPointerCount(); i++) {
             ps.add(getP(event, i));
         }
         return ps;
     }
 
-    protected P getInAreaP(P p, LTRB ltrb) {
+    protected FloatXY getInAreaP(FloatXY p, LTRB ltrb) {
         return isInArea(p, ltrb) ? p : null;
     }
 
-    protected boolean isInArea(P p, LTRB ltrb) {
+    protected boolean isInArea(FloatXY p, LTRB ltrb) {
         return p == null ? false : (ltrb.l <= p.x && p.x <= ltrb.r && ltrb.t <= p.y && p.y <= ltrb.b);
     }
 
-    protected P getScaleCenterP(MotionEvent event) {
+    protected FloatXY getScaleCenterP(MotionEvent event) {
         int pointerCount = event.getPointerCount();
         float x = 0;
         float y = 0;
@@ -351,16 +351,16 @@ public class CoreScaleView extends CoreView {
             x += event.getX(i);
             y += event.getY(i);
         }
-        return new P(x / (float) pointerCount, y / (float) pointerCount);
+        return new FloatXY(x / (float) pointerCount, y / (float) pointerCount);
     }
 
-    public static class P extends CoreBean {
-        public float x;
-        public float y;
-
-        public P(float x, float y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
+//    public static class P extends CoreBean {
+//        public float x;
+//        public float y;
+//
+//        public P(float x, float y) {
+//            this.x = x;
+//            this.y = y;
+//        }
+//    }
 }
