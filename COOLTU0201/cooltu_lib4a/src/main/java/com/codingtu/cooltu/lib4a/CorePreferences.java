@@ -130,5 +130,14 @@ public class CorePreferences {
         putBoolean(key, true);
     }
 
+    ///////////////////////////////////////////////////////
+    //
+    //
+    //
+    ///////////////////////////////////////////////////////
+    public void remove(String key) {
+        sp().edit().remove(key).commit();
+    }
+
 
 }

@@ -23,5 +23,9 @@ public class PfTool {
         return JsonTool.toBean(ConnectDeviceBaseData.class, pf().getString(key));
     }
 
+    public static String getCacheData(String key) {
+        return pf().getString(key);
+    }
+
 
 }

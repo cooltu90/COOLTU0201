@@ -1,7 +1,11 @@
 package com.codingtu.cooltu.lib4a.dm;
 
+import com.codingtu.cooltu.lib4a.log.Logs;
+import com.codingtu.cooltu.lib4a.tools.PfTool;
+import com.codingtu.cooltu.lib4j.data.bean.CoreBean;
 import com.codingtu.cooltu.lib4j.destory.Destroys;
 import com.codingtu.cooltu.lib4j.destory.OnDestroy;
+import com.codingtu.cooltu.lib4j.json.JsonTool;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,17 +14,6 @@ public class BaseCacheDM {
 
     public static Map<String, Object> map;
 
-
-    public static void cache(Destroys destroys, String key, Object obj) {
-        CacheDestroy cacheDestroy = CacheDestroy.obtain(key);
-        destroys.add(cacheDestroy);
-        getMap().put(key, obj);
-    }
-
-    public static <T> T getCache(String key) {
-        return (T) getMap().get(key);
-    }
-
     private static Map<String, Object> getMap() {
         if (map == null) {
             map = new HashMap<>();
@@ -28,20 +21,26 @@ public class BaseCacheDM {
         return map;
     }
 
-    public static class CacheDestroy implements OnDestroy {
-
-        public String key;
-
-        public static CacheDestroy obtain(String key) {
-            CacheDestroy cacheDestroy = new CacheDestroy();
-            cacheDestroy.key = key;
-            return cacheDestroy;
+    public static void cache(String key, Object obj) {
+        //一级缓存
+        getMap().put(key, obj);
+        //二级缓存
+        if (obj == null) {
+            PfTool.pf().remove(key);
+            return;
         }
+        PfTool.pf().putString(key, JsonTool.toJson(obj));
+    }
 
-        @Override
-        public void destroy() {
-            BaseCacheDM.getMap().remove(key);
+    public static <T> T getCache(Class<T> clazz, String key) {
+        T t = (T) getMap().get(key);
+        if (t == null) {
+            t = JsonTool.toBean(clazz, PfTool.pf().getString(key));
+            if (t != null) {
+                getMap().put(key, t);
+            }
         }
+        return t;
     }
 
 

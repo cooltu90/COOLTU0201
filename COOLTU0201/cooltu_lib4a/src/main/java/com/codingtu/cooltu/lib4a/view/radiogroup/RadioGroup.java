@@ -25,12 +25,16 @@ public class RadioGroup {
         public boolean onClick(int index, View view);
     }
 
-    public static interface OnSelectChange<E extends RadioGroupBase> {
-        public void onChange(E rg, int selected);
+    public static interface OnSelectChange<RG extends RadioGroupBase> {
+        public void onChange(RG rg, int selected);
     }
 
     public static interface CreateItemViews<E> {
         public View createItemView(Context context, E e);
+    }
+
+    public static interface InitItems<RG extends RadioGroupBase, E> {
+        public E initItem(RG rg, int poistion, View view);
     }
 
     ///////////////////////////////////////////////////////
@@ -44,7 +48,7 @@ public class RadioGroup {
         return radioGroup;
     }
 
-    public static <E> RadioGroup0<E> itemViews(Destroys destroys, View... itemViews) {
+    public static <E> RadioGroup0<E> setViewItems(Destroys destroys, View... itemViews) {
         RadioGroup0<E> radioGroup = new RadioGroup0<>(itemViews);
         destroys.add(radioGroup);
         return radioGroup;

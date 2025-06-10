@@ -1,14 +1,6 @@
 package com.codingtu.cooltu.ui;
 
-import android.content.Context;
-import android.view.View;
-import android.widget.TextView;
-
 import com.codingtu.cooltu.R;
-import com.codingtu.cooltu.lib4a.log.Logs;
-import com.codingtu.cooltu.lib4a.view.radiogroup.RadioGroup;
-import com.codingtu.cooltu.lib4a.view.radiogroup.RadioGroup0;
-import com.codingtu.cooltu.lib4a.view.radiogroup.RadioGroup1;
 import com.codingtu.cooltu.processor.annotation.tools.To;
 import com.codingtu.cooltu.processor.annotation.ui.ActBase;
 

@@ -7,4 +7,7 @@ public class CacheDMConfig {
     @Cache
     String name;
 
+    @Cache
+    int age;
+
 }

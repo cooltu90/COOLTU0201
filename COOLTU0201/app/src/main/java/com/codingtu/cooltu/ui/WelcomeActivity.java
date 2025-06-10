@@ -6,6 +6,11 @@ import com.codingtu.cooltu.R;
 import com.codingtu.cooltu.bean.User;
 import com.codingtu.cooltu.form.TestCallBack;
 import com.codingtu.cooltu.lib4a.log.Logs;
+import com.codingtu.cooltu.lib4a.task.service.TaskService;
+import com.codingtu.cooltu.lib4a.task.task.Task;
+import com.codingtu.cooltu.lib4a.task.task.TaskDM;
+import com.codingtu.cooltu.lib4a.task.task.result.TaskResult0;
+import com.codingtu.cooltu.lib4a.task.task.run.TaskRun1;
 import com.codingtu.cooltu.lib4j.es.BaseEs;
 import com.codingtu.cooltu.lib4j.es.Es;
 import com.codingtu.cooltu.processor.annotation.net.NetBack;
@@ -29,7 +34,14 @@ public class WelcomeActivity extends WelcomeActivityBase {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CacheDM.cacheName(this, "xxx");
+        //CacheDM.cacheName(this, "xx","xxx");
+
+        CacheDM.cacheAge(12);
+
+        int age = CacheDM.getAge();
+
+
+
     }
 
 

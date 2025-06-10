@@ -519,4 +519,20 @@ public class ViewTool {
             }
         }).toArray();
     }
+
+    /**************************************************
+     *
+     **************************************************/
+    public static View getChild(ViewGroup vp, int... indexs) {
+        int count = indexs.length;
+        View childAt = vp;
+        for (int i = 0; i < count; i++) {
+            childAt = ((ViewGroup) childAt).getChildAt(indexs[i]);
+        }
+        return childAt;
+    }
+
+    public static ViewGroup getChildViewGroup(ViewGroup vp, int... indexs) {
+        return (ViewGroup) getChild(vp, indexs);
+    }
 }

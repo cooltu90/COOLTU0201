@@ -15,13 +15,27 @@ public class RadioGroupBase<E, THIS extends RadioGroupBase> implements View.OnCl
     protected BaseEs<View> itemViewEs;
     protected RadioGroup.OnSetItem onSetItem;
     protected RadioGroup.OnClick onClick;
-    protected BaseEs<RadioGroup.OnSelectChange> onSelectChanges;
+    protected BaseEs<RadioGroup.OnSelectChange<THIS>> onSelectChanges;
     protected boolean hasNull;
     protected Integer selected;
     protected BaseEs<E> itemEs;
 
     @Override
     public void destroy() {
+        if (itemViewEs != null) {
+            itemViewEs.clear();
+            itemViewEs = null;
+        }
+        onSetItem = null;
+        onClick = null;
+        if (onSelectChanges != null) {
+            onSelectChanges.clear();
+            onSelectChanges = null;
+        }
+        if (itemEs != null) {
+            itemEs.clear();
+            itemEs = null;
+        }
 
     }
 
@@ -78,10 +92,18 @@ public class RadioGroupBase<E, THIS extends RadioGroupBase> implements View.OnCl
         this.selected = index;
         change();
         for (int i = 0; i < CountTool.count(onSelectChanges); i++) {
-            RadioGroup.OnSelectChange onSelectChange = onSelectChanges.getByIndex(i);
+            RadioGroup.OnSelectChange<THIS> onSelectChange = onSelectChanges.getByIndex(i);
             if (onSelectChange != null)
-                onSelectChange.onChange(this, this.selected);
+                onSelectChange.onChange((THIS) this, this.selected);
         }
+    }
+
+    public BaseEs<View> getItemViewEs() {
+        return itemViewEs;
+    }
+
+    public BaseEs<E> getItemEs() {
+        return itemEs;
     }
 
     private void change() {
@@ -124,4 +146,13 @@ public class RadioGroupBase<E, THIS extends RadioGroupBase> implements View.OnCl
         return setItems(Es.es(items));
     }
 
+    public int getItemIndex(E e) {
+        if (itemEs == null)
+            return -1;
+        return itemEs.index(e);
+    }
+
+    public int getSelected() {
+        return selected == null ? -1 : selected;
+    }
 }

@@ -9,14 +9,19 @@ import com.codingtu.cooltu.lib4a.tools.ViewTool;
 import com.codingtu.cooltu.lib4j.es.BaseEs;
 import com.codingtu.cooltu.lib4j.es.Es;
 
-import java.util.List;
-
 public class RadioGroup1<E> extends RadioGroupBase<E, RadioGroup1<E>> {
-    private final ViewGroup vp;
+    private ViewGroup vp;
     private RadioGroup.CreateItemViews<E> createItemViews;
 
     public RadioGroup1(ViewGroup vp) {
         this.vp = vp;
+    }
+
+    @Override
+    public void destroy() {
+        super.destroy();
+        vp = null;
+        createItemViews = null;
     }
 
     @Override

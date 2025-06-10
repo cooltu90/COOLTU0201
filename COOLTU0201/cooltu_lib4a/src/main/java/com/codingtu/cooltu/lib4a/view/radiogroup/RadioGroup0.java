@@ -4,14 +4,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.codingtu.cooltu.lib4a.R;
-import com.codingtu.cooltu.lib4a.view.combine.RadioGroupNew;
-import com.codingtu.cooltu.lib4j.es.BaseEs;
 import com.codingtu.cooltu.lib4j.es.Es;
-import com.codingtu.cooltu.lib4j.tools.CountTool;
-
-import java.util.List;
 
 public class RadioGroup0<E> extends RadioGroupBase<E, RadioGroup0<E>> {
+
+    @Override
+    public void destroy() {
+        super.destroy();
+    }
 
     public RadioGroup0(ViewGroup vp) {
         if (vp.getChildCount() > 0) {
@@ -44,4 +44,15 @@ public class RadioGroup0<E> extends RadioGroupBase<E, RadioGroup0<E>> {
     }
 
 
+    public RadioGroup0<E> initItems(RadioGroup.InitItems<RadioGroup0<E>, E> initItems) {
+        if (this.itemViewEs != null) {
+            this.itemEs = this.itemViewEs.convert(new Es.Convert<View, E>() {
+                @Override
+                public E convert(int index, View view) {
+                    return initItems.initItem(RadioGroup0.this, index, view);
+                }
+            });
+        }
+        return this;
+    }
 }

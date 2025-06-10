@@ -50,12 +50,12 @@ public class CacheBuilder extends CacheBuilderBase {
 
                     if (StringTool.isBlank(key)) {
                         addLnTag(methods, "");
-                        addLnTag(methods, "    public static void cache[Weather](Destroys destroys, [Weather] [weather]) {", methodName, fieldKv.k, fieldKv.v);
-                        addLnTag(methods, "        BaseCacheDM.cache(destroys, \"[weather]\", [weather]);", tag, fieldKv.v);
+                        addLnTag(methods, "    public static void cache[Weather]([Weather] [weather]) {", methodName, fieldKv.k, fieldKv.v);
+                        addLnTag(methods, "        BaseCacheDM.cache(\"[weather]\", [weather]);", tag, fieldKv.v);
                         addLnTag(methods, "    }");
                         addLnTag(methods, "");
                         addLnTag(methods, "    public static [Weather] get[Weather]() {", fieldKv.k, methodName);
-                        addLnTag(methods, "        return BaseCacheDM.getCache(\"[weather]\");", tag);
+                        addLnTag(methods, "        return BaseCacheDM.getCache([xx].class, \"[weather]\");", fieldKv.k, tag);
                         addLnTag(methods, "    }");
 
                     } else {
@@ -64,11 +64,11 @@ public class CacheBuilder extends CacheBuilderBase {
                                         "    }\n" +
                                         "\n" +
                                         "    public static [User] get[User](String [userId]) {\n" +
-                                        "        return BaseCacheDM.getCache(\"[user]\" + [userId]);\n" +
+                                        "        return BaseCacheDM.getCache([xx].class, \"[user]\" + [userId]);\n" +
                                         "    }",
                                 methodName, key, fieldKv.k, fieldKv.v,
                                 tag, key, fieldKv.v,
-                                fieldKv.k, methodName, key,
+                                fieldKv.k, methodName, key, fieldKv.k,
                                 tag, key
                         );
                     }
