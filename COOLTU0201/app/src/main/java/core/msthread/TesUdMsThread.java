@@ -105,6 +105,10 @@ public class TesUdMsThread extends CoreMultiMsThread {
         return false;
     }
 
+    public void sendMessageForToastForce(java.lang.String msg) {
+        sendMessage(mainHandler, type(TesUdMsThreadType.TOAST_0), 0l, msg);
+    }
+
 
     ///////////////////////////////////////////////////////
     //
@@ -128,6 +132,10 @@ public class TesUdMsThread extends CoreMultiMsThread {
             return true;
         }
         return false;
+    }
+
+    public void sendMessageForSubStartForce() {
+        sendMessage(subHandler0, type(TesUdMsThreadType.SUB_START_0), 0l);
     }
 
 

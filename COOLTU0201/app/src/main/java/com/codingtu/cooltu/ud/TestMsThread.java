@@ -2,28 +2,28 @@ package com.codingtu.cooltu.ud;
 
 import com.codingtu.cooltu.processor.annotation.msthread.MainThread;
 import com.codingtu.cooltu.processor.annotation.msthread.MsThread;
+import com.codingtu.cooltu.processor.annotation.msthread.SubThread;
 
 import core.msthread.TestMsThreadBaseForMsThread;
 
 @MsThread
 public class TestMsThread extends TestMsThreadBaseForMsThread {
 
-    @MainThread(isDelay = true)
-    public void toast() {
-        if (sendMessageForToast(100)) {
+
+    @SubThread(isStart = true)
+    public void subThreadStart() {
+        if (sendMessageForSubThreadStart()) {
             return;
         }
     }
 
-    @MainThread(isDelay = true, defaultDelayMillis = 300)
-    public void toast(String msg) {
-        if (sendMessageForToast(msg)) {
-            return;
-        }
+    @SubThread(isDelay = true, defaultDelayMillis = 1000)
+    public void toast1() {
+
     }
 
     @MainThread
-    public void toast(int age){
+    public void error(String msg){
 
     }
 

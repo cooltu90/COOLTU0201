@@ -10,35 +10,56 @@ public class TestMsThreadBaseForMsThread implements TestMsThreadMsThreadInterfac
     }
 
     @Override
-    public void toast() {
+    public void subThreadStart() {
     }
 
-    protected boolean sendMessageForToast(long delayMillis) {
+    protected boolean sendMessageForSubThreadStart() {
         if (testMsThreadMsThread != null) {
-            return testMsThreadMsThread.sendMessageForToast(delayMillis);
+            return testMsThreadMsThread.sendMessageForSubThreadStart();
         }
         return true;
     }
+
+    protected void sendMessageForSubThreadStartForce() {
+        if (testMsThreadMsThread != null) {
+            testMsThreadMsThread.sendMessageForSubThreadStartForce();
+        }
+    }
+
     @Override
-    public void toast(java.lang.String msg) {
+    public void toast1() {
     }
 
-    protected boolean sendMessageForToast(java.lang.String msg) {
+    protected boolean sendMessageForToast1() {
         if (testMsThreadMsThread != null) {
-            return testMsThreadMsThread.sendMessageForToast(msg);
+            return testMsThreadMsThread.sendMessageForToast1();
         }
         return true;
     }
+
+    protected void sendMessageForToast1Force() {
+        if (testMsThreadMsThread != null) {
+            testMsThreadMsThread.sendMessageForToast1Force();
+        }
+    }
+
     @Override
-    public void toast(int age) {
+    public void error(java.lang.String msg) {
     }
 
-    protected boolean sendMessageForToast(int age) {
+    protected boolean sendMessageForError(java.lang.String msg) {
         if (testMsThreadMsThread != null) {
-            return testMsThreadMsThread.sendMessageForToast(age);
+            return testMsThreadMsThread.sendMessageForError(msg);
         }
         return true;
     }
+
+    protected void sendMessageForErrorForce(java.lang.String msg) {
+        if (testMsThreadMsThread != null) {
+            testMsThreadMsThread.sendMessageForErrorForce(msg);
+        }
+    }
+
 
 
     protected void stopMsThread() {

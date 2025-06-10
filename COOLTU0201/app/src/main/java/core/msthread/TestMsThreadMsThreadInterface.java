@@ -2,10 +2,10 @@ package core.msthread;
 
 public interface TestMsThreadMsThreadInterface {
 
-    void toast();
+    void subThreadStart();
 
-    void toast(java.lang.String msg);
+    void toast1();
 
-    void toast(int age);
+    void error(java.lang.String msg);
 
 }

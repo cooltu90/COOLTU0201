@@ -19,6 +19,13 @@ public class TesUdBaseForMsThread<THIS extends TesUdBaseForMsThread> extends com
         }
         return true;
     }
+
+    protected void sendMessageForSubStartForce() {
+        if (tesUdMsThread != null) {
+            tesUdMsThread.sendMessageForSubStartForce();
+        }
+    }
+
     @Override
     public void toast(java.lang.String msg) {
     }
@@ -29,6 +36,13 @@ public class TesUdBaseForMsThread<THIS extends TesUdBaseForMsThread> extends com
         }
         return true;
     }
+
+    protected void sendMessageForToastForce(java.lang.String msg) {
+        if (tesUdMsThread != null) {
+            tesUdMsThread.sendMessageForToastForce(msg);
+        }
+    }
+
 
 
     protected void stopMsThread() {

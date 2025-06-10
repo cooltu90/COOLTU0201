@@ -140,6 +140,10 @@ public class SubThreadActivityMsThread extends CoreMultiMsThread {
         return false;
     }
 
+    public void sendMessageForDealToastForce(java.lang.String str, int age) {
+        sendMessage(mainHandler, type(SubThreadActivityMsThreadType.DEAL_TOAST_1), 0l, str, age);
+    }
+
     public boolean sendMessageForDealToast(java.lang.String str) {
         if (!isMainThread()) {
             sendMessage(mainHandler, type(SubThreadActivityMsThreadType.DEAL_TOAST_0), 300l, str);
@@ -150,6 +154,10 @@ public class SubThreadActivityMsThread extends CoreMultiMsThread {
         } catch (Exception e) {
         }
         return false;
+    }
+
+    public void sendMessageForDealToastForce(java.lang.String str) {
+        sendMessage(mainHandler, type(SubThreadActivityMsThreadType.DEAL_TOAST_0), 300l, str);
     }
 
 
@@ -181,12 +189,20 @@ public class SubThreadActivityMsThread extends CoreMultiMsThread {
         return false;
     }
 
+    public void sendMessageForDealDataStart0Force() {
+        sendMessage(subHandler0, type(SubThreadActivityMsThreadType.DEAL_DATA_START0_0), 0l);
+    }
+
     public boolean sendMessageForMethod0() {
         if (!isSubThread0()) {
             sendMessage(subHandler0, type(SubThreadActivityMsThreadType.METHOD0_0), 0l);
             return true;
         }
         return false;
+    }
+
+    public void sendMessageForMethod0Force() {
+        sendMessage(subHandler0, type(SubThreadActivityMsThreadType.METHOD0_0), 0l);
     }
 
 
@@ -218,12 +234,20 @@ public class SubThreadActivityMsThread extends CoreMultiMsThread {
         return false;
     }
 
+    public void sendMessageForDealDataStart1Force() {
+        sendMessage(subHandler1, type(SubThreadActivityMsThreadType.DEAL_DATA_START1_0), 0l);
+    }
+
     public boolean sendMessageForMethod1(java.lang.String name) {
         if (!isSubThread1()) {
             sendMessage(subHandler1, type(SubThreadActivityMsThreadType.METHOD1_0), 0l, name);
             return true;
         }
         return false;
+    }
+
+    public void sendMessageForMethod1Force(java.lang.String name) {
+        sendMessage(subHandler1, type(SubThreadActivityMsThreadType.METHOD1_0), 0l, name);
     }
 
 

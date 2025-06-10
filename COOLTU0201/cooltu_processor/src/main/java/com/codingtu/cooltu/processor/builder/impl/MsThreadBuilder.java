@@ -236,6 +236,14 @@ public class MsThreadBuilder extends MsThreadBuilderBase {
                 addLnTag(sendMessageMethodsSb, "        return false;");
                 addLnTag(sendMessageMethodsSb, "    }");
 
+                addLnTag(sendMessageMethodsSb, "");
+                addLnTag(sendMessageMethodsSb, "    public void sendMessageFor[DealToast]Force([delayParam][String str]) {",
+                        ConvertTool.toClassType(methodName), delayParamSb.toString(), methodParams);
+
+                addLnTag(sendMessageMethodsSb, "        sendMessage([mainHandler], type([FtpPlayActivityMSThreadType].[DEAL_TOAST])[delayParam][, str]);"
+                        , handlerName, typeNameStr, type, delayParamSb1.toString(), params.getParams(true, false));
+                addLnTag(sendMessageMethodsSb, "    }");
+
                 return false;
             }
         });

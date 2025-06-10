@@ -105,6 +105,10 @@ public class BaseStepFragmentMsThread extends CoreMultiMsThread {
         return false;
     }
 
+    public void sendMessageForMethod2Force() {
+        sendMessage(mainHandler, type(BaseStepFragmentMsThreadType.METHOD2_0), 0l);
+    }
+
 
     ///////////////////////////////////////////////////////
     //
@@ -134,12 +138,20 @@ public class BaseStepFragmentMsThread extends CoreMultiMsThread {
         return false;
     }
 
+    public void sendMessageForSubThreadStartForce() {
+        sendMessage(subHandler0, type(BaseStepFragmentMsThreadType.SUB_THREAD_START_0), 0l);
+    }
+
     public boolean sendMessageForMethod1(java.lang.String str) {
         if (!isSubThread0()) {
             sendMessage(subHandler0, type(BaseStepFragmentMsThreadType.METHOD1_0), 0l, str);
             return true;
         }
         return false;
+    }
+
+    public void sendMessageForMethod1Force(java.lang.String str) {
+        sendMessage(subHandler0, type(BaseStepFragmentMsThreadType.METHOD1_0), 0l, str);
     }
 
 

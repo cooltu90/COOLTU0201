@@ -14,9 +14,16 @@ public class TestMsThreadMsThread extends CoreMultiMsThread {
     //
     ///////////////////////////////////////////////////////
     private Handler mainHandler;
+    private Handler subHandler0;
 
     public void start() {
         createMainHandler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                createSubHandler0();
+            }
+        }).start();
 
     }
 
@@ -30,7 +37,26 @@ public class TestMsThreadMsThread extends CoreMultiMsThread {
         };
     }
 
+    private void createSubHandler0() {
+        Looper.prepare();
+        subHandler0 = new Handler(Looper.myLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                handleMessageInThread0(msg);
+            }
+        };
+        sendMessage(subHandler0, subThread0StartType(), 0l);
+        Looper.loop();
+    }
+
     public void stop() {
+        if (subHandler0 != null) {
+            subHandler0.getLooper().quitSafely();
+            subHandler0 = null;
+        }
+        mainHandler = null;
+
 
     }
     ///////////////////////////////////////////////////////
@@ -53,6 +79,10 @@ public class TestMsThreadMsThread extends CoreMultiMsThread {
         return type.ordinal();
     }
 
+    protected boolean isSubThread0() {
+        return Thread.currentThread() == subHandler0.getLooper().getThread();
+    }
+
 
     ///////////////////////////////////////////////////////
     //
@@ -60,47 +90,72 @@ public class TestMsThreadMsThread extends CoreMultiMsThread {
     //
     ///////////////////////////////////////////////////////
     private void handleMessageInMain(Message msg) {
-        if (msg.what == type(TestMsThreadMsThreadType.TOAST_1)) {
-            dealer.toast((java.lang.String) msg.obj);
-            return;
-        }
-        if (msg.what == type(TestMsThreadMsThreadType.TOAST_0)) {
-            dealer.toast();
-            return;
-        }
-        if (msg.what == type(TestMsThreadMsThreadType.TOAST_2)) {
-            dealer.toast((int) msg.obj);
+        if (msg.what == type(TestMsThreadMsThreadType.ERROR_0)) {
+            dealer.error((java.lang.String) msg.obj);
             return;
         }
 
     }
 
-    public boolean sendMessageForToast(java.lang.String msg) {
+    public boolean sendMessageForError(java.lang.String msg) {
         if (!isMainThread()) {
-            sendMessage(mainHandler, type(TestMsThreadMsThreadType.TOAST_1), 300l, msg);
+            sendMessage(mainHandler, type(TestMsThreadMsThreadType.ERROR_0), 0l, msg);
+            return true;
+        }
+        return false;
+    }
+
+    public void sendMessageForErrorForce(java.lang.String msg) {
+        sendMessage(mainHandler, type(TestMsThreadMsThreadType.ERROR_0), 0l, msg);
+    }
+
+
+    ///////////////////////////////////////////////////////
+    //
+    // 线程0的消息处理
+    //
+    ///////////////////////////////////////////////////////
+    private int subThread0StartType() {
+        return type(TestMsThreadMsThreadType.SUB_THREAD_START_0);
+    }
+
+    private void handleMessageInThread0(Message msg) {
+        if (msg.what == type(TestMsThreadMsThreadType.SUB_THREAD_START_0)) {
+            dealer.subThreadStart();
+            return;
+        }
+        if (msg.what == type(TestMsThreadMsThreadType.TOAST1_0)) {
+            dealer.toast1();
+            return;
+        }
+    }
+
+    public boolean sendMessageForSubThreadStart() {
+        if (!isSubThread0()) {
+            sendMessage(subHandler0, type(TestMsThreadMsThreadType.SUB_THREAD_START_0), 0l);
+            return true;
+        }
+        return false;
+    }
+
+    public void sendMessageForSubThreadStartForce() {
+        sendMessage(subHandler0, type(TestMsThreadMsThreadType.SUB_THREAD_START_0), 0l);
+    }
+
+    public boolean sendMessageForToast1() {
+        if (!isSubThread0()) {
+            sendMessage(subHandler0, type(TestMsThreadMsThreadType.TOAST1_0), 1000l);
             return true;
         }
         try {
-            Thread.sleep(300l);
+            Thread.sleep(1000l);
         } catch (Exception e) {
         }
         return false;
     }
 
-    public boolean sendMessageForToast(long delayMillis) {
-        if (!isMainThread()) {
-            sendMessage(mainHandler, type(TestMsThreadMsThreadType.TOAST_0), delayMillis);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean sendMessageForToast(int age) {
-        if (!isMainThread()) {
-            sendMessage(mainHandler, type(TestMsThreadMsThreadType.TOAST_2), 0l, age);
-            return true;
-        }
-        return false;
+    public void sendMessageForToast1Force() {
+        sendMessage(subHandler0, type(TestMsThreadMsThreadType.TOAST1_0), 1000l);
     }
 
 

@@ -1,6 +1,6 @@
 package core.msthread;
 
 public enum TestMsThreadMsThreadType {
-    TOAST_0, TOAST_1, TOAST_2,
+    SUB_THREAD_START_0, TOAST1_0, ERROR_0,
 
 }
