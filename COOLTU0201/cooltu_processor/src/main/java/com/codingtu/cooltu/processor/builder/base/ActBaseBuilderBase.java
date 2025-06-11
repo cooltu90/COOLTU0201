@@ -45,6 +45,7 @@ public abstract class ActBaseBuilderBase extends com.codingtu.cooltu.processor.b
     protected java.util.Map<String, Integer> onCreateCompleteInitCounts;
     protected StringBuilder onCreateCompleteInitSb;
     protected com.codingtu.cooltu.lib4j.data.map.ListValueMap<String, String> onCreateCompleteInit;
+    protected StringBuilder useAdapters;
     protected java.util.Map<String, Boolean> listAdapterIfs;
     protected java.util.Map<String, Integer> listAdapterCounts;
     protected StringBuilder listAdapterSb;
@@ -61,6 +62,7 @@ public abstract class ActBaseBuilderBase extends com.codingtu.cooltu.processor.b
     protected java.util.Map<String, Integer> onCreateCompleteOtherCounts;
     protected StringBuilder onCreateCompleteOtherSb;
     protected com.codingtu.cooltu.lib4j.data.map.ListValueMap<String, String> onCreateCompleteOther;
+    protected StringBuilder adapters;
     protected java.util.Map<String, Boolean> onDestroyIfs;
     protected java.util.Map<String, Integer> onDestroyCounts;
     protected StringBuilder onDestroySb;
@@ -203,6 +205,7 @@ public abstract class ActBaseBuilderBase extends com.codingtu.cooltu.processor.b
         onCreateCompleteInitCounts = new java.util.HashMap<>();
         onCreateCompleteInitSb = map.get("onCreateCompleteInit");
         onCreateCompleteInit = new com.codingtu.cooltu.lib4j.data.map.ListValueMap<>();
+        useAdapters = map.get("useAdapters");
         listAdapterIfs = new java.util.HashMap<>();
         listAdapterCounts = new java.util.HashMap<>();
         listAdapterSb = map.get("listAdapter");
@@ -219,6 +222,7 @@ public abstract class ActBaseBuilderBase extends com.codingtu.cooltu.processor.b
         onCreateCompleteOtherCounts = new java.util.HashMap<>();
         onCreateCompleteOtherSb = map.get("onCreateCompleteOther");
         onCreateCompleteOther = new com.codingtu.cooltu.lib4j.data.map.ListValueMap<>();
+        adapters = map.get("adapters");
         onDestroyIfs = new java.util.HashMap<>();
         onDestroyCounts = new java.util.HashMap<>();
         onDestroySb = map.get("onDestroy");
@@ -1152,11 +1156,14 @@ public abstract class ActBaseBuilderBase extends com.codingtu.cooltu.processor.b
         lines.add("    @Override");
         lines.add("    public void onCreateComplete() {");
         lines.add("        super.onCreateComplete();");
+        lines.add("[[useAdapters]]");
         lines.add("[[listAdapter]]");
         lines.add("[[setOnClick]]");
         lines.add("[[setOnLongClick]]");
         lines.add("[[onCreateCompleteOther]]");
         lines.add("    }");
+        lines.add("");
+        lines.add("[[adapters]]");
         lines.add("");
         lines.add("    @Override");
         lines.add("    protected void onDestroy() {");

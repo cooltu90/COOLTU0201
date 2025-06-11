@@ -13,8 +13,8 @@ public abstract class StepOneActivityBase extends com.codingtu.cooltu.ui.base.Ba
     protected androidx.recyclerview.widget.RecyclerView rv;
     protected android.widget.LinearLayout tvLl;
     protected androidx.recyclerview.widget.RecyclerView rv1;
-    protected com.codingtu.cooltu.ui.adapter.CatAdapter catAdapter;
-    protected com.codingtu.cooltu.ui.adapter.DogAdapter dogAdapter;
+    private com.codingtu.cooltu.ui.adapter.CatAdapter catAdapter;
+    private com.codingtu.cooltu.ui.adapter.DogAdapter dogAdapter;
 
     public String baseClassName = "StepOneActivityBase";
 
@@ -42,40 +42,66 @@ public abstract class StepOneActivityBase extends com.codingtu.cooltu.ui.base.Ba
     @Override
     public void onCreateComplete() {
         super.onCreateComplete();
-        // catAdapter
-        catAdapter = new com.codingtu.cooltu.ui.adapter.CatAdapter();
-        catAdapter.setVH(core.vh.CatVH.class);
-        catAdapter.setClick(this);
-        rv.setAdapter(catAdapter);
-        new com.codingtu.cooltu.lib4a.ui.recyclerview.DefaultConfig().config(getAct(), rv, () -> rvObj());
-        // dogAdapter
-        dogAdapter = new com.codingtu.cooltu.ui.adapter.DogAdapter() {
-            @Override
-            protected void loadMore(int page) {
-                dogAdapterLoadMore(page);
-            }
-        };
-        dogAdapter.setVH(core.vh.DogVH.class);
-        dogAdapter.setClick(this);
-        rv1.setAdapter(dogAdapter);
-        new com.codingtu.cooltu.lib4a.ui.recyclerview.DefaultConfig().config(getAct(), rv1, () -> rv1Obj());
+        catAdapter();
+        dogAdapter();
+
 
 
 
 
 
     }
+
+    /**************************************************
+     * catAdapter
+     **************************************************/
+    protected com.codingtu.cooltu.ui.adapter.CatAdapter catAdapter() {
+        if (catAdapter == null) {
+            catAdapter = new com.codingtu.cooltu.ui.adapter.CatAdapter();
+            catAdapter.setVH(core.vh.CatVH.class);
+            catAdapter.setClick(this);
+            rv.setAdapter(catAdapter);
+            new com.codingtu.cooltu.lib4a.ui.recyclerview.DefaultConfig().config(getAct(), rv, () -> rvObj());
+
+        }
+        return catAdapter;
+    }
+
+    protected Object rvObj() {
+        return null;
+    }
+
+    /**************************************************
+     * dogAdapter
+     **************************************************/
+    protected com.codingtu.cooltu.ui.adapter.DogAdapter dogAdapter() {
+        if (dogAdapter == null) {
+            dogAdapter = new com.codingtu.cooltu.ui.adapter.DogAdapter() {
+                @Override
+                protected void loadMore(int page) {
+                    dogAdapterLoadMore(page);
+                }
+            };
+            dogAdapter.setVH(core.vh.DogVH.class);
+            dogAdapter.setClick(this);
+            rv1.setAdapter(dogAdapter);
+            new com.codingtu.cooltu.lib4a.ui.recyclerview.DefaultConfig().config(getAct(), rv1, () -> rv1Obj());
+
+        }
+        return dogAdapter;
+    }
+
+    protected Object rv1Obj() {
+        return null;
+    }
+
+    protected abstract void dogAdapterLoadMore(int page);
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-    }
-    protected Object rvObj() {
-        return null;
-    }
-    protected Object rv1Obj() {
-        return null;
     }
 
 
@@ -128,7 +154,6 @@ public abstract class StepOneActivityBase extends com.codingtu.cooltu.ui.base.Ba
 
     }
 
-    protected abstract void dogAdapterLoadMore(int page);
 
     private com.codingtu.cooltu.lib4a.view.dialogview.ToastDialog toastDialog;
 

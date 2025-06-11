@@ -19,7 +19,7 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
     protected int tvColor;
     protected int dp;
     protected int dp1;
-    protected com.codingtu.cooltu.ui.adapter.DogAdapter dogAdapter;
+    private com.codingtu.cooltu.ui.adapter.DogAdapter dogAdapter;
     protected androidx.recyclerview.widget.RecyclerView rv1;
 
     public String baseClassName = "StepOneFragmentBase";
@@ -51,17 +51,8 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
     @Override
     public void onCreateComplete() {
         super.onCreateComplete();
-        // dogAdapter
-        dogAdapter = new com.codingtu.cooltu.ui.adapter.DogAdapter() {
-            @Override
-            protected void loadMore(int page) {
-                dogAdapterLoadMore(page);
-            }
-        };
-        dogAdapter.setVH(core.vh.DogVH.class);
-        dogAdapter.setClick(this);
-        rv1.setAdapter(dogAdapter);
-        new com.codingtu.cooltu.lib4a.ui.recyclerview.DefaultConfig().config(getAct(), rv1, () -> rv1Obj());
+        dogAdapter();
+
 
         tv1.setOnClickListener(this);
 
@@ -70,13 +61,37 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
 
     }
 
+    /**************************************************
+     * dogAdapter
+     **************************************************/
+    protected com.codingtu.cooltu.ui.adapter.DogAdapter dogAdapter() {
+        if (dogAdapter == null) {
+            dogAdapter = new com.codingtu.cooltu.ui.adapter.DogAdapter() {
+                @Override
+                protected void loadMore(int page) {
+                    dogAdapterLoadMore(page);
+                }
+            };
+            dogAdapter.setVH(core.vh.DogVH.class);
+            dogAdapter.setClick(this);
+            rv1.setAdapter(dogAdapter);
+            new com.codingtu.cooltu.lib4a.ui.recyclerview.DefaultConfig().config(getAct(), rv1, () -> rv1Obj());
+
+        }
+        return dogAdapter;
+    }
+
+    protected Object rv1Obj() {
+        return null;
+    }
+
+    protected abstract void dogAdapterLoadMore(int page);
+
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
 
-    }
-    protected Object rv1Obj() {
-        return null;
     }
 
 
@@ -116,7 +131,6 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
 
 
 
-    protected abstract void dogAdapterLoadMore(int page);
 
     @Override
     public void accept(String code, Result<ResponseBody> result, com.codingtu.cooltu.lib4a.net.bean.CoreSendParams params, List objs) {

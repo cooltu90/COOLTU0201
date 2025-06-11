@@ -182,7 +182,7 @@ public class FragmentBaseBuilder extends FragmentBaseBuilderBase implements UiBa
             addLnTag(otherLineSb, "        [tesUdMsThread] = null;", msThreadFieldName);
             addLnTag(otherLineSb, "    }");
 
-            addLnTag(onDestroySb,"        stopMsThread();");
+            addLnTag(onDestroySb, "        stopMsThread();");
 
         }
 
@@ -272,6 +272,7 @@ public abstract class [[name]] extends [[baseClass]] implements View.OnClickList
     @Override
     public void onCreateComplete() {
         super.onCreateComplete();
+[[useAdapters]]
                                                                                                     [<sub>][for][listAdapter]
                                                                                                     [<sub>][if][defaultListAdapter]
         // [adapterName]
@@ -301,6 +302,8 @@ public abstract class [[name]] extends [[baseClass]] implements View.OnClickList
 [onCreateCompleteOther]
                                                                                                     [<sub>][if][onCreateCompleteOther]
     }
+
+[[adapters]]
 
     @Override
     public void onDestroyView() {

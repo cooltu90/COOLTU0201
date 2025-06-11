@@ -38,7 +38,10 @@ public abstract class CoreWelcomeActivityBase extends com.codingtu.cooltu.ui.bas
 
 
 
+
     }
+
+
 
     @Override
     protected void onDestroy() {

@@ -20,7 +20,7 @@ public class StepOneActivity extends StepOneActivityBase {
         super.onCreateComplete();
 //        StringEs stringEs = Es.strs("cat1", "cat2", "cat3");
 //        catAdapter.updateItems(stringEs);
-        catAdapter.updateItems("dog1", "dog2", "dog3");
+//        catAdapter.updateItems("dog1", "dog2", "dog3");
     }
 
     @Override

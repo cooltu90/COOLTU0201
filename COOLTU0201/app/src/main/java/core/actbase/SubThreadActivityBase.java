@@ -37,11 +37,14 @@ public abstract class SubThreadActivityBase extends com.codingtu.cooltu.ui.base.
 
 
 
+
         subThreadActivityMsThread = core.msthread.SubThreadActivityMsThread.obtain().dealer(this);
         subThreadActivityMsThread.start();
 
 
     }
+
+
 
     @Override
     protected void onDestroy() {

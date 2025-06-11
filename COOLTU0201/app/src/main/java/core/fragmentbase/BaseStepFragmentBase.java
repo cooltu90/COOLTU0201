@@ -16,7 +16,7 @@ import retrofit2.adapter.rxjava2.Result;
 public abstract class BaseStepFragmentBase extends com.codingtu.cooltu.lib4a.ui.fragment.CoreFragment implements View.OnClickListener, View.OnLongClickListener, com.codingtu.cooltu.lib4a.net.netback.NetBackI, core.msthread.BaseStepFragmentMsThreadInterface
 {
     protected android.widget.TextView tv2;
-    protected com.codingtu.cooltu.ui.adapter.CatAdapter catAdapter;
+    private com.codingtu.cooltu.ui.adapter.CatAdapter catAdapter;
     protected androidx.recyclerview.widget.RecyclerView rv;
     protected core.msthread.BaseStepFragmentMsThread baseStepFragmentMsThread;
 
@@ -32,12 +32,8 @@ public abstract class BaseStepFragmentBase extends com.codingtu.cooltu.lib4a.ui.
     @Override
     public void onCreateComplete() {
         super.onCreateComplete();
-        // catAdapter
-        catAdapter = new com.codingtu.cooltu.ui.adapter.CatAdapter();
-        catAdapter.setVH(core.vh.CatVH.class);
-        catAdapter.setClick(this);
-        rv.setAdapter(catAdapter);
-        new com.codingtu.cooltu.lib4a.ui.recyclerview.DefaultConfig().config(getAct(), rv, () -> rvObj());
+        catAdapter();
+
 
         tv2.setOnClickListener(this);
 
@@ -49,14 +45,32 @@ public abstract class BaseStepFragmentBase extends com.codingtu.cooltu.lib4a.ui.
 
     }
 
+    /**************************************************
+     * catAdapter
+     **************************************************/
+    protected com.codingtu.cooltu.ui.adapter.CatAdapter catAdapter() {
+        if (catAdapter == null) {
+            catAdapter = new com.codingtu.cooltu.ui.adapter.CatAdapter();
+            catAdapter.setVH(core.vh.CatVH.class);
+            catAdapter.setClick(this);
+            rv.setAdapter(catAdapter);
+            new com.codingtu.cooltu.lib4a.ui.recyclerview.DefaultConfig().config(getAct(), rv, () -> rvObj());
+
+        }
+        return catAdapter;
+    }
+
+    protected Object rvObj() {
+        return null;
+    }
+
+
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         stopMsThread();
 
-    }
-    protected Object rvObj() {
-        return null;
     }
 
 

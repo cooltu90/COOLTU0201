@@ -49,12 +49,15 @@ public abstract class WelcomeActivityBase extends com.codingtu.cooltu.ui.base.Ba
     public void onCreateComplete() {
         super.onCreateComplete();
 
+
         showBt.setOnClickListener(this);
 
 
 
 
     }
+
+
 
     @Override
     protected void onDestroy() {

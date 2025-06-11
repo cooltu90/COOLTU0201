@@ -573,6 +573,7 @@ public abstract class UiBaseBuilder {
 
 
     private void dealListAdapter() {
+
         Es.es(adapters).ls(new Es.EachEs<VariableElement>() {
             @Override
             public boolean each(int position, VariableElement ve) {
@@ -584,26 +585,58 @@ public abstract class UiBaseBuilder {
                         return adapter.rvConfig();
                     }
                 });
-
-                KV<String, String> kv = ElementTools.getFieldKv(ve);
-                //添加字段
-                addField(Constant.SIGN_PROTECTED, kv.k, kv.v);
-                addField(Constant.SIGN_PROTECTED, FullName.RECYCLER_VIEW, adapter.rvName());
-                String vh = VHDeal.vhMap.get(kv.k);
-                int adapterIndex = uiBase.listAdapterCount();
-
                 if (ClassTool.isVoid(configClass)) {
                     configClass = FullName.RECYCLER_VIEW_DEFAULT_CONFIG;
                 }
 
-                uiBase.listAdapter(adapterIndex, kv.v, vh, adapter.rvName(), configClass);
+                KV<String, String> kv = ElementTools.getFieldKv(ve);
+                addField(Constant.SIGN_PRIVATE, kv.k, kv.v);
+                addField(Constant.SIGN_PROTECTED, FullName.RECYCLER_VIEW, adapter.rvName());
+
+                String vh = VHDeal.vhMap.get(kv.k);
+
+                StringBuilder useAdaptersSb = getStringBuilder("useAdapters");
+                TagTools.addLnTag(useAdaptersSb, "        [catAdapter]();", kv.v);
+
+
+                StringBuilder adaptersSb = getStringBuilder("adapters");
+                TagTools.addLnTag(adaptersSb, "    /**************************************************");
+                TagTools.addLnTag(adaptersSb, "     * [catAdapter]", kv.v);
+                TagTools.addLnTag(adaptersSb, "     **************************************************/");
+                TagTools.addLnTag(adaptersSb, "    protected [CatAdapter] [catAdapter]() {", kv.k, kv.v);
+                TagTools.addLnTag(adaptersSb, "        if ([catAdapter] == null) {", kv.v);
+
                 if (adapter.type() == AdapterType.DEFAULT_MORE_LIST) {
-                    uiBase.loadMore(uiBase.loadMoreCount(), kv.v);
-                    uiBase.defaultListMoreAdapterIf(adapterIndex, kv.v, kv.k);
+                    TagTools.addLnTag(adaptersSb, "            [dogAdapter] = new [DogAdapter]() {", kv.v, kv.k);
+                    TagTools.addLnTag(adaptersSb, "                @Override");
+                    TagTools.addLnTag(adaptersSb, "                protected void loadMore(int page) {");
+                    TagTools.addLnTag(adaptersSb, "                    [dogAdapter]LoadMore(page);", kv.v);
+                    TagTools.addLnTag(adaptersSb, "                }");
+                    TagTools.addLnTag(adaptersSb, "            };");
                 } else if (adapter.type() == AdapterType.DEFAULT_LIST) {
-                    uiBase.defaultListAdapterIf(adapterIndex, kv.v, kv.k);
+                    TagTools.addLnTag(adaptersSb, "            [catAdapter] = new [CatAdapter]();", kv.v, kv.k);
                 }
-                uiBase.adapterObjs(adapterIndex, adapter.rvName());
+
+                TagTools.addLnTag(adaptersSb, "            [catAdapter].setVH([CatVH].class);", kv.v, vh);
+                TagTools.addLnTag(adaptersSb, "            [catAdapter].setClick(this);", kv.v);
+                TagTools.addLnTag(adaptersSb, "            [rv].setAdapter([catAdapter]);", adapter.rvName(), kv.v);
+                TagTools.addLnTag(adaptersSb, "            new [DefaultConfig]().config(getAct(), [rv], () -> [rv]Obj());", configClass, adapter.rvName(), adapter.rvName());
+
+                TagTools.addLnTag(adaptersSb, "");
+                TagTools.addLnTag(adaptersSb, "        }");
+                TagTools.addLnTag(adaptersSb, "        return [catAdapter];", kv.v);
+                TagTools.addLnTag(adaptersSb, "    }");
+                TagTools.addLnTag(adaptersSb, "");
+                TagTools.addLnTag(adaptersSb, "    protected Object [rv]Obj() {", adapter.rvName());
+                TagTools.addLnTag(adaptersSb, "        return null;");
+                TagTools.addLnTag(adaptersSb, "    }");
+                TagTools.addLnTag(adaptersSb, "");
+
+                if (adapter.type() == AdapterType.DEFAULT_MORE_LIST) {
+                    TagTools.addLnTag(adaptersSb, "    protected abstract void [dogAdapter]LoadMore(int page);", kv.v);
+                }
+
+
                 return false;
             }
         });

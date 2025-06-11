@@ -37,7 +37,10 @@ public abstract class FromActivityBase extends com.codingtu.cooltu.ui.FromBaseAc
 
 
 
+
     }
+
+
 
     @Override
     protected void onDestroy() {
