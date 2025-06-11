@@ -132,4 +132,8 @@ public class Task<P0, P1, P2, P3, P4, P5, P6, P7, P8, R0, R1, R2, R3, R4, R5, R6
     public R8 r8() {
         return (R8) r(8);
     }
+
+    public void add() {
+        TaskService.addTask(this);
+    }
 }

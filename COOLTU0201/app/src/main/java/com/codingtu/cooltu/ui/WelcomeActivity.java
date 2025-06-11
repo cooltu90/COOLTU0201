@@ -5,23 +5,21 @@ import android.os.Bundle;
 import com.codingtu.cooltu.R;
 import com.codingtu.cooltu.bean.User;
 import com.codingtu.cooltu.form.TestCallBack;
-import com.codingtu.cooltu.lib4a.log.Logs;
-import com.codingtu.cooltu.lib4a.task.service.TaskService;
-import com.codingtu.cooltu.lib4a.task.task.Task;
 import com.codingtu.cooltu.lib4a.task.task.TaskDM;
-import com.codingtu.cooltu.lib4a.task.task.result.TaskResult0;
-import com.codingtu.cooltu.lib4a.task.task.run.TaskRun1;
-import com.codingtu.cooltu.lib4j.es.BaseEs;
-import com.codingtu.cooltu.lib4j.es.Es;
+import com.codingtu.cooltu.lib4a.task.task.result.TaskResult1;
+import com.codingtu.cooltu.lib4a.task.task.run.TaskRun0;
+import com.codingtu.cooltu.lib4j.function.OnError;
 import com.codingtu.cooltu.processor.annotation.net.NetBack;
 import com.codingtu.cooltu.processor.annotation.tools.To;
 import com.codingtu.cooltu.processor.annotation.tools.ToRes;
 import com.codingtu.cooltu.processor.annotation.ui.ActBase;
 import com.codingtu.cooltu.processor.annotation.ui.ClickView;
+import com.codingtu.cooltu.processor.lib.log.Logs;
 import com.codingtu.cooltu.ui.base.BaseWelcomeActivity;
 
 import core.actbase.WelcomeActivityBase;
 import core.actres.WelcomeActivityRes;
+import core.data.DataDM;
 import core.tools.ActStart;
 import core.tools.CacheDM;
 
@@ -37,11 +35,6 @@ public class WelcomeActivity extends WelcomeActivityBase {
         //CacheDM.cacheName(this, "xx","xxx");
 
         CacheDM.cacheAge(12);
-
-        int age = CacheDM.getAge();
-
-
-
     }
 
 

@@ -19,6 +19,7 @@ public class Pkg {
     public static final String ACT_BASE = "core.actbase";
     public static final String FRAGMENT_BASE = "core.fragmentbase";
     public static final String CORE_TOOLS = "core.tools";
+    public static final String CORE_DATA = "core.data";
     public static final String ACT_RES = "core.actres";
     public static final String FRAGMENT_RES = "core.fragmentres";
     public static final String CORE_NET = "core.net";
@@ -40,12 +41,16 @@ public class Pkg {
     public static final String LIB4A_DIALOG_VIEW = LIB4A_VIEW + ".dialogview";
     public static final String LIB4A_LAYER_VIEW = LIB4A_VIEW + ".layerview";
     public static final String LIB4A_LAYER = LIB4A_VIEW + ".layer";
+    public static final String LIB4A_TASK = LIB4A + ".task.task";
+    public static final String LIB4A_TASK_RESULT = LIB4A_TASK + ".result";
+    public static final String LIB4A_TASK_RUN = LIB4A_TASK + ".run";
     //lib4j
     public static final String LIB4J = "com.codingtu.cooltu.lib4j";
     public static final String LIB4J_TS = LIB4J + ".ts";
     public static final String LIB4J_JSON = LIB4J + ".json";
     public static final String LIB4J_TOOLS = LIB4J + ".tools";
     public static final String LIB4J_DESTORY = LIB4J + ".destory";
+    public static final String LIB4J_FUNCTION = LIB4J + ".function";
     //processor_annotation
     public static final String ANNOTATION = "com.codingtu.cooltu.processor.annotation";
     public static final String ANNOTATION_RES = ANNOTATION + ".res";

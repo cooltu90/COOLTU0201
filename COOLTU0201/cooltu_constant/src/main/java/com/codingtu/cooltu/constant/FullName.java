@@ -87,6 +87,7 @@ public class FullName {
     public static final String NET_BACK = Pkg.LIB4A_NET + ".netback.NetBack";
     //core_tools
     public static final String PASS = Pkg.CORE_TOOLS + ".Pass";
+    public static final String DATA_DM = Pkg.CORE_DATA + ".DataDM";
     public static final String CACHE_DM = Pkg.CORE_TOOLS + ".CacheDM";
     public static final String ACT_START = Pkg.CORE_TOOLS + ".ActStart";
     public static final String NET = Pkg.CORE_NET + ".Net";
@@ -95,11 +96,16 @@ public class FullName {
     //Ts
     public static final String BASE_TS = Pkg.LIB4J_TS + ".BaseTs";
     public static final String TS = Pkg.LIB4J_TS + ".Ts";
+    //TASK
+    public static final String TASK_RESULT_1 = Pkg.LIB4A_TASK_RESULT + ".TaskResult1";
+    public static final String TASK_DM = Pkg.LIB4A_TASK + ".TaskDM";
     //PATH
     public static final String PATH_TEXT_FILE = Pkg.LIB4A_PATH + ".PathTextFile";
     public static final String PATH_IMAGE_FILE = Pkg.LIB4A_PATH + ".PathImageFile";
     public static final String PATH_BEAN_FILE = Pkg.LIB4A_PATH + ".PathBeanFile";
     public static final String PATH_BEAN_LIST_FILE = Pkg.LIB4A_PATH + ".PathBeanListFile";
+    //function
+    public static final String ON_ERROR = Pkg.LIB4J_FUNCTION + ".OnError";
     //JSON
     public static final String JO = Pkg.LIB4J_JSON + ".base.JO";
     public static final String JSON_TOOL = Pkg.LIB4J_JSON + ".JsonTool";

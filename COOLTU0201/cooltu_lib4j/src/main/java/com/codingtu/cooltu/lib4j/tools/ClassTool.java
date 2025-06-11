@@ -156,6 +156,25 @@ public class ClassTool {
         return null;
     }
 
+    public static String covert(String k) {
+        if (isInt(k)) {
+            return Integer.class.getCanonicalName();
+        }
+        if (isBoolean(k)) {
+            return Boolean.class.getCanonicalName();
+        }
+        if (isLong(k)) {
+            return Long.class.getCanonicalName();
+        }
+        if (isFloat(k)) {
+            return Float.class.getCanonicalName();
+        }
+        if (isDouble(k)) {
+            return Double.class.getCanonicalName();
+        }
+        return k;
+    }
+
     public static interface AnnotationClassGetter {
         Object get();
     }

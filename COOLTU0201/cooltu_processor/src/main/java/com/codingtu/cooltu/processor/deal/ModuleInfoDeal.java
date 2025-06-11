@@ -8,6 +8,7 @@ import com.codingtu.cooltu.processor.annotation.ModuleInfo;
 import com.codingtu.cooltu.processor.builder.impl.ActBackIntentBuilder;
 import com.codingtu.cooltu.processor.builder.impl.ActStartBuilder;
 import com.codingtu.cooltu.processor.builder.impl.Code4RequestBuilder;
+import com.codingtu.cooltu.processor.builder.impl.DataBuilder;
 import com.codingtu.cooltu.processor.builder.impl.PassBuilder;
 import com.codingtu.cooltu.processor.builder.impl.PermissionBuilder;
 import com.codingtu.cooltu.processor.deal.base.TypeBaseDeal;
@@ -39,5 +40,6 @@ public class ModuleInfoDeal extends TypeBaseDeal {
         PermissionBuilder permissionBuilder = PermissionBuilder.BUILDER;
         PassBuilder passBuilder = PassBuilder.BUILDER;
         Code4RequestBuilder code4RequestBuilder = Code4RequestBuilder.BUILDER;
+        DataBuilder dataBuilder = DataBuilder.BUILDER;
     }
 }

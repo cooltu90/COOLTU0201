@@ -4,6 +4,7 @@ import com.codingtu.cooltu.processor.annotation.ModuleInfo;
 import com.codingtu.cooltu.processor.annotation.create.CreateAct;
 import com.codingtu.cooltu.processor.annotation.create.CreateAdapter;
 import com.codingtu.cooltu.processor.annotation.create.CreateFragment;
+import com.codingtu.cooltu.processor.annotation.data.Data;
 import com.codingtu.cooltu.processor.annotation.delete.DeleteAct;
 import com.codingtu.cooltu.processor.annotation.dm.Cache;
 import com.codingtu.cooltu.processor.annotation.msthread.MsThread;
@@ -24,6 +25,7 @@ import com.codingtu.cooltu.processor.deal.CacheDeal;
 import com.codingtu.cooltu.processor.deal.CreateActDeal;
 import com.codingtu.cooltu.processor.deal.CreateAdapterDeal;
 import com.codingtu.cooltu.processor.deal.CreateFragmentDeal;
+import com.codingtu.cooltu.processor.deal.DataDeal;
 import com.codingtu.cooltu.processor.deal.DefaultCodeDeal;
 import com.codingtu.cooltu.processor.deal.DefaultDialogLayoutDeal;
 import com.codingtu.cooltu.processor.deal.DefaultEditDialogLayoutDeal;
@@ -66,7 +68,8 @@ public class SupportTypes {
                 CreateAdapter.class, CreateAdapterDeal.class,
                 CreateFragment.class, CreateFragmentDeal.class,
                 Cache.class, CacheDeal.class,
-                DeleteAct.class, DeleteActDeal.class
+                DeleteAct.class, DeleteActDeal.class,
+                Data.class, DataDeal.class
         };
     }
 
