@@ -147,7 +147,7 @@ public class Es {
     /**************************************************
      * BooleanVs
      **************************************************/
-    public static BooleanEs booleans(Boolean... srcs) {
+    public static BooleanEs BOOLEANS(Boolean... srcs) {
         BooleanEs es = new BooleanEs();
         es.add(srcs);
         return es;
@@ -176,7 +176,7 @@ public class Es {
     /**************************************************
      * DoubleVs
      **************************************************/
-    public static DoubleEs doubles(Double... srcs) {
+    public static DoubleEs DOUBLES(Double... srcs) {
         DoubleEs es = new DoubleEs();
         es.add(srcs);
         return es;
@@ -205,7 +205,7 @@ public class Es {
     /**************************************************
      * FloatVs
      **************************************************/
-    public static FloatEs floats(Float... srcs) {
+    public static FloatEs FLOATS(Float... srcs) {
         FloatEs es = new FloatEs();
         es.add(srcs);
         return es;
@@ -234,7 +234,7 @@ public class Es {
     /**************************************************
      * IntegerVs
      **************************************************/
-    public static IntegerEs ints(Integer... srcs) {
+    public static IntegerEs INTS(Integer... srcs) {
         IntegerEs es = new IntegerEs();
         es.add(srcs);
         return es;
@@ -263,7 +263,7 @@ public class Es {
     /**************************************************
      * LongVs
      **************************************************/
-    public static LongEs longs(Long... srcs) {
+    public static LongEs LONGS(Long... srcs) {
         LongEs es = new LongEs();
         es.add(srcs);
         return es;

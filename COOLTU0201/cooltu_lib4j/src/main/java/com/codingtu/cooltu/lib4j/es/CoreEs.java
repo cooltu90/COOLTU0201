@@ -281,7 +281,8 @@ public abstract class CoreEs<E, THIS extends CoreEs> {
     }
 
     public int count(Es.Counter<E> counter) {
-        if (counter == null) return 0;
+        if (counter == null)
+            return 0;
 
         int total = 0;
         int count = count();
@@ -308,7 +309,8 @@ public abstract class CoreEs<E, THIS extends CoreEs> {
      * 正向遍历
      **************************************************/
     public THIS ls(int step, Es.EachEs<E> eachEs) {
-        if (eachEs == null || step <= 0) return (THIS) this;
+        if (eachEs == null || step <= 0)
+            return (THIS) this;
 
         int count = count();
         for (int i = 0; i < count; i += step) {
@@ -327,7 +329,8 @@ public abstract class CoreEs<E, THIS extends CoreEs> {
      * 反向遍历
      **************************************************/
     public THIS rls(int step, Es.EachEs<E> eachEs) {
-        if (eachEs == null || step <= 0) return (THIS) this;
+        if (eachEs == null || step <= 0)
+            return (THIS) this;
 
         int count = count();
         for (int i = count - 1; i >= 0; i -= step) {
@@ -1429,7 +1432,8 @@ public abstract class CoreEs<E, THIS extends CoreEs> {
     ///////////////////////////////////////////////////////
 
     public MaxMin<E> maxMin(Es.NowMax<E> nowMax) {
-        if (nowMax == null) return null;
+        if (nowMax == null)
+            return null;
 
         int count = count();
         MaxMin<E> maxMin = null;
@@ -1527,7 +1531,8 @@ public abstract class CoreEs<E, THIS extends CoreEs> {
     }
 
     protected E nearData(Es.NearIndex nearIndex) {
-        if (nearIndex == null) return null;
+        if (nearIndex == null)
+            return null;
         return getByIndex(nearIndex.nearIndex);
     }
 
@@ -1602,7 +1607,11 @@ public abstract class CoreEs<E, THIS extends CoreEs> {
 
     public E[] toArray() {
         int count = count();
-        E[] newArray = (E[]) java.lang.reflect.Array.newInstance(OtherTool.getFanxing(this, 0), count);
+        if (count == 0) {
+            return null;
+        }
+
+        E[] newArray = (E[]) java.lang.reflect.Array.newInstance(getByIndex(0).getClass(), count);
         if (count > 0) {
             for (int i = 0; i < count; i++) {
                 newArray[i] = this.es.get(i);
@@ -1621,7 +1630,8 @@ public abstract class CoreEs<E, THIS extends CoreEs> {
      * 查找最后一个符合条件的元素
      **************************************************/
     public E findFinal(Es.IsNow<E> isNow) {
-        if (isNow == null) return null;
+        if (isNow == null)
+            return null;
 
         int count = count();
         E last = null;

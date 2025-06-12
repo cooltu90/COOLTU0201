@@ -8,7 +8,13 @@ import com.codingtu.cooltu.form.TestCallBack;
 import com.codingtu.cooltu.lib4a.task.task.TaskDM;
 import com.codingtu.cooltu.lib4a.task.task.result.TaskResult1;
 import com.codingtu.cooltu.lib4a.task.task.run.TaskRun0;
+import com.codingtu.cooltu.lib4j.es.BaseEs;
+import com.codingtu.cooltu.lib4j.es.Es;
+import com.codingtu.cooltu.lib4j.es.impl.IntegerEs;
+import com.codingtu.cooltu.lib4j.es.impl.LongEs;
+import com.codingtu.cooltu.lib4j.es.impl.StringEs;
 import com.codingtu.cooltu.lib4j.function.OnError;
+import com.codingtu.cooltu.lib4j.tools.CountTool;
 import com.codingtu.cooltu.processor.annotation.net.NetBack;
 import com.codingtu.cooltu.processor.annotation.tools.To;
 import com.codingtu.cooltu.processor.annotation.tools.ToRes;
@@ -40,7 +46,6 @@ public class WelcomeActivity extends WelcomeActivityBase {
 
     @ClickView(R.id.showBt)
     public void showBtClick() {
-//        ActStart.stepOneActivity(getAct());
         ActStart.stepTwoActivity(getAct());
     }
 
