@@ -125,18 +125,24 @@ public class TaskService extends TaskServiceBaseForMsThread<TaskService> {
      *
      **************************************************/
     public static void addTask(Task task) {
-        if (task.isBackgroundSub) {
-            addToBackground(task);
-        } else {
-            addToMain(task);
+        try {
+            if (task.isBackgroundSub) {
+                addToBackground(task);
+            } else {
+                addToMain(task);
+            }
+
+            if (SERVICE == null && SERVICE_STATUS == 0) {
+                SERVICE_STATUS = 1;
+                //没有service
+                Intent intent = new Intent(CoreApp.APP, TaskService.class);
+                CoreApp.APP.startService(intent);
+            }
+        } catch (Exception e) {
+            Logs.e(TAG, "add error");
+            Logs.e(TAG, e);
         }
 
-        if (SERVICE == null && SERVICE_STATUS == 0) {
-            SERVICE_STATUS = 1;
-            //没有service
-            Intent intent = new Intent(CoreApp.APP, TaskService.class);
-            CoreApp.APP.startService(intent);
-        }
     }
 
     private static synchronized void addToMain(Task task) {
