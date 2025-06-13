@@ -54,7 +54,12 @@ public class TaskService extends TaskServiceBaseForMsThread<TaskService> {
         if (sendMessageForDealMainSubThread()) {
             return;
         }
-        taskRun(MAIN_TASK_ES);
+        try {
+            taskRun(MAIN_TASK_ES);
+        } catch (Exception e) {
+            Logs.e(TAG, "thread error");
+            Logs.e(TAG, e);
+        }
         sendMessageForDealMainSubThreadForce();
     }
 
@@ -62,7 +67,12 @@ public class TaskService extends TaskServiceBaseForMsThread<TaskService> {
         if (sendMessageForDealBackgroundSubThread()) {
             return;
         }
-        taskRun(BACKGROUND_TASK_ES);
+        try {
+            taskRun(BACKGROUND_TASK_ES);
+        } catch (Exception e) {
+            Logs.e(TAG, "thread error");
+            Logs.e(TAG, e);
+        }
         sendMessageForDealBackgroundSubThreadForce();
     }
 
@@ -85,7 +95,7 @@ public class TaskService extends TaskServiceBaseForMsThread<TaskService> {
         }
     }
 
-    private synchronized Task getTask(BaseEs<Task> taskEs) {
+    private static synchronized Task getTask(BaseEs<Task> taskEs) {
         if (taskEs != null) {
             Task task = taskEs.getByIndex(0);
             if (task != null) {

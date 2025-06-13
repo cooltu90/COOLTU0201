@@ -6,8 +6,12 @@ import com.codingtu.cooltu.R;
 import com.codingtu.cooltu.bean.User;
 import com.codingtu.cooltu.form.TestCallBack;
 import com.codingtu.cooltu.lib4a.task.task.TaskDM;
+import com.codingtu.cooltu.lib4a.task.task.cover.TaskCover1;
+import com.codingtu.cooltu.lib4a.task.task.cover.TaskCover2;
 import com.codingtu.cooltu.lib4a.task.task.result.TaskResult1;
 import com.codingtu.cooltu.lib4a.task.task.run.TaskRun0;
+import com.codingtu.cooltu.lib4a.task.task.run.TaskRun1;
+import com.codingtu.cooltu.lib4a.task.task.run.TaskRun2;
 import com.codingtu.cooltu.lib4j.es.BaseEs;
 import com.codingtu.cooltu.lib4j.es.Es;
 import com.codingtu.cooltu.lib4j.es.impl.IntegerEs;
@@ -46,7 +50,37 @@ public class WelcomeActivity extends WelcomeActivityBase {
 
     @ClickView(R.id.showBt)
     public void showBtClick() {
-        ActStart.stepTwoActivity(getAct());
+
+        for (int i = 0; i < 10000; i++) {
+            TaskDM.task(i).run(new TaskRun1<Integer>() {
+                @Override
+                public void run(Integer integer) {
+                    Logs.i("main:"+integer+" "+Thread.currentThread().getName());
+                    addResult(integer);
+                    TaskDM.task(0, integer).run(new TaskRun2<Integer, Integer>() {
+                        @Override
+                        public void run(Integer integer, Integer integer2) {
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            Logs.i("sub"+integer2+" "+Thread.currentThread().getName());
+                        }
+                    }).cover(new TaskCover2<Integer, Integer>() {
+                        @Override
+                        public boolean cover(Integer cp0, Integer tp0, Integer cp1, Integer tp1) {
+                            return cp0 == tp0;
+                        }
+                    }).result().type(1).background().add();
+                }
+            }).result(new TaskResult1<Integer>() {
+                @Override
+                public void result(Integer integer) {
+                    Logs.i("main result:"+integer);
+                }
+            }).add();
+        }
     }
 
 
