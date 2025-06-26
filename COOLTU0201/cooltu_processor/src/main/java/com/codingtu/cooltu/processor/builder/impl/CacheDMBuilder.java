@@ -1,36 +1,53 @@
 package com.codingtu.cooltu.processor.builder.impl;
 
-import com.codingtu.cooltu.constant.FullName;
 import com.codingtu.cooltu.constant.Pkg;
+import com.codingtu.cooltu.lib4j.data.java.JavaInfo;
 import com.codingtu.cooltu.lib4j.data.kv.KV;
 import com.codingtu.cooltu.lib4j.es.BaseEs;
 import com.codingtu.cooltu.lib4j.es.Es;
 import com.codingtu.cooltu.lib4j.tools.ConvertTool;
 import com.codingtu.cooltu.lib4j.tools.StringTool;
 import com.codingtu.cooltu.processor.annotation.dm.Cache;
-import com.codingtu.cooltu.processor.builder.base.CacheBuilderBase;
-import com.codingtu.cooltu.processor.lib.path.CurrentPath;
+import com.codingtu.cooltu.processor.builder.base.CacheDMBuilderBase;
+import com.codingtu.cooltu.processor.lib.log.Logs;
 import com.codingtu.cooltu.processor.lib.tools.ElementTools;
+
+import java.util.List;
 
 import javax.lang.model.element.VariableElement;
 
-public class CacheBuilder extends CacheBuilderBase {
+public class CacheDMBuilder extends CacheDMBuilderBase {
 
-    public static CacheBuilder BUILDER = new CacheBuilder();
-    public BaseEs<VariableElement> veEs = Es.es();
+    private BaseEs<VariableElement> veEs = Es.es();
 
-    public CacheBuilder() {
-        super(CurrentPath.javaInfo(FullName.CACHE_DM));
+    public CacheDMBuilder(JavaInfo info) {
+        super(info);
     }
 
-
-    public void add(VariableElement ve) {
+    public void addVe(VariableElement ve) {
         veEs.add(ve);
     }
 
     @Override
+    protected boolean isBuild() {
+        return true;
+    }
+
+    @Override
+    protected boolean isForce() {
+        return true;
+    }
+
+    @Override
+    protected void beforeBuild(List<String> lines) {
+        super.beforeBuild(lines);
+        Logs.i(lines);
+    }
+
+    @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_TOOLS);
+        addTag(pkg, Pkg.CORE_CACHE);
+        addTag(className, javaInfo.name);
 
         veEs.ls(new Es.EachEs<VariableElement>() {
             @Override
@@ -45,25 +62,26 @@ public class CacheBuilder extends CacheBuilderBase {
                         tag = fieldKv.v;
                     }
 
+                    tag = javaInfo.name + "_" + tag;
 
-                    String methodName = ConvertTool.toClassType(fieldKv.v);
+                    String methodName = fieldKv.v;
 
                     if (StringTool.isBlank(key)) {
                         addLnTag(methods, "");
-                        addLnTag(methods, "    public static void cache[Weather]([Weather] [weather]) {", methodName, fieldKv.k, fieldKv.v);
+                        addLnTag(methods, "    public static void [Weather]([Weather] [weather]) {", methodName, fieldKv.k, fieldKv.v);
                         addLnTag(methods, "        BaseCacheDM.cache(\"[weather]\", [weather]);", tag, fieldKv.v);
                         addLnTag(methods, "    }");
                         addLnTag(methods, "");
-                        addLnTag(methods, "    public static [Weather] get[Weather]() {", fieldKv.k, methodName);
+                        addLnTag(methods, "    public static [Weather] [Weather]() {", fieldKv.k, methodName);
                         addLnTag(methods, "        return BaseCacheDM.getCache([xx].class, \"[weather]\");", fieldKv.k, tag);
                         addLnTag(methods, "    }");
 
                     } else {
-                        addLnTag(methods, "    public static void cache[User](Destroys destroys, String [userId], [User] [user]) {\n" +
+                        addLnTag(methods, "    public static void [User](Destroys destroys, String [userId], [User] [user]) {\n" +
                                         "        BaseCacheDM.cache(destroys, \"[user]\" + [userId], [user]);\n" +
                                         "    }\n" +
                                         "\n" +
-                                        "    public static [User] get[User](String [userId]) {\n" +
+                                        "    public static [User] [User](String [userId]) {\n" +
                                         "        return BaseCacheDM.getCache([xx].class, \"[user]\" + [userId]);\n" +
                                         "    }",
                                 methodName, key, fieldKv.k, fieldKv.v,
@@ -77,8 +95,8 @@ public class CacheBuilder extends CacheBuilderBase {
                 return false;
             }
         });
-
     }
+
 }
 /* model_temp_start
 package [[pkg]];
@@ -86,7 +104,7 @@ package [[pkg]];
 import com.codingtu.cooltu.lib4a.dm.BaseCacheDM;
 import com.codingtu.cooltu.lib4j.destory.Destroys;
 
-public class CacheDM {
+public class [[className]] {
 
 [[methods]]
 }

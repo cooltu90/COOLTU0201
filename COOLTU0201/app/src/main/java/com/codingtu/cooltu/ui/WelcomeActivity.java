@@ -3,22 +3,12 @@ package com.codingtu.cooltu.ui;
 import android.os.Bundle;
 
 import com.codingtu.cooltu.R;
-import com.codingtu.cooltu.bean.User;
 import com.codingtu.cooltu.form.TestCallBack;
 import com.codingtu.cooltu.lib4a.task.task.TaskDM;
-import com.codingtu.cooltu.lib4a.task.task.cover.TaskCover1;
 import com.codingtu.cooltu.lib4a.task.task.cover.TaskCover2;
 import com.codingtu.cooltu.lib4a.task.task.result.TaskResult1;
-import com.codingtu.cooltu.lib4a.task.task.run.TaskRun0;
 import com.codingtu.cooltu.lib4a.task.task.run.TaskRun1;
 import com.codingtu.cooltu.lib4a.task.task.run.TaskRun2;
-import com.codingtu.cooltu.lib4j.es.BaseEs;
-import com.codingtu.cooltu.lib4j.es.Es;
-import com.codingtu.cooltu.lib4j.es.impl.IntegerEs;
-import com.codingtu.cooltu.lib4j.es.impl.LongEs;
-import com.codingtu.cooltu.lib4j.es.impl.StringEs;
-import com.codingtu.cooltu.lib4j.function.OnError;
-import com.codingtu.cooltu.lib4j.tools.CountTool;
 import com.codingtu.cooltu.processor.annotation.net.NetBack;
 import com.codingtu.cooltu.processor.annotation.tools.To;
 import com.codingtu.cooltu.processor.annotation.tools.ToRes;
@@ -29,9 +19,7 @@ import com.codingtu.cooltu.ui.base.BaseWelcomeActivity;
 
 import core.actbase.WelcomeActivityBase;
 import core.actres.WelcomeActivityRes;
-import core.data.DataDM;
-import core.tools.ActStart;
-import core.tools.CacheDM;
+import core.cache.NowCreateDocDM;
 
 @To(WelcomeActivityRes.class)
 @ToRes(R.layout.activity_welcome)
@@ -43,8 +31,6 @@ public class WelcomeActivity extends WelcomeActivityBase {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //CacheDM.cacheName(this, "xx","xxx");
-
-        CacheDM.cacheAge(12);
     }
 
 
@@ -55,7 +41,7 @@ public class WelcomeActivity extends WelcomeActivityBase {
             TaskDM.task(i).run(new TaskRun1<Integer>() {
                 @Override
                 public void run(Integer integer) {
-                    Logs.i("main:"+integer+" "+Thread.currentThread().getName());
+                    Logs.i("main:" + integer + " " + Thread.currentThread().getName());
                     addResult(integer);
                     TaskDM.task(0, integer).run(new TaskRun2<Integer, Integer>() {
                         @Override
@@ -65,7 +51,7 @@ public class WelcomeActivity extends WelcomeActivityBase {
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
-                            Logs.i("sub"+integer2+" "+Thread.currentThread().getName());
+                            Logs.i("sub" + integer2 + " " + Thread.currentThread().getName());
                         }
                     }).cover(new TaskCover2<Integer, Integer>() {
                         @Override
@@ -77,7 +63,7 @@ public class WelcomeActivity extends WelcomeActivityBase {
             }).result(new TaskResult1<Integer>() {
                 @Override
                 public void result(Integer integer) {
-                    Logs.i("main result:"+integer);
+                    Logs.i("main result:" + integer);
                 }
             }).add();
         }
