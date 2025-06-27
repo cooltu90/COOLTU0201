@@ -19,6 +19,11 @@ public class ActStart {
         intent.putExtra(Pass.FROM_ACT, act.getClass().getCanonicalName());
         com.codingtu.cooltu.lib4a.tools.ActTool.startActivityForResult(act, intent, Code4Request.FROM_ACTIVITY);
     }
+    public static final void permissionActivity(Activity act) {
+        Intent intent = new Intent(act, com.codingtu.cooltu.ui.PermissionActivity.class);
+        intent.putExtra(Pass.FROM_ACT, act.getClass().getCanonicalName());
+        com.codingtu.cooltu.lib4a.tools.ActTool.startActivityForResult(act, intent, Code4Request.PERMISSION_ACTIVITY);
+    }
     public static final void stepTwoActivity(Activity act) {
         Intent intent = new Intent(act, com.codingtu.cooltu.ui.StepTwoActivity.class);
         intent.putExtra(Pass.FROM_ACT, act.getClass().getCanonicalName());

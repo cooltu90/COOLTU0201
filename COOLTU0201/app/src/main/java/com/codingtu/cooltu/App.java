@@ -27,9 +27,9 @@ import com.codingtu.cooltu.ui.base.BaseActivity;
 @DefaultEditDialogLayout(R.layout.dialog_edit)
 @DefaultDialogLayout(R.layout.dialog)
 @DefaultMenuDialogLayout(layout = R.layout.dialog_menu, item = R.layout.dialog_menu_item)
-@DefaultCode("CODE_TEST")
+@DefaultCode({"CODE_TEST","GET_PIC_BY_CAMERA","GET_PIC_BY_GALLERY","MANAGE_APP_ALL_FILES_ACCESS_PERMISSION"})
 @CreateAct(
-        name = "from_base",
+        name = "permission",
         packages = "com.codingtu.cooltu.ui",
         baseClass = BaseActivity.class,
         layoutTemp = R.layout.layout_temp

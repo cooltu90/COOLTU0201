@@ -5,6 +5,7 @@ import com.codingtu.cooltu.lib4j.file.copy.FileCopy;
 import com.codingtu.cooltu.lib4j.function.OnFinish;
 import com.codingtu.cooltu.lib4j.function.OnProgress;
 import com.codingtu.cooltu.lib4j.function.OnStart;
+import com.codingtu.cooltu.lib4j.log.LibLogs;
 
 import java.io.File;
 
@@ -50,8 +51,6 @@ public class FileDeleter {
         }
         deleteReal(deleteFile);
 
-        onProgress(totalLen);
-
         if (onFinish != null) {
             onFinish.onFinish(null);
         }
@@ -70,9 +69,9 @@ public class FileDeleter {
             }
         } else {
             currentLen += file.length();
+            onProgress(currentLen);
         }
         file.delete();
-        onProgress(currentLen);
     }
 
     private void onProgress(long currentLen) {

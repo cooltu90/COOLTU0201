@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="95dp"
+        android:background="#ccc"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/version11Ll"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/permission_item_title"
+                    android:text="文件管理权限" />
+
+                <TextView
+                    android:id="@+id/version11Bt"
+                    style="@style/permission_item_bt"
+                    android:text="未授权" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/installLl"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/permission_item_title"
+                    android:text="安装未知应用" />
+
+                <TextView
+                    android:id="@+id/installBt"
+                    style="@style/permission_item_bt"
+                    android:text="未授权" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/permission_item_title"
+                    android:text="储存权限" />
+
+                <TextView
+                    android:id="@+id/storeTv"
+                    style="@style/permission_item_bt"
+                    android:text="未授权" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/permission_item_title"
+                    android:text="拍照权限" />
+
+                <TextView
+                    android:id="@+id/cameraTv"
+                    style="@style/permission_item_bt"
+                    android:text="未授权" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/permission_item_title"
+                    android:text="定位权限" />
+
+                <TextView
+                    android:id="@+id/locationTv"
+                    style="@style/permission_item_bt"
+                    android:text="未授权" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bluetoothLl"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/permission_item_title"
+                    android:text="蓝牙权限" />
+
+                <TextView
+                    android:id="@+id/bluetoothTv"
+                    style="@style/permission_item_bt"
+                    android:text="未授权" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>
