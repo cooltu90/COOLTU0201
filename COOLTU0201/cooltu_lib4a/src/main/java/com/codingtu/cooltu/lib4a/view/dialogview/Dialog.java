@@ -8,6 +8,7 @@ import com.codingtu.cooltu.lib4a.R;
 import com.codingtu.cooltu.lib4a.tools.InflateTool;
 import com.codingtu.cooltu.lib4a.tools.ViewTool;
 import com.codingtu.cooltu.lib4a.view.layer.Layer;
+import com.codingtu.cooltu.lib4a.view.layer.event.OnHiddenFinishedCallBack;
 import com.codingtu.cooltu.lib4j.destory.Destroys;
 import com.codingtu.cooltu.lib4j.destory.OnDestroy;
 
@@ -117,17 +118,25 @@ public final class Dialog implements View.OnClickListener, OnDestroy {
     }
 
     private void clickRightBt(View v) {
-        layer.hidden();
-        if (onBtClick != null) {
-            onBtClick.onRightClick(obj);
-        }
+        layer.hidden(new OnHiddenFinishedCallBack() {
+            @Override
+            public void onHiddenFinished() {
+                if (onBtClick != null) {
+                    onBtClick.onRightClick(obj);
+                }
+            }
+        });
     }
 
     private void clickLeftBt(View v) {
-        layer.hidden();
-        if (onBtClick != null) {
-            onBtClick.onLeftClick(obj);
-        }
+        layer.hidden(new OnHiddenFinishedCallBack() {
+            @Override
+            public void onHiddenFinished() {
+                if (onBtClick != null) {
+                    onBtClick.onLeftClick(obj);
+                }
+            }
+        });
     }
 
     public Dialog setObject(Object obj) {
