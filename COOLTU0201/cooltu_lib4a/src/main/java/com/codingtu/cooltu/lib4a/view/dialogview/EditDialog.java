@@ -227,9 +227,10 @@ public final class EditDialog implements OnDestroy, View.OnClickListener {
         layer.hidden(new OnHiddenFinishedCallBack() {
             @Override
             public void onHiddenFinished() {
-                if (no != null)
-                    no.no(obj);
+                Object obj1 = obj;
                 getOnHiddenFinishedCallBack().onHiddenFinished();
+                if (no != null)
+                    no.no(obj1);
             }
         });
     }
