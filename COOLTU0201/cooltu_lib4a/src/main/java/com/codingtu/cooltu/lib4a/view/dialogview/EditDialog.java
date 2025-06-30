@@ -30,7 +30,7 @@ public final class EditDialog implements OnDestroy, View.OnClickListener {
     private int layout;
     private boolean isStopAnimation;
     private Yes yes;
-    private No no;
+    private OnBtClick onBtClick;
     private EdTextWatcher textWatcher;
 
 
@@ -81,8 +81,8 @@ public final class EditDialog implements OnDestroy, View.OnClickListener {
         return this;
     }
 
-    public EditDialog setNo(No no) {
-        this.no = no;
+    public EditDialog setOnBtClick(OnBtClick onBtClick) {
+        this.onBtClick = onBtClick;
         return this;
     }
 
@@ -169,6 +169,7 @@ public final class EditDialog implements OnDestroy, View.OnClickListener {
         yesBt = null;
         et = null;
         yes = null;
+        onBtClick = null;
         textWatcher = null;
         obj = null;
         ViewTool.removeFromAct(act, layer);
@@ -229,8 +230,8 @@ public final class EditDialog implements OnDestroy, View.OnClickListener {
             public void onHiddenFinished() {
                 Object obj1 = obj;
                 getOnHiddenFinishedCallBack().onHiddenFinished();
-                if (no != null)
-                    no.no(obj1);
+                if (onBtClick != null)
+                    onBtClick.onCancel(obj1);
             }
         });
     }
@@ -256,12 +257,17 @@ public final class EditDialog implements OnDestroy, View.OnClickListener {
     }
 
     public static interface Yes {
-        public boolean yes(String text, Object obj);
+        boolean yes(String text, Object obj);
     }
 
-    public static interface No {
-        public boolean no(Object obj);
+    public static interface OnBtClick {
+        void onCancel(Object obj);
+
+        boolean check(String text);
+
+        void onCheckPass(Object obj);
     }
+
 
     public static interface EdTextWatcher extends TextWatcher {
         public void setEditText(EditText et);

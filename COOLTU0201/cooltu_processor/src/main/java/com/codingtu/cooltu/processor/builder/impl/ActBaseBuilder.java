@@ -554,10 +554,20 @@ public abstract class [[name]] extends [[baseClass]] implements View.OnClickList
                                                                                                     [<sub>][if][stopAnimation]
                     .stopAnimation()
                                                                                                     [<sub>][if][stopAnimation]
-                    .setYes(new [editDialogFullName].Yes() {
+                    .setOnBtClick(new [editDialogFullName].OnBtClick() {
                         @Override
-                        public boolean yes(String text, Object obj) {
+                        public void onCancel(Object obj) {
+
+                        }
+
+                        @Override
+                        public boolean check(String text) {
                             return [edName]Yes(text[if:edUseYes], [if:edUseYesConvert]([type])[if:edUseYesConvert]obj[if:edUseYes]);
+                        }
+
+                        @Override
+                        public void onCheckPass(Object obj) {
+
                         }
                     })
                     .build();

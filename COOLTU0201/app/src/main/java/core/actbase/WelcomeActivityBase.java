@@ -177,10 +177,20 @@ public abstract class WelcomeActivityBase extends com.codingtu.cooltu.ui.base.Ba
                     .setHint("请输入文字")
                     .setInputType(1)
                     .setLayout(com.codingtu.cooltu.R.layout.dialog_edit)
-                    .setYes(new com.codingtu.cooltu.lib4a.view.dialogview.EditDialog.Yes() {
+                    .setOnBtClick(new com.codingtu.cooltu.lib4a.view.dialogview.EditDialog.OnBtClick() {
                         @Override
-                        public boolean yes(String text, Object obj) {
+                        public void onCancel(Object obj) {
+
+                        }
+
+                        @Override
+                        public boolean check(String text) {
                             return editDialogYes(text);
+                        }
+
+                        @Override
+                        public void onCheckPass(Object obj) {
+
                         }
                     })
                     .build();
