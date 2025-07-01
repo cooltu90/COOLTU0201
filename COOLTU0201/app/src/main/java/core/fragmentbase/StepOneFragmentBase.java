@@ -199,10 +199,20 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
                     .setLayout(com.codingtu.cooltu.R.layout.dialog_edit)
                     .setTextWatcher(getEdTextWatcher())
                     .stopAnimation()
-                    .setYes(new com.codingtu.cooltu.lib4a.view.dialogview.EditDialog.Yes() {
+                    .setOnBtClick(new com.codingtu.cooltu.lib4a.view.dialogview.EditDialog.OnBtClick() {
                         @Override
-                        public boolean yes(String text, Object obj) {
+                        public void onCancel(Object obj) {
+
+                        }
+
+                        @Override
+                        public boolean check(String text, Object obj) {
                             return edYes(text, (com.codingtu.cooltu.bean.User)obj);
+                        }
+
+                        @Override
+                        public void onCheckPass(Object obj) {
+
                         }
                     })
                     .build();

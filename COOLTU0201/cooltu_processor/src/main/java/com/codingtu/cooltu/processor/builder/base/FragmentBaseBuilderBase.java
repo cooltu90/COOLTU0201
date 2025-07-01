@@ -829,9 +829,14 @@ public abstract class FragmentBaseBuilderBase extends com.codingtu.cooltu.proces
                 List<String> editDialog1 = editDialog.get(getIfKey("stopAnimation", i0));
                 addLnTag(editDialogSb, "                    .stopAnimation()");
             }
-            addLnTag(editDialogSb, "                    .setYes(new [editDialogFullName].Yes() {", editDialog0.get(10));
+            addLnTag(editDialogSb, "                    .setOnBtClick(new [editDialogFullName].OnBtClick() {", editDialog0.get(10));
             addLnTag(editDialogSb, "                        @Override");
-            addLnTag(editDialogSb, "                        public boolean yes(String text, Object obj) {");
+            addLnTag(editDialogSb, "                        public void onCancel(Object obj) {");
+            addLnTag(editDialogSb, "");
+            addLnTag(editDialogSb, "                        }");
+            addLnTag(editDialogSb, "");
+            addLnTag(editDialogSb, "                        @Override");
+            addLnTag(editDialogSb, "                        public boolean check(String text, Object obj) {");
             StringBuilder edUseYesSb = new StringBuilder();
             if (isIf(editDialogIfs, getIfKey("edUseYes", i0))) {
                 List<String> editDialog1 = editDialog.get(getIfKey("edUseYes", i0));
@@ -843,6 +848,11 @@ public abstract class FragmentBaseBuilderBase extends com.codingtu.cooltu.proces
                 addTag(edUseYesSb, ", [edUseYesConvert]obj", edUseYesConvertSb.toString());
             }
             addLnTag(editDialogSb, "                            return [edName]Yes(text[edUseYes]);", editDialog0.get(11), edUseYesSb.toString());
+            addLnTag(editDialogSb, "                        }");
+            addLnTag(editDialogSb, "");
+            addLnTag(editDialogSb, "                        @Override");
+            addLnTag(editDialogSb, "                        public void onCheckPass(Object obj) {");
+            addLnTag(editDialogSb, "");
             addLnTag(editDialogSb, "                        }");
             addLnTag(editDialogSb, "                    })");
             addLnTag(editDialogSb, "                    .build();");

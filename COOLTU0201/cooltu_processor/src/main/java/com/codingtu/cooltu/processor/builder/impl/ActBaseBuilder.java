@@ -561,7 +561,7 @@ public abstract class [[name]] extends [[baseClass]] implements View.OnClickList
                         }
 
                         @Override
-                        public boolean check(String text) {
+                        public boolean check(String text, Object obj) {
                             return [edName]Yes(text[if:edUseYes], [if:edUseYesConvert]([type])[if:edUseYesConvert]obj[if:edUseYes]);
                         }
 

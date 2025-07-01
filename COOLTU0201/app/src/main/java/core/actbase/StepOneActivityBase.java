@@ -203,7 +203,7 @@ public abstract class StepOneActivityBase extends com.codingtu.cooltu.ui.base.Ba
                         }
 
                         @Override
-                        public boolean check(String text) {
+                        public boolean check(String text, Object obj) {
                             return edYes(text, (com.codingtu.cooltu.bean.User)obj);
                         }
 

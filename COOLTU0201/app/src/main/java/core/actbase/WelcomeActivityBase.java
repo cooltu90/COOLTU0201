@@ -184,7 +184,7 @@ public abstract class WelcomeActivityBase extends com.codingtu.cooltu.ui.base.Ba
                         }
 
                         @Override
-                        public boolean check(String text) {
+                        public boolean check(String text, Object obj) {
                             return editDialogYes(text);
                         }
 

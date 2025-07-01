@@ -981,7 +981,7 @@ public abstract class ActBaseBuilderBase extends com.codingtu.cooltu.processor.b
             addLnTag(editDialogSb, "                        }");
             addLnTag(editDialogSb, "");
             addLnTag(editDialogSb, "                        @Override");
-            addLnTag(editDialogSb, "                        public boolean check(String text) {");
+            addLnTag(editDialogSb, "                        public boolean check(String text, Object obj) {");
             StringBuilder edUseYesSb = new StringBuilder();
             if (isIf(editDialogIfs, getIfKey("edUseYes", i0))) {
                 List<String> editDialog1 = editDialog.get(getIfKey("edUseYes", i0));

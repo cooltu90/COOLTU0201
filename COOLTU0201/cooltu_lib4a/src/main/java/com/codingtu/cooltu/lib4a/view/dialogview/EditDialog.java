@@ -29,7 +29,6 @@ public final class EditDialog implements OnDestroy, View.OnClickListener {
     private Integer inputType;
     private int layout;
     private boolean isStopAnimation;
-    private Yes yes;
     private OnBtClick onBtClick;
     private EdTextWatcher textWatcher;
 
@@ -73,11 +72,6 @@ public final class EditDialog implements OnDestroy, View.OnClickListener {
 
     public EditDialog stopAnimation() {
         isStopAnimation = true;
-        return this;
-    }
-
-    public EditDialog setYes(Yes yes) {
-        this.yes = yes;
         return this;
     }
 
@@ -134,11 +128,11 @@ public final class EditDialog implements OnDestroy, View.OnClickListener {
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     //处理搜索事件
-                    if (yes == null) {
+                    if (onBtClick == null) {
                         return false;
                     }
                     String text = et.getText().toString();
-                    if (yes.yes(text, obj)) {
+                    if (onBtClick.check(text, obj)) {
                         layer.hidden();
                     }
                     return true;
@@ -168,7 +162,6 @@ public final class EditDialog implements OnDestroy, View.OnClickListener {
         noBt = null;
         yesBt = null;
         et = null;
-        yes = null;
         onBtClick = null;
         textWatcher = null;
         obj = null;
@@ -237,12 +230,20 @@ public final class EditDialog implements OnDestroy, View.OnClickListener {
     }
 
     private void clickYesBt(View v) {
-        if (yes == null) {
+        if (onBtClick == null) {
             return;
         }
         String text = et.getText().toString();
-        if (yes.yes(text, obj)) {
-            layer.hidden(getOnHiddenFinishedCallBack());
+        if (onBtClick.check(text, obj)) {
+            layer.hidden(new OnHiddenFinishedCallBack() {
+                @Override
+                public void onHiddenFinished() {
+                    Object obj1 = obj;
+                    getOnHiddenFinishedCallBack().onHiddenFinished();
+                    if (onBtClick != null)
+                        onBtClick.onCheckPass(obj1);
+                }
+            });
         }
     }
 
@@ -255,15 +256,10 @@ public final class EditDialog implements OnDestroy, View.OnClickListener {
             }
         };
     }
-
-    public static interface Yes {
-        boolean yes(String text, Object obj);
-    }
-
     public static interface OnBtClick {
         void onCancel(Object obj);
 
-        boolean check(String text);
+        boolean check(String text, Object obj);
 
         void onCheckPass(Object obj);
     }
