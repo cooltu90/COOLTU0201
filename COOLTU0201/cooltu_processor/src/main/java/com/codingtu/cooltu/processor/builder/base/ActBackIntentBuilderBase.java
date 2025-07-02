@@ -4,6 +4,7 @@ import java.util.List;
 
 public abstract class ActBackIntentBuilderBase extends com.codingtu.cooltu.processor.builder.core.CoreBuilder {
     protected StringBuilder pkg;
+    protected StringBuilder className;
     protected java.util.Map<String, Boolean> methodIfs;
     protected java.util.Map<String, Integer> methodCounts;
     protected StringBuilder methodSb;
@@ -12,6 +13,7 @@ public abstract class ActBackIntentBuilderBase extends com.codingtu.cooltu.proce
     public ActBackIntentBuilderBase(com.codingtu.cooltu.lib4j.data.java.JavaInfo info) {
         super(info);
         pkg = map.get("pkg");
+        className = map.get("className");
         methodIfs = new java.util.HashMap<>();
         methodCounts = new java.util.HashMap<>();
         methodSb = map.get("method");
@@ -73,7 +75,7 @@ public abstract class ActBackIntentBuilderBase extends com.codingtu.cooltu.proce
         lines.add("");
         lines.add("import android.content.Intent;");
         lines.add("");
-        lines.add("public class ActBackIntent {");
+        lines.add("public class [[className]] {");
         lines.add("[[method]]");
         lines.add("}");
 

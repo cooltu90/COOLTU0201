@@ -2,6 +2,6 @@ package core.tools;
 
 import android.content.Intent;
 
-public class ActBackIntent {
+public class ActBackIntentForApplib {
 
 }

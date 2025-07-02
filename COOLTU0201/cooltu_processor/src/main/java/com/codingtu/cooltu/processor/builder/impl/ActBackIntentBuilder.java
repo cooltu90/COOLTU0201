@@ -14,6 +14,7 @@ import com.codingtu.cooltu.processor.annotation.ui.ActBack;
 import com.codingtu.cooltu.processor.builder.base.ActBackIntentBuilderBase;
 import com.codingtu.cooltu.processor.lib.param.Params;
 import com.codingtu.cooltu.processor.lib.path.CurrentPath;
+import com.codingtu.cooltu.processor.lib.tools.BuilderTools;
 import com.codingtu.cooltu.processor.lib.tools.ElementTools;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class ActBackIntentBuilder extends ActBackIntentBuilderBase {
 
 
     public ActBackIntentBuilder() {
-        super(CurrentPath.javaInfo(FullName.ACT_BACK_INTENT));
+        super(CurrentPath.javaInfo(FullName.ACT_BACK_INTENT + BuilderTools.moduleSuffix()));
     }
 
     public void add(ActBack actBack, ExecutableElement ee) {
@@ -89,6 +90,7 @@ public class ActBackIntentBuilder extends ActBackIntentBuilderBase {
     @Override
     protected void dealLines() {
         addTag(pkg, Pkg.CORE_TOOLS);
+        addTag(className, javaInfo.name);
 
         Es.es(methodNames).ls(new Es.EachEs<String>() {
             @Override
@@ -110,7 +112,6 @@ public class ActBackIntentBuilder extends ActBackIntentBuilderBase {
                 return false;
             }
         });
-
     }
 }
 /* model_temp_start
@@ -118,7 +119,7 @@ package [[pkg]];
 
 import android.content.Intent;
 
-public class ActBackIntent {
+public class [[className]] {
                                                                                                     [<sub>][for][method]
     public static Intent [methodName]([params]) {
         Intent intent = new Intent();
