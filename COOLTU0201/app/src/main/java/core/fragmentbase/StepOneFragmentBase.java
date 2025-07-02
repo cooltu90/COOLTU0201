@@ -164,7 +164,7 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
         if (toastDialog == null)
             toastDialog = new com.codingtu.cooltu.lib4a.view.dialogview.ToastDialog(getAct())
                     .destroys(this)
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog_toast)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getToastDialogLayout())
                     .build();
         return toastDialog;
     }
@@ -175,7 +175,7 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
         if (noticeDialog == null)
             noticeDialog = new com.codingtu.cooltu.lib4a.view.dialogview.NoticeDialog(getAct())
                     .destroys(this)
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog_notice)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getNoticeDialogLayout())
                     .onClick(v -> {
                         noticeDialogYes(noticeDialog.obtainData());
                     })
@@ -196,7 +196,7 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
                     .setTitle("xxx")
                     .setHint("xxx")
                     .setInputType(2)
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog_edit)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getEditDialogLayout())
                     .setTextWatcher(getEdTextWatcher())
                     .stopAnimation()
                     .setOnBtClick(new com.codingtu.cooltu.lib4a.view.dialogview.EditDialog.OnBtClick() {
@@ -238,7 +238,7 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
                     .setContent("xxx1")
                     .setLeftBtText("取消")
                     .setRighBtText("确定")
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getDialogLayout())
                     .setOnBtClick(new com.codingtu.cooltu.lib4a.view.dialogview.Dialog.OnBtClick() {
                         @Override
                         public void onLeftClick(Object obj) {
@@ -263,7 +263,7 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
                     .setContent(content)
                     .setLeftBtText("取消")
                     .setRighBtText("确定")
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getDialogLayout())
                     .setOnBtClick(new com.codingtu.cooltu.lib4a.view.dialogview.Dialog.OnBtClick() {
                         @Override
                         public void onLeftClick(Object obj) {
@@ -293,7 +293,7 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
                     .setContent("32343234")
                     .setLeftBtText("取消")
                     .setRighBtText("确定")
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getDialogLayout())
                     .setOnBtClick(new com.codingtu.cooltu.lib4a.view.dialogview.Dialog.OnBtClick() {
                         @Override
                         public void onLeftClick(Object obj) {
@@ -318,7 +318,7 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
                     .setContent(content)
                     .setLeftBtText("取消")
                     .setRighBtText("确定")
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getDialogLayout())
                     .setOnBtClick(new com.codingtu.cooltu.lib4a.view.dialogview.Dialog.OnBtClick() {
                         @Override
                         public void onLeftClick(Object obj) {

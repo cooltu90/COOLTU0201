@@ -224,7 +224,7 @@ public abstract class UiBaseBuilder {
 
                     uiBase.showDialog(position, i, dialogClassName, showDialogParamSb.toString(), kv.v,
                             FullName.DIALOG, dialogUse.title(), dialogUse.leftBtText(), dialogUse.rightBtText(),
-                            Constant.DEFAULT_DIALOG_LAYOUT, FullName.DIALOG_ON_BT_CLICK, isVoid ? "null" : objName);
+                            FullName.CORE_CONFIGS + ".configs().getDialogLayout()", FullName.DIALOG_ON_BT_CLICK, isVoid ? "null" : objName);
                 }
 
                 if (!isVoid) {
@@ -747,14 +747,15 @@ public abstract class UiBaseBuilder {
         if (isToastDialog) {
             uiBase.toastDialogIf(
                     FullName.TOAST_DIALOG,
-                    Constant.DEFAULT_TOAST_DIALOG_LAYOUT
+                    FullName.CORE_CONFIGS + ".configs().getToastDialogLayout()"
             );
         }
     }
 
     private void noticeDialog() {
         if (isNoticeDialog) {
-            uiBase.noticeDialogIf(FullName.NOTICE_DIALOG, Constant.DEFAULT_NOTICE_DIALOG_LAYOUT);
+            uiBase.noticeDialogIf(FullName.NOTICE_DIALOG,
+                    FullName.CORE_CONFIGS + ".configs().getNoticeDialogLayout()");
         }
     }
 
@@ -782,7 +783,7 @@ public abstract class UiBaseBuilder {
                 uiBase.editDialog(position, FullName.EDIT_DIALOG, kv.v, edClassName,
                         editDialogUse.title(),
                         editDialogUse.hint(), editDialogUse.inputType() + "",
-                        Constant.DEFAULT_EDIT_DIALOG_LAYOUT, isVoid ? "null" : objName);
+                        FullName.CORE_CONFIGS + ".configs().getEditDialogLayout()", isVoid ? "null" : objName);
 
                 if (!isVoid) {
                     uiBase.edShowParamIf(position, objClass, objName);
@@ -838,8 +839,8 @@ public abstract class UiBaseBuilder {
                 TagTools.addLnTag(sb, "        if ([menuDialog] == null) {", kv.v);
                 TagTools.addLnTag(sb, "            [menuDialog] = new [MenuDialog](getAct())", kv.v, kv.k);
                 TagTools.addLnTag(sb, "                    .destroys(this)");
-                TagTools.addLnTag(sb, "                    .setLayout([layout])", Constant.DEFAULT_MENU_DIALOG_LAYOUT);
-                TagTools.addLnTag(sb, "                    .setItemLayout([item])", Constant.DEFAULT_MENU_DIALOG_ITEM_LAYOUT);
+                TagTools.addLnTag(sb, "                    .setLayout([layout])", FullName.CORE_CONFIGS + ".configs().getMenuDialogLayout()");
+                TagTools.addLnTag(sb, "                    .setItemLayout([item])", FullName.CORE_CONFIGS + ".configs().getMenuDialogItemLayout()");
 
                 MenuDialogItem[] items = menuDialogUse.items();
                 BaseEs<IdTools.Id> idEs = Es.es();

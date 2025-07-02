@@ -6,7 +6,6 @@ import com.codingtu.cooltu.processor.annotation.create.CreateAdapter;
 import com.codingtu.cooltu.processor.annotation.create.CreateFragment;
 import com.codingtu.cooltu.processor.annotation.data.Data;
 import com.codingtu.cooltu.processor.annotation.delete.DeleteAct;
-import com.codingtu.cooltu.processor.annotation.dm.Cache;
 import com.codingtu.cooltu.processor.annotation.dm.CacheConfig;
 import com.codingtu.cooltu.processor.annotation.msthread.MsThread;
 import com.codingtu.cooltu.processor.annotation.net.Apis;
@@ -14,26 +13,15 @@ import com.codingtu.cooltu.processor.annotation.res.ResFor;
 import com.codingtu.cooltu.processor.annotation.res.ResForFragment;
 import com.codingtu.cooltu.processor.annotation.ui.ActBase;
 import com.codingtu.cooltu.processor.annotation.ui.DefaultCode;
-import com.codingtu.cooltu.processor.annotation.ui.DefaultDialogLayout;
-import com.codingtu.cooltu.processor.annotation.ui.DefaultEditDialogLayout;
-import com.codingtu.cooltu.processor.annotation.ui.DefaultMenuDialogLayout;
-import com.codingtu.cooltu.processor.annotation.ui.DefaultNoticeDialogLayout;
-import com.codingtu.cooltu.processor.annotation.ui.DefaultToastDialogLayout;
 import com.codingtu.cooltu.processor.annotation.ui.FragmentBase;
 import com.codingtu.cooltu.processor.annotation.ui.VH;
 import com.codingtu.cooltu.processor.deal.ActBaseDeal;
 import com.codingtu.cooltu.processor.deal.CacheConfigDeal;
-import com.codingtu.cooltu.processor.deal.CacheDeal;
 import com.codingtu.cooltu.processor.deal.CreateActDeal;
 import com.codingtu.cooltu.processor.deal.CreateAdapterDeal;
 import com.codingtu.cooltu.processor.deal.CreateFragmentDeal;
 import com.codingtu.cooltu.processor.deal.DataDeal;
 import com.codingtu.cooltu.processor.deal.DefaultCodeDeal;
-import com.codingtu.cooltu.processor.deal.DefaultDialogLayoutDeal;
-import com.codingtu.cooltu.processor.deal.DefaultEditDialogLayoutDeal;
-import com.codingtu.cooltu.processor.deal.DefaultMenuDialogLayoutDeal;
-import com.codingtu.cooltu.processor.deal.DefaultNoticeDialogLayoutDeal;
-import com.codingtu.cooltu.processor.deal.DefaultToastDialogLayoutDeal;
 import com.codingtu.cooltu.processor.deal.DeleteActDeal;
 import com.codingtu.cooltu.processor.deal.FragmentBaseDeal;
 import com.codingtu.cooltu.processor.deal.ModuleInfoDeal;
@@ -54,11 +42,6 @@ public class SupportTypes {
         return new Class[]{
                 ModuleInfo.class, ModuleInfoDeal.class,
                 DefaultCode.class, DefaultCodeDeal.class,
-                DefaultToastDialogLayout.class, DefaultToastDialogLayoutDeal.class,
-                DefaultMenuDialogLayout.class, DefaultMenuDialogLayoutDeal.class,
-                DefaultNoticeDialogLayout.class, DefaultNoticeDialogLayoutDeal.class,
-                DefaultEditDialogLayout.class, DefaultEditDialogLayoutDeal.class,
-                DefaultDialogLayout.class, DefaultDialogLayoutDeal.class,
                 VH.class, VHDeal.class,
                 ActBase.class, ActBaseDeal.class,
                 FragmentBase.class, FragmentBaseDeal.class,

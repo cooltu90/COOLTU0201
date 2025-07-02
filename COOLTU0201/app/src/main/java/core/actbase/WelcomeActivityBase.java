@@ -144,7 +144,7 @@ public abstract class WelcomeActivityBase extends com.codingtu.cooltu.ui.base.Ba
         if (toastDialog == null)
             toastDialog = new com.codingtu.cooltu.lib4a.view.dialogview.ToastDialog(getAct())
                     .destroys(this)
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog_toast)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getToastDialogLayout())
                     .build();
         return toastDialog;
     }
@@ -155,7 +155,7 @@ public abstract class WelcomeActivityBase extends com.codingtu.cooltu.ui.base.Ba
         if (noticeDialog == null)
             noticeDialog = new com.codingtu.cooltu.lib4a.view.dialogview.NoticeDialog(getAct())
                     .destroys(this)
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog_notice)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getNoticeDialogLayout())
                     .onClick(v -> {
                         noticeDialogYes(noticeDialog.obtainData());
                     })
@@ -176,7 +176,7 @@ public abstract class WelcomeActivityBase extends com.codingtu.cooltu.ui.base.Ba
                     .setTitle("提示")
                     .setHint("请输入文字")
                     .setInputType(1)
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog_edit)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getEditDialogLayout())
                     .setOnBtClick(new com.codingtu.cooltu.lib4a.view.dialogview.EditDialog.OnBtClick() {
                         @Override
                         public void onCancel(Object obj) {
@@ -213,7 +213,7 @@ public abstract class WelcomeActivityBase extends com.codingtu.cooltu.ui.base.Ba
                     .setContent("胜多负少的")
                     .setLeftBtText("取消")
                     .setRighBtText("确定")
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getDialogLayout())
                     .setOnBtClick(new com.codingtu.cooltu.lib4a.view.dialogview.Dialog.OnBtClick() {
                         @Override
                         public void onLeftClick(Object obj) {
@@ -238,7 +238,7 @@ public abstract class WelcomeActivityBase extends com.codingtu.cooltu.ui.base.Ba
                     .setContent(content)
                     .setLeftBtText("取消")
                     .setRighBtText("确定")
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getDialogLayout())
                     .setOnBtClick(new com.codingtu.cooltu.lib4a.view.dialogview.Dialog.OnBtClick() {
                         @Override
                         public void onLeftClick(Object obj) {
@@ -282,8 +282,8 @@ public abstract class WelcomeActivityBase extends com.codingtu.cooltu.ui.base.Ba
         if (menuDialog == null) {
             menuDialog = new com.codingtu.cooltu.lib4a.view.dialogview.MenuDialog(getAct())
                     .destroys(this)
-                    .setLayout(com.codingtu.cooltu.R.layout.dialog_menu)
-                    .setItemLayout(com.codingtu.cooltu.R.layout.dialog_menu_item)
+                    .setLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getMenuDialogLayout())
+                    .setItemLayout(com.codingtu.cooltu.lib4a.CoreConfigs.configs().getMenuDialogItemLayout())
                     .setItem(com.codingtu.cooltu.R.id.reportTv, "导出工单")
                     .setItem(com.codingtu.cooltu.R.id.deleteItemBt, "删除")
                     .setItem(com.codingtu.cooltu.R.id.deleteItemBt1, "删除1")

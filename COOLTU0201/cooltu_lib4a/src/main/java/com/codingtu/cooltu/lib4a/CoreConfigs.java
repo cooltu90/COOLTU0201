@@ -73,4 +73,29 @@ public abstract class CoreConfigs extends LibConfigs {
     public int getOkGoReadTimeout() {
         return 10 * 60 * 1000;
     }
+
+    //dialogs
+    public int getDialogLayout() {
+        return R.layout.default_dialog;
+    }
+
+    public int getToastDialogLayout() {
+        return R.layout.default_dialog_toast;
+    }
+
+    public int getNoticeDialogLayout() {
+        return R.layout.default_dialog_notice;
+    }
+
+    public int getEditDialogLayout() {
+        return R.layout.default_dialog_edit;
+    }
+
+    public int getMenuDialogLayout() {
+        return R.layout.default_dialog_menu;
+    }
+
+    public int getMenuDialogItemLayout() {
+        return R.layout.default_dialog_menu_item;
+    }
 }

@@ -9,11 +9,6 @@ import com.codingtu.cooltu.processor.annotation.ModuleInfo;
 import com.codingtu.cooltu.processor.annotation.create.CreateAct;
 import com.codingtu.cooltu.processor.annotation.create.CreateAdapter;
 import com.codingtu.cooltu.processor.annotation.ui.DefaultCode;
-import com.codingtu.cooltu.processor.annotation.ui.DefaultDialogLayout;
-import com.codingtu.cooltu.processor.annotation.ui.DefaultEditDialogLayout;
-import com.codingtu.cooltu.processor.annotation.ui.DefaultMenuDialogLayout;
-import com.codingtu.cooltu.processor.annotation.ui.DefaultNoticeDialogLayout;
-import com.codingtu.cooltu.processor.annotation.ui.DefaultToastDialogLayout;
 import com.codingtu.cooltu.ui.base.BaseActivity;
 
 @ModuleInfo(
@@ -22,12 +17,7 @@ import com.codingtu.cooltu.ui.base.BaseActivity;
         baseFragment = CoreFragment.class,
         rPkg = "com.codingtu.cooltu"
 )
-@DefaultToastDialogLayout(R.layout.dialog_toast)
-@DefaultNoticeDialogLayout(R.layout.dialog_notice)
-@DefaultEditDialogLayout(R.layout.dialog_edit)
-@DefaultDialogLayout(R.layout.dialog)
-@DefaultMenuDialogLayout(layout = R.layout.dialog_menu, item = R.layout.dialog_menu_item)
-@DefaultCode({"CODE_TEST","GET_PIC_BY_CAMERA","GET_PIC_BY_GALLERY","MANAGE_APP_ALL_FILES_ACCESS_PERMISSION"})
+@DefaultCode({"CODE_TEST", "GET_PIC_BY_CAMERA", "GET_PIC_BY_GALLERY", "MANAGE_APP_ALL_FILES_ACCESS_PERMISSION"})
 @CreateAct(
         name = "permission",
         packages = "com.codingtu.cooltu.ui",

@@ -53,7 +53,6 @@ public class ActBaseBuilder extends ActBaseBuilderBase implements UiBaseInterfac
 
     public ActBaseBuilder(JavaInfo info) {
         super(info);
-        LibLogs.i("xx");
         uiBaseBuilder = new UiBaseBuilder(this) {
             @Override
             protected BaseTools.GetThis<UiBaseBuilder> getChildGetter() {

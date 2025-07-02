@@ -18,7 +18,7 @@ public class FullName {
     public static final String PROCESS_CORE_BUILDER_TYPE = Pkg.PROCESSOR_BUILDER_CORE + ".TypeCoreBuilder";
     public static final String BIND_TOOL = "com.codingtu.cooltu.lib4a.bind.BindTool";
     public static final String BASE_PATH = "com.codingtu.cooltu.lib4a.path.BasePath";
-    public static final String CORE_CONFIGS = "com.codingtu.cooltu.lib4a.CoreConfigs";
+    public static final String CORE_CONFIGS = Pkg.LIB4A + ".CoreConfigs";
     public static final String LIST_VALUE_MAP = "com.codingtu.cooltu.lib4j.data.map.ListValueMap";
     public static final String JAVA_INFO = "com.codingtu.cooltu.lib4j.data.java.JavaInfo";
     public static final String PROCESSOR_PARAMS = "com.codingtu.cooltu.processor.lib.param.Params";

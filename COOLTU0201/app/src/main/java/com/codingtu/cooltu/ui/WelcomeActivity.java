@@ -40,24 +40,12 @@ public class WelcomeActivity extends WelcomeActivityBase {
         if (!PermissionTools.isAllow()) {
             ActStart.permissionActivity(getAct());
         }
-
     }
 
 
     @ClickView(R.id.showBt)
     public void showBtClick() {
-        FileDeleter.file(SDCardTool.getSDCard() + "/liept/528 - 复制 ")
-                .progress(new OnProgressInUiThread() {
-                    @Override
-                    public void progress(long totalLen, long currentLen) {
-                        Logs.i("totalLen:" + totalLen + " currentLen:" + currentLen);
-                    }
-                }).finish(new OnFinish() {
-                    @Override
-                    public void onFinish(Object o) {
-                        Logs.i("onFinish");
-                    }
-                }).delete();
+        getToastDialog().setContent("xxx").show().start();
     }
 
 
