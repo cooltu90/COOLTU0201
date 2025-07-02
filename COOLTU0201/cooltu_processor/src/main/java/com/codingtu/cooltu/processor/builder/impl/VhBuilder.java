@@ -41,7 +41,7 @@ public class VhBuilder extends VhBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_VH);
+        addTag(pkg, Pkg.CORE_VH());
         addTag(name, javaInfo.name);
         addTag(coreAdapterVHFullName, FullName.CORE_ADAPTER_VH);
         addTag(layoutName, layoutId.toString());

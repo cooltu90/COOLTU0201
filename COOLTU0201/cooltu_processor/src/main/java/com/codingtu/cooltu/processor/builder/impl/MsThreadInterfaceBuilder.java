@@ -32,7 +32,7 @@ public class MsThreadInterfaceBuilder extends MsThreadInterfaceBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_MSTHREAD);
+        addTag(pkg, Pkg.CORE_MSTHREAD());
         addTag(name, javaInfo.name);
         allMethodEs.ls(new Es.EachEs<ExecutableElement>() {
             @Override

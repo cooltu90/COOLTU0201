@@ -18,7 +18,7 @@ public class Code4RequestBuilder extends Code4RequestBuilderBase {
     public Map<String, String> fullNames = new HashMap<>();
 
     public Code4RequestBuilder() {
-        super(CurrentPath.javaInfo(FullName.CODE_4_REQUEST));
+        super(CurrentPath.javaInfo(FullName.CODE_4_REQUEST()));
     }
 
 
@@ -48,7 +48,7 @@ public class Code4RequestBuilder extends Code4RequestBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_TOOLS);
+        addTag(pkg, Pkg.CORE_TOOLS());
 
         Es.es(ResForDeal.HAS_START_MAP.keySet()).ls(new Es.EachEs<String>() {
             @Override

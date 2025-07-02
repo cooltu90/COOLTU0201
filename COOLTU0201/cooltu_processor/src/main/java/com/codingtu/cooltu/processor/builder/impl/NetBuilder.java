@@ -33,7 +33,7 @@ public class NetBuilder extends NetBuilderBase {
     private List<NetInfo> infos = new ArrayList<>();
 
     public NetBuilder() {
-        super(CurrentPath.javaInfo(FullName.NET));
+        super(CurrentPath.javaInfo(FullName.NET()));
     }
 
 
@@ -59,7 +59,7 @@ public class NetBuilder extends NetBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_NET);
+        addTag(pkg, Pkg.CORE_NET());
         Es.es(infos).ls(new Es.EachEs<NetInfo>() {
             @Override
             public boolean each(int position, NetInfo netInfo) {

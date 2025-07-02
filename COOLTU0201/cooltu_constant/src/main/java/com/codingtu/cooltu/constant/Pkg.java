@@ -4,6 +4,7 @@ public class Pkg {
 
     public static String R;
     //public static String ACT;
+    public static String CORE = "core";
 
     //default
     public static final String DEFAULT_ADAPTER = ".app.view.adapter";
@@ -14,22 +15,7 @@ public class Pkg {
     public static final String PROCESSOR_BUILDER_BASE = PROCESSOR + ".builder.base";
     public static final String PROCESSOR_BUILDER_IMPL = PROCESSOR + ".builder.impl";
     public static final String PROCESSOR_BUILDER_CORE = PROCESSOR + ".builder.core";
-    //core
-    public static final String CORE_PATH = "core.path";
-    public static final String ACT_BASE = "core.actbase";
-    public static final String FRAGMENT_BASE = "core.fragmentbase";
-    public static final String CORE_TOOLS = "core.tools";
-    public static final String CORE_DATA = "core.data";
-    public static final String ACT_RES = "core.actres";
-    public static final String FRAGMENT_RES = "core.fragmentres";
-    public static final String CORE_NET = "core.net";
-    public static final String CORE_VH = "core.vh";
-    public static final String CORE_CACHE = "core.cache";
-    public static final String CORE_MSTHREAD = "core.msthread";
-    public static final String CORE_FORM = "core.form";
-    public static final String CORE_NET_API = CORE_NET + ".api";
-    public static final String CORE_NET_PARAMS = CORE_NET + ".params";
-    public static final String CORE_NET_BACK = CORE_NET + ".back";
+
     //lib4a
     public static final String LIB4A = "com.codingtu.cooltu.lib4a";
     public static final String LIB4A_PATH = LIB4A + ".path";
@@ -57,5 +43,58 @@ public class Pkg {
     public static final String ANNOTATION_RES = ANNOTATION + ".res";
     public static final String ANNOTATION_UI = ANNOTATION + ".ui";
     public static final String ANNOTATION_TOOLS = ANNOTATION + ".tools";
+
+    //core
+    public static final String ACT_BASE() {
+        return CORE + ".actbase";
+    }
+
+    public static final String FRAGMENT_BASE() {
+        return CORE + ".fragmentbase";
+    }
+
+    public static final String CORE_TOOLS() {
+        return CORE + ".tools";
+    }
+
+    public static final String CORE_DATA() {
+        return CORE + ".data";
+    }
+
+    public static final String ACT_RES() {
+        return CORE + ".actres";
+    }
+
+    public static final String FRAGMENT_RES() {
+        return CORE + ".fragmentres";
+    }
+
+    public static final String CORE_NET() {
+        return CORE + ".net";
+    }
+
+    public static final String CORE_VH() {
+        return CORE + ".vh";
+    }
+
+    public static final String CORE_CACHE() {
+        return CORE + ".cache";
+    }
+
+    public static final String CORE_MSTHREAD() {
+        return CORE + ".msthread";
+    }
+
+    public static final String CORE_NET_API() {
+        return CORE_NET() + ".api";
+    }
+
+    public static final String CORE_NET_PARAMS() {
+        return CORE_NET() + ".params";
+    }
+
+    public static final String CORE_NET_BACK() {
+        return CORE_NET() + ".back";
+    }
 
 }

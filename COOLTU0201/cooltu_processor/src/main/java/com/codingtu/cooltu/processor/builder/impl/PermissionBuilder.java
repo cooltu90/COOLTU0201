@@ -22,7 +22,7 @@ public class PermissionBuilder extends PermissionBuilderBase {
     private List<ExecutableElement> ees = new ArrayList<>();
 
     public PermissionBuilder() {
-        super(CurrentPath.javaInfo(FullName.PERMISSIONS));
+        super(CurrentPath.javaInfo(FullName.PERMISSIONS()));
     }
 
     public void add(Permission permission, ExecutableElement ee) {
@@ -43,7 +43,7 @@ public class PermissionBuilder extends PermissionBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_TOOLS);
+        addTag(pkg, Pkg.CORE_TOOLS());
         Es.es(backs).ls(new Es.EachEs<Permission>() {
             @Override
             public boolean each(int methodIndex, Permission permissionBack) {

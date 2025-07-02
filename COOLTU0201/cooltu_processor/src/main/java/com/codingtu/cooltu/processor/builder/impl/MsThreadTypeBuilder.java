@@ -21,7 +21,7 @@ public class MsThreadTypeBuilder extends MsThreadTypeBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_MSTHREAD);
+        addTag(pkg, Pkg.CORE_MSTHREAD());
         addTag(baseName, javaInfo.name);
         IntValue num = IntValue.obtain();
         staticMethodNameTs.ls(new Es.EachEs<String>() {

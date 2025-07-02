@@ -31,7 +31,7 @@ public class ActBackIntentBuilder extends ActBackIntentBuilderBase {
 
 
     public ActBackIntentBuilder() {
-        super(CurrentPath.javaInfo(FullName.ACT_BACK_INTENT));
+        super(CurrentPath.javaInfo(FullName.ACT_BACK_INTENT()));
     }
 
     public void add(ActBack actBack, ExecutableElement ee) {
@@ -88,7 +88,7 @@ public class ActBackIntentBuilder extends ActBackIntentBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_TOOLS);
+        addTag(pkg, Pkg.CORE_TOOLS());
 
         Es.es(methodNames).ls(new Es.EachEs<String>() {
             @Override
@@ -99,9 +99,9 @@ public class ActBackIntentBuilder extends ActBackIntentBuilderBase {
                     @Override
                     public boolean each(int paramIndex, KV<String, String> kv) {
                         if (ClassTool.isBaseClass(kv.k)) {
-                            methodParamOtherIf(methodIndex, paramIndex, FullName.PASS, ConvertTool.toStaticType(kv.v), kv.v);
+                            methodParamOtherIf(methodIndex, paramIndex, FullName.PASS(), ConvertTool.toStaticType(kv.v), kv.v);
                         } else {
-                            methodParamBeanIf(methodIndex, paramIndex, FullName.PASS, ConvertTool.toStaticType(kv.v), FullName.JSON_TOOL, kv.v);
+                            methodParamBeanIf(methodIndex, paramIndex, FullName.PASS(), ConvertTool.toStaticType(kv.v), FullName.JSON_TOOL, kv.v);
                         }
                         methodParam(methodIndex, paramIndex);
                         return false;

@@ -25,7 +25,7 @@ public class PassBuilder extends PassBuilderBase {
 
 
     public PassBuilder() {
-        super(CurrentPath.javaInfo(FullName.PASS));
+        super(CurrentPath.javaInfo(FullName.PASS()));
         add(new KV<>(FullName.STRING, Constant.FROM_ACT));
     }
 
@@ -55,7 +55,7 @@ public class PassBuilder extends PassBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_TOOLS);
+        addTag(pkg, Pkg.CORE_TOOLS());
 
         Es.es(kvs).ls(new Es.EachEs<KV<String, String>>() {
             @Override

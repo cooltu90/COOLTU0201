@@ -33,7 +33,7 @@ public class ActStartBuilder extends ActStartBuilderBase {
     };
 
     public ActStartBuilder() {
-        super(CurrentPath.javaInfo(FullName.ACT_START));
+        super(CurrentPath.javaInfo(FullName.ACT_START()));
     }
 
     private void add(String actFullName, int index, KV<String, String> kv) {
@@ -62,7 +62,7 @@ public class ActStartBuilder extends ActStartBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_TOOLS);
+        addTag(pkg, Pkg.CORE_TOOLS());
         //
         Es.es(ResForDeal.HAS_START_MAP.keySet()).ls(new Es.EachEs<String>() {
             @Override

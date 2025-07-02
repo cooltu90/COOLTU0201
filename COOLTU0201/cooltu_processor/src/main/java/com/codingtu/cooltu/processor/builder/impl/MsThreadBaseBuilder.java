@@ -42,7 +42,7 @@ public class MsThreadBaseBuilder extends MsThreadBaseBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_MSTHREAD);
+        addTag(pkg, Pkg.CORE_MSTHREAD());
         addTag(name, javaInfo.name);
         addTag(interfaceType, interfaceNameStr);
         addTag(msThreadType, msThreadTypeStr);

@@ -116,7 +116,7 @@ public class ActBaseBuilder extends ActBaseBuilderBase implements UiBaseInterfac
             @Override
             public boolean each(int position, KV<String, String> kv) {
                 addField(Constant.SIGN_PROTECTED, kv.k, kv.v);
-                startInit(position, kv.v, FullName.PASS);
+                startInit(position, kv.v, FullName.PASS());
                 return false;
             }
         });
@@ -133,7 +133,7 @@ public class ActBaseBuilder extends ActBaseBuilderBase implements UiBaseInterfac
                 String actNameStatic = ConvertTool.toStaticType(actName);
 
                 permissionBack(permissionIndex, permissionIndex == 0 ? "if" : "else if",
-                        FullName.PERMISSIONS, methodNameStatic, actNameStatic, methodName);
+                        FullName.PERMISSIONS(), methodNameStatic, actNameStatic, methodName);
 
                 boolean isParam = !CountTool.isNull(ee.getParameters());
                 if (isParam) {

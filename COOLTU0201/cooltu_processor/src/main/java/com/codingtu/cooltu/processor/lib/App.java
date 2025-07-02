@@ -118,7 +118,7 @@ public class App extends LibApp {
 
 
         //删除ActStart
-        JavaInfo actStartJavaInfo = CurrentPath.javaInfo(FullName.ACT_START);
+        JavaInfo actStartJavaInfo = CurrentPath.javaInfo(FullName.ACT_START());
         String actMethodName = ConvertTool.toMethodType(actJavaInfo.name);
         BaseEs<String> actStartLineTs = Es.es();
         FileReader.from(actStartJavaInfo.path).readLine(new ReadLine<String>() {

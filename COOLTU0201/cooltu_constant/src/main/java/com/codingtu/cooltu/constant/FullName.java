@@ -61,9 +61,7 @@ public class FullName {
     public static final String RESOURCE_TOOL = Pkg.LIB4A_TOOLS + ".ResourceTool";
     public static final String HANDLER_TOOL = Pkg.LIB4A_TOOLS + ".HandlerTool";
     public static final String PERMISSION_TOOL = Pkg.LIB4A_PERMISSION + ".PermissionTool";
-    //permission
-    public static final String PERMISSIONS_SHORT_NAME = "Permissions";
-    public static final String PERMISSIONS = Pkg.CORE_TOOLS + "." + PERMISSIONS_SHORT_NAME;
+
     //to
     public static final String TO_SHORT_NAME = "To";
     public static final String TO = Pkg.ANNOTATION_TOOLS + "." + TO_SHORT_NAME;
@@ -85,14 +83,6 @@ public class FullName {
     public static final String API = Pkg.LIB4A_NET + ".api.API";
     public static final String NET_BACK_I = Pkg.LIB4A_NET + ".netback.NetBackI";
     public static final String NET_BACK = Pkg.LIB4A_NET + ".netback.NetBack";
-    //core_tools
-    public static final String PASS = Pkg.CORE_TOOLS + ".Pass";
-    public static final String DATA_DM = Pkg.CORE_DATA + ".DataDM";
-    public static final String CACHE_DM = Pkg.CORE_TOOLS + ".CacheDM";
-    public static final String ACT_START = Pkg.CORE_TOOLS + ".ActStart";
-    public static final String NET = Pkg.CORE_NET + ".Net";
-    public static final String CODE_4_REQUEST = Pkg.CORE_TOOLS + ".Code4Request";
-    public static final String ACT_BACK_INTENT = Pkg.CORE_TOOLS + ".ActBackIntent";
     //Ts
     public static final String BASE_TS = Pkg.LIB4J_TS + ".BaseTs";
     public static final String TS = Pkg.LIB4J_TS + ".Ts";
@@ -118,6 +108,44 @@ public class FullName {
     public static final String ED_TEXT_WATCHER = EDIT_DIALOG + ".EdTextWatcher";
     public static final String ON_HIDDEN_FINISHED = Pkg.LIB4A_LAYER_VIEW + ".listener.OnHiddenFinished";
     public static final String ON_HIDDEN_FINISHED_CALLBACK = Pkg.LIB4A_LAYER + ".event.OnHiddenFinishedCallBack";
+
+
+    //core_tools
+    public static final String PERMISSIONS() {
+        return Pkg.CORE_TOOLS() + ".Permissions";
+    }
+
+    public static final String PASS() {
+        return Pkg.CORE_TOOLS() + ".Pass";
+    }
+
+    public static final String CACHE_DM() {
+        return Pkg.CORE_TOOLS() + ".CacheDM";
+    }
+
+    public static final String ACT_START() {
+        return Pkg.CORE_TOOLS() + ".ActStart";
+    }
+
+    public static final String CODE_4_REQUEST() {
+        return Pkg.CORE_TOOLS() + ".Code4Request";
+
+    }
+
+    public static final String ACT_BACK_INTENT() {
+        return Pkg.CORE_TOOLS() + ".ActBackIntent";
+
+    }
+
+    public static final String DATA_DM() {
+        return Pkg.CORE_DATA() + ".DataDM";
+    }
+
+    public static final String NET() {
+        return Pkg.CORE_NET() + ".Net";
+    }
+
+
     //不变的
     public static final String VIEW = "android.view.View";
     public static final String EDIT_TEXT = "android.widget.EditText";

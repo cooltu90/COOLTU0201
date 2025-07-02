@@ -22,7 +22,7 @@ public class DataBuilder extends DataBuilderBase {
     private BaseEs<ExecutableElement> methodEs = Es.es();
 
     private DataBuilder() {
-        super(CurrentPath.javaInfo(FullName.DATA_DM));
+        super(CurrentPath.javaInfo(FullName.DATA_DM()));
     }
 
     @Override
@@ -32,7 +32,7 @@ public class DataBuilder extends DataBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_DATA);
+        addTag(pkg, Pkg.CORE_DATA());
         methodEs.ls(new Es.EachEs<ExecutableElement>() {
             @Override
             public boolean each(int position, ExecutableElement ee) {
