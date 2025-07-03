@@ -188,6 +188,17 @@ public class FragmentBaseBuilder extends FragmentBaseBuilderBase implements UiBa
 
         otherIf(otherLineSb.toString());
         onCreateCompleteOtherIf(onCompleteOtherLineSb.toString());
+
+        if (uiBaseBuilder.isLayoutName == null) {
+        } else if (uiBaseBuilder.isLayoutName) {
+            addLnTag(getLayout, "    protected int getLayout() {");
+            addLnTag(getLayout, "        return -1;");
+            addLnTag(getLayout, "    }");
+        } else {
+            addLnTag(getLayout, "    protected int getLayout() {");
+            addLnTag(getLayout, "        return [-1];", uiBaseBuilder.layout.toString());
+            addLnTag(getLayout, "    }");
+        }
     }
 
     @Override
@@ -268,6 +279,8 @@ public abstract class [[name]] extends [[baseClass]] implements View.OnClickList
         return view;
     }
                                                                                                     [<sub>][if][layout]
+
+[[getLayout]]
 
     @Override
     public void onCreateComplete() {

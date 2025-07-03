@@ -61,6 +61,9 @@
         <activity
             android:name="com.codingtu.cooltu.ui.PermissionActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".lib.ui.Test3Activity"
+            android:screenOrientation="portrait" />
     </application>
 
     <!-- 网络状态 -->

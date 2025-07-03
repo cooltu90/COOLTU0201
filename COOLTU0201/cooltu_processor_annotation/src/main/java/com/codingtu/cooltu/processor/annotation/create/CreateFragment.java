@@ -13,5 +13,7 @@ public @interface CreateFragment {
 
     Class baseClass() default Void.class;
 
-    int layoutTemp();
+    int layoutTemp() default -1;
+
+    String layoutTempName() default "";
 }

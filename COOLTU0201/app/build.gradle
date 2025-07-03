@@ -43,6 +43,7 @@ dependencies {
     implementation project(':cooltu_processor')
     implementation project(':cooltu_processor_annotation')
     annotationProcessor project(':cooltu_processor')
+    implementation project(':applib')
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'

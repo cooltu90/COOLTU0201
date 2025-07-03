@@ -17,6 +17,8 @@ public @interface CreateAct {
 
     String screenOrientation() default ScreenOrientationType.PHONE;
 
-    int layoutTemp();
+    int layoutTemp() default -1;
+
+    String layoutTempName() default "";
 
 }

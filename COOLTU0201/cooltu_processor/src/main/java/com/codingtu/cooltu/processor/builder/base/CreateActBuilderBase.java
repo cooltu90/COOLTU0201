@@ -13,6 +13,7 @@ public abstract class CreateActBuilderBase extends com.codingtu.cooltu.processor
     protected StringBuilder actName;
     protected StringBuilder actBase;
     protected StringBuilder layout;
+    protected StringBuilder layoutMethod;
 
     public CreateActBuilderBase(com.codingtu.cooltu.lib4j.data.java.JavaInfo info) {
         super(info);
@@ -26,6 +27,7 @@ public abstract class CreateActBuilderBase extends com.codingtu.cooltu.processor
         actName = map.get("actName");
         actBase = map.get("actBase");
         layout = map.get("layout");
+        layoutMethod = map.get("layoutMethod");
 
     }
 
@@ -49,8 +51,9 @@ public abstract class CreateActBuilderBase extends com.codingtu.cooltu.processor
         lines.add("import [[resFullName]];");
         lines.add("");
         lines.add("@[[to]]([[actName]]Res.class)");
-        lines.add("@[[actBase]](layout = R.layout.[[layout]])");
+        lines.add("@[[actBase]]([[layout]])");
         lines.add("public class [[actName]] extends [[actName]]Base {");
+        lines.add("[[layoutMethod]]");
         lines.add("}");
         lines.add("");
 

@@ -10,11 +10,13 @@ import java.util.List;
 public class CreateFragmentBuilder extends CreateFragmentBuilderBase {
     private final JavaInfo actResJavaInfo;
     private final JavaInfo actBaseJavaInfo;
+    private final boolean isLayoutName;
     private String layoutName;
 
 
-    public CreateFragmentBuilder(JavaInfo info, String layout, JavaInfo actResJavaInfo, JavaInfo actBaseJavaInfo) {
+    public CreateFragmentBuilder(JavaInfo info, boolean isLayoutName, String layout, JavaInfo actResJavaInfo, JavaInfo actBaseJavaInfo) {
         super(info);
+        this.isLayoutName = isLayoutName;
         this.layoutName = layout;
         this.actResJavaInfo = actResJavaInfo;
         this.actBaseJavaInfo = actBaseJavaInfo;
@@ -53,7 +55,18 @@ public class CreateFragmentBuilder extends CreateFragmentBuilderBase {
         addTag(fragName, javaInfo.name);
         addTag(fragBase, FullName.FRAGMENT_BASE_SHORT_NAME);
         addTag(to, FullName.TO_SHORT_NAME);
-        addTag(layout, layoutName);
+        //addTag(layout, layoutName);
+
+        if (isLayoutName) {
+            addTag(layout, "layoutName = \"[layout]\"", layoutName);
+            addLnTag(layoutMethod, "    @Override");
+            addLnTag(layoutMethod, "    protected int getLayout() {");
+            addLnTag(layoutMethod, "        return R.layout.[activity_test1];", layoutName);
+            addLnTag(layoutMethod, "    }");
+        } else {
+            addTag(layout, "layout = R.layout.[layout]", layoutName);
+        }
+
 
     }
 }
@@ -68,8 +81,8 @@ import [[baseFullName]];
 import [[resFullName]];
 
 @[[to]]([[fragName]]Res.class)
-@[[fragBase]](layout = R.layout.[[layout]])
+@[[fragBase]]([[layout]])
 public class [[fragName]] extends [[fragName]]Base {
-
+[[layoutMethod]]
 }
 model_temp_end */

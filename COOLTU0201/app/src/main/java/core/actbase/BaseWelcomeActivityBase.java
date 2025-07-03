@@ -26,7 +26,7 @@ public abstract class BaseWelcomeActivityBase extends com.codingtu.cooltu.ui.bas
     @Override
     protected void onCreate(android.os.Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.codingtu.cooltu.R.layout.activity_welcome);
+        setContentView(getLayout());
 
         showBt = findViewById(com.codingtu.cooltu.R.id.showBt);
         tv1 = findViewById(com.codingtu.cooltu.R.id.tv1);
@@ -53,6 +53,11 @@ public abstract class BaseWelcomeActivityBase extends com.codingtu.cooltu.ui.bas
             onCreateComplete();
         }
     }
+
+    protected int getLayout() {
+        return com.codingtu.cooltu.R.layout.activity_welcome;
+    }
+
 
     @Override
     public void onCreateComplete() {

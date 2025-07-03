@@ -13,6 +13,7 @@ public abstract class CreateFragmentBuilderBase extends com.codingtu.cooltu.proc
     protected StringBuilder fragName;
     protected StringBuilder fragBase;
     protected StringBuilder layout;
+    protected StringBuilder layoutMethod;
 
     public CreateFragmentBuilderBase(com.codingtu.cooltu.lib4j.data.java.JavaInfo info) {
         super(info);
@@ -26,6 +27,7 @@ public abstract class CreateFragmentBuilderBase extends com.codingtu.cooltu.proc
         fragName = map.get("fragName");
         fragBase = map.get("fragBase");
         layout = map.get("layout");
+        layoutMethod = map.get("layoutMethod");
 
     }
 
@@ -49,9 +51,9 @@ public abstract class CreateFragmentBuilderBase extends com.codingtu.cooltu.proc
         lines.add("import [[resFullName]];");
         lines.add("");
         lines.add("@[[to]]([[fragName]]Res.class)");
-        lines.add("@[[fragBase]](layout = R.layout.[[layout]])");
+        lines.add("@[[fragBase]]([[layout]])");
         lines.add("public class [[fragName]] extends [[fragName]]Base {");
-        lines.add("");
+        lines.add("[[layoutMethod]]");
         lines.add("}");
 
         return lines;

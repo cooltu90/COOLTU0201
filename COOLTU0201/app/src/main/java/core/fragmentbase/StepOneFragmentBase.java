@@ -32,7 +32,7 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = com.codingtu.cooltu.lib4a.tools.InflateTool.inflate(inflater, com.codingtu.cooltu.R.layout.fragment_step_one, container);
+        View view = com.codingtu.cooltu.lib4a.tools.InflateTool.inflate(inflater, getLayout(), container);
         tv2 = view.findViewById(com.codingtu.cooltu.R.id.tv2);
         rv = view.findViewById(com.codingtu.cooltu.R.id.rv);
         tv1 = view.findViewById(com.codingtu.cooltu.R.id.tv1);
@@ -45,6 +45,11 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
             onCreateComplete();
         }
         return view;
+    }
+
+
+    protected int getLayout() {
+        return com.codingtu.cooltu.R.layout.fragment_step_one;
     }
 
 

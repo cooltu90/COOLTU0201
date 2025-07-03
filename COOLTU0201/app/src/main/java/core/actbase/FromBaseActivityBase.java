@@ -28,6 +28,8 @@ public abstract class FromBaseActivityBase extends com.codingtu.cooltu.ui.base.B
         }
     }
 
+
+
     @Override
     public void onCreateComplete() {
         super.onCreateComplete();

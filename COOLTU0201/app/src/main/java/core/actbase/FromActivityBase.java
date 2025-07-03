@@ -14,7 +14,7 @@ public abstract class FromActivityBase extends com.codingtu.cooltu.ui.FromBaseAc
     @Override
     protected void onCreate(android.os.Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.codingtu.cooltu.R.layout.activity_from);
+        setContentView(getLayout());
 
 
 
@@ -28,6 +28,11 @@ public abstract class FromActivityBase extends com.codingtu.cooltu.ui.FromBaseAc
             onCreateComplete();
         }
     }
+
+    protected int getLayout() {
+        return com.codingtu.cooltu.R.layout.activity_from;
+    }
+
 
     @Override
     public void onCreateComplete() {

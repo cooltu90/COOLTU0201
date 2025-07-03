@@ -78,6 +78,7 @@ public abstract class UiBaseBuilder {
 
     public boolean isToastDialog;
     public boolean isNoticeDialog;
+    public Boolean isLayoutName;
     private List<String> inBaseInParent;
     private Map<String, LayoutTools.ViewInfo> childViewMap;
     private Map<String, LayoutTools.ViewInfo> allViewMap;
@@ -235,8 +236,6 @@ public abstract class UiBaseBuilder {
                 return false;
             }
         });
-
-
     }
 
     private void fixInts() {
@@ -382,7 +381,7 @@ public abstract class UiBaseBuilder {
 
     private void setLayout() {
         if (layout != null) {
-            uiBase.layoutIf(FullName.INFLATE_TOOL, layout.toString());
+            uiBase.layoutIf(FullName.INFLATE_TOOL, "getLayout()");
         }
     }
 

@@ -5,6 +5,8 @@ import com.codingtu.cooltu.lib4j.data.java.JavaInfo;
 import com.codingtu.cooltu.lib4j.exception.FileCopyException;
 import com.codingtu.cooltu.lib4j.file.copy.FileCopy;
 import com.codingtu.cooltu.lib4j.tools.ClassTool;
+import com.codingtu.cooltu.lib4j.tools.StringTool;
+import com.codingtu.cooltu.processor.annotation.create.CreateAct;
 import com.codingtu.cooltu.processor.annotation.create.CreateFragment;
 import com.codingtu.cooltu.processor.builder.core.UiBaseBuilder;
 import com.codingtu.cooltu.processor.builder.impl.CreateFragmentBuilder;
@@ -31,7 +33,16 @@ public class CreateFragmentDeal extends TypeBaseDeal {
 
 
         //创建layout
-        IdTools.Id layoutTempId = IdTools.elementToId(te, CreateFragment.class, createFragment.layoutTemp());
+        IdTools.Id layoutTempId = null;
+        boolean isTempName = false;
+
+        if (createFragment.layoutTemp() > 0) {
+            layoutTempId = IdTools.elementToId(te, CreateFragment.class, createFragment.layoutTemp());
+        } else if (StringTool.isNotBlank(createFragment.layoutTempName())) {
+            layoutTempId = new IdTools.Id(Pkg.R, "layout", createFragment.layoutTempName());
+            isTempName = true;
+        }
+
         String layoutName = "fragment_" + name;
         try {
             FileCopy
@@ -56,7 +67,7 @@ public class CreateFragmentDeal extends TypeBaseDeal {
         uiBaseBuilder.layout = new IdTools.Id(Pkg.R, "layout", layoutName);
         uiBaseBuilder.uiFullName = fragmentJavaInfo.fullName;
         //创建Act
-        new CreateFragmentBuilder(fragmentJavaInfo, layoutName, fragmentResJavaInfo, fragmentBaseJavaInfo);
+        new CreateFragmentBuilder(fragmentJavaInfo, isTempName, layoutName, fragmentResJavaInfo, fragmentBaseJavaInfo);
 
     }
 }

@@ -16,7 +16,7 @@ public abstract class SubThreadActivityBase extends com.codingtu.cooltu.ui.base.
     @Override
     protected void onCreate(android.os.Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.codingtu.cooltu.R.layout.activity_sub_thread);
+        setContentView(getLayout());
 
 
 
@@ -30,6 +30,11 @@ public abstract class SubThreadActivityBase extends com.codingtu.cooltu.ui.base.
             onCreateComplete();
         }
     }
+
+    protected int getLayout() {
+        return com.codingtu.cooltu.R.layout.activity_sub_thread;
+    }
+
 
     @Override
     public void onCreateComplete() {

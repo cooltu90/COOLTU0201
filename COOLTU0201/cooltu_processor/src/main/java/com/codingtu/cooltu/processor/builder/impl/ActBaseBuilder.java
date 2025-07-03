@@ -235,6 +235,17 @@ public class ActBaseBuilder extends ActBaseBuilderBase implements UiBaseInterfac
         onCreateCompleteOtherIf(onCompleteOtherLineSb.toString());
 
 
+        if (uiBaseBuilder.isLayoutName == null) {
+        } else if (uiBaseBuilder.isLayoutName) {
+            addLnTag(getLayout, "    protected int getLayout() {");
+            addLnTag(getLayout, "        return -1;");
+            addLnTag(getLayout, "    }");
+        } else {
+            addLnTag(getLayout, "    protected int getLayout() {");
+            addLnTag(getLayout, "        return [-1];", uiBaseBuilder.layout.toString());
+            addLnTag(getLayout, "    }");
+        }
+
     }
 
     @Override
@@ -324,6 +335,8 @@ public abstract class [[name]] extends [[baseClass]] implements View.OnClickList
             onCreateComplete();
         }
     }
+
+[[getLayout]]
 
     @Override
     public void onCreateComplete() {

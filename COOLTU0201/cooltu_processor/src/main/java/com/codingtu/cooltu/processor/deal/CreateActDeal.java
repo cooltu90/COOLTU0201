@@ -13,6 +13,7 @@ import com.codingtu.cooltu.processor.builder.impl.ActBaseBuilder;
 import com.codingtu.cooltu.processor.builder.impl.ActResBuilder;
 import com.codingtu.cooltu.processor.builder.impl.CreateActBuilder;
 import com.codingtu.cooltu.processor.deal.base.TypeBaseDeal;
+import com.codingtu.cooltu.processor.lib.log.Logs;
 import com.codingtu.cooltu.processor.lib.path.CurrentPath;
 import com.codingtu.cooltu.processor.lib.tools.IdTools;
 
@@ -34,8 +35,18 @@ public class CreateActDeal extends TypeBaseDeal {
 
 
         //创建layout
-        IdTools.Id layoutTempId = IdTools.elementToId(te, CreateAct.class, createAct.layoutTemp());
+        IdTools.Id layoutTempId = null;
+        boolean isTempName = false;
+
+        if (createAct.layoutTemp() > 0) {
+            layoutTempId = IdTools.elementToId(te, CreateAct.class, createAct.layoutTemp());
+        } else if (StringTool.isNotBlank(createAct.layoutTempName())) {
+            layoutTempId = new IdTools.Id(Pkg.R, "layout", createAct.layoutTempName());
+            isTempName = true;
+        }
         String layoutName = "activity_" + name;
+
+
         try {
             FileCopy
                     .src(CurrentPath.layout(layoutTempId.rName))
@@ -59,7 +70,7 @@ public class CreateActDeal extends TypeBaseDeal {
         uiBaseBuilder.layout = new IdTools.Id(Pkg.R, "layout", layoutName);
         uiBaseBuilder.uiFullName = actJavaInfo.fullName;
         //创建Act
-        new CreateActBuilder(actJavaInfo, layoutName, actResJavaInfo, actBaseJavaInfo);
+        new CreateActBuilder(actJavaInfo, isTempName, layoutName, actResJavaInfo, actBaseJavaInfo);
         //创建Manifest
         String manifestPath = CurrentPath.manifest();
         File manifestFile = new File(manifestPath);

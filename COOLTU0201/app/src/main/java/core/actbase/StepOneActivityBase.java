@@ -21,7 +21,7 @@ public abstract class StepOneActivityBase extends com.codingtu.cooltu.ui.base.Ba
     @Override
     protected void onCreate(android.os.Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.codingtu.cooltu.R.layout.activity_step_one);
+        setContentView(getLayout());
 
         rv = findViewById(com.codingtu.cooltu.R.id.rv);
         tvLl = findViewById(com.codingtu.cooltu.R.id.tvLl);
@@ -38,6 +38,11 @@ public abstract class StepOneActivityBase extends com.codingtu.cooltu.ui.base.Ba
             onCreateComplete();
         }
     }
+
+    protected int getLayout() {
+        return com.codingtu.cooltu.R.layout.activity_step_one;
+    }
+
 
     @Override
     public void onCreateComplete() {

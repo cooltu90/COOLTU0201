@@ -4,16 +4,19 @@ import com.codingtu.cooltu.constant.FullName;
 import com.codingtu.cooltu.constant.Pkg;
 import com.codingtu.cooltu.lib4j.data.java.JavaInfo;
 import com.codingtu.cooltu.processor.builder.base.CreateActBuilderBase;
+import com.codingtu.cooltu.processor.lib.log.Logs;
 
 import java.util.List;
 
 public class CreateActBuilder extends CreateActBuilderBase {
     private final JavaInfo actResJavaInfo;
     private final JavaInfo actBaseJavaInfo;
+    private final boolean isLayoutName;
     private String layoutName;
 
-    public CreateActBuilder(JavaInfo info, String layout, JavaInfo actResJavaInfo, JavaInfo actBaseJavaInfo) {
+    public CreateActBuilder(JavaInfo info, boolean isLayoutName, String layout, JavaInfo actResJavaInfo, JavaInfo actBaseJavaInfo) {
         super(info);
+        this.isLayoutName = isLayoutName;
         this.layoutName = layout;
         this.actResJavaInfo = actResJavaInfo;
         this.actBaseJavaInfo = actBaseJavaInfo;
@@ -49,10 +52,18 @@ public class CreateActBuilder extends CreateActBuilderBase {
         addTag(actBase, FullName.ACT_BASE_SHORT_NAME);
         addTag(toFullName, FullName.TO);
         addTag(to, FullName.TO_SHORT_NAME);
-        addTag(layout, layoutName);
         addTag(baseFullName, actBaseJavaInfo.fullName);
         addTag(resFullName, actResJavaInfo.fullName);
 
+        if (isLayoutName) {
+            addTag(layout, "layoutName = \"[layout]\"", layoutName);
+            addLnTag(layoutMethod, "    @Override");
+            addLnTag(layoutMethod, "    protected int getLayout() {");
+            addLnTag(layoutMethod, "        return R.layout.[activity_test1];", layoutName);
+            addLnTag(layoutMethod, "    }");
+        } else {
+            addTag(layout, "layout = R.layout.[layout]", layoutName);
+        }
     }
 }
 /* model_temp_start
@@ -66,8 +77,9 @@ import [[baseFullName]];
 import [[resFullName]];
 
 @[[to]]([[actName]]Res.class)
-@[[actBase]](layout = R.layout.[[layout]])
+@[[actBase]]([[layout]])
 public class [[actName]] extends [[actName]]Base {
+[[layoutMethod]]
 }
 
 model_temp_end */

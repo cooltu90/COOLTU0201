@@ -1,12 +1,14 @@
 package com.codingtu.cooltu.processor.deal;
 
 import com.codingtu.cooltu.constant.FullName;
+import com.codingtu.cooltu.constant.Pkg;
 import com.codingtu.cooltu.lib4j.data.java.JavaInfo;
 import com.codingtu.cooltu.lib4j.data.kv.KV;
 import com.codingtu.cooltu.lib4j.data.map.ListValueMap;
 import com.codingtu.cooltu.lib4j.es.Es;
 import com.codingtu.cooltu.lib4j.tools.ClassTool;
 import com.codingtu.cooltu.lib4j.tools.CountTool;
+import com.codingtu.cooltu.lib4j.tools.StringTool;
 import com.codingtu.cooltu.processor.annotation.net.NetBack;
 import com.codingtu.cooltu.processor.annotation.tools.To;
 import com.codingtu.cooltu.processor.annotation.ui.ActBack;
@@ -57,7 +59,12 @@ public class ActBaseDeal extends TypeBaseDeal {
         }
 
         if (baseAnno.layout() > 0) {
+            uiBaseBuilder.isLayoutName = false;
             uiBaseBuilder.layout = IdTools.elementToId(te, ActBase.class, baseAnno.layout());
+            uiBaseBuilder.viewInfos = LayoutTools.convert(uiBaseBuilder.layout.rName);
+        } else if (StringTool.isNotBlank(baseAnno.layoutName())) {
+            uiBaseBuilder.isLayoutName = true;
+            uiBaseBuilder.layout = new IdTools.Id(Pkg.R, "layout", baseAnno.layoutName());
             uiBaseBuilder.viewInfos = LayoutTools.convert(uiBaseBuilder.layout.rName);
         }
 

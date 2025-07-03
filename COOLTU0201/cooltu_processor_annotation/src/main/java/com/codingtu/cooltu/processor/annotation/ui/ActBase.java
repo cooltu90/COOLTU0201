@@ -11,4 +11,6 @@ public @interface ActBase {
     Class base() default Void.class;
 
     int layout() default -1;
+
+    String layoutName() default "";
 }

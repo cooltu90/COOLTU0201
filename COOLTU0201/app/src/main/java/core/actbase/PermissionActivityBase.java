@@ -23,7 +23,7 @@ public abstract class PermissionActivityBase extends com.codingtu.cooltu.ui.base
     @Override
     protected void onCreate(android.os.Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.codingtu.cooltu.R.layout.activity_permission);
+        setContentView(getLayout());
 
         installLl = findViewById(com.codingtu.cooltu.R.id.installLl);
         locationTv = findViewById(com.codingtu.cooltu.R.id.locationTv);
@@ -46,6 +46,11 @@ public abstract class PermissionActivityBase extends com.codingtu.cooltu.ui.base
             onCreateComplete();
         }
     }
+
+    protected int getLayout() {
+        return com.codingtu.cooltu.R.layout.activity_permission;
+    }
+
 
     @Override
     public void onCreateComplete() {
