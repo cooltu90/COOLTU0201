@@ -46,7 +46,7 @@ public class CacheDMBuilder extends CacheDMBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_CACHE());
+        addTag(pkg, Pkg.CORE_CACHE);
         addTag(className, javaInfo.name);
 
         veEs.ls(new Es.EachEs<VariableElement>() {

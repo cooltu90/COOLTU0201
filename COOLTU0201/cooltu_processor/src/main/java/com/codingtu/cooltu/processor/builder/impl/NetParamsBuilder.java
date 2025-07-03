@@ -36,7 +36,7 @@ public class NetParamsBuilder extends NetParamsBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_NET_PARAMS());
+        addTag(pkg, Pkg.CORE_NET_PARAMS);
         addTag(coreSendParamsFullName, FullName.CORE_SEND_PARAMS);
         addTag(name, javaInfo.name);
 

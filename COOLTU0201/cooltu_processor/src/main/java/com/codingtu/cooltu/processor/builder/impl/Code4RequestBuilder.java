@@ -6,6 +6,7 @@ import com.codingtu.cooltu.lib4j.es.Es;
 import com.codingtu.cooltu.processor.builder.base.Code4RequestBuilderBase;
 import com.codingtu.cooltu.processor.deal.ResForDeal;
 import com.codingtu.cooltu.processor.lib.path.CurrentPath;
+import com.codingtu.cooltu.processor.lib.tools.BuilderTools;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Code4RequestBuilder extends Code4RequestBuilderBase {
     public Map<String, String> fullNames = new HashMap<>();
 
     public Code4RequestBuilder() {
-        super(CurrentPath.javaInfo(FullName.CODE_4_REQUEST()));
+        super(CurrentPath.javaInfo(FullName.CODE_4_REQUEST + BuilderTools.moduleSuffix()));
     }
 
 
@@ -48,7 +49,8 @@ public class Code4RequestBuilder extends Code4RequestBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_TOOLS());
+        addTag(pkg, Pkg.CORE_TOOLS);
+        addTag(className, javaInfo.name);
 
         Es.es(ResForDeal.HAS_START_MAP.keySet()).ls(new Es.EachEs<String>() {
             @Override
@@ -81,7 +83,7 @@ public class Code4RequestBuilder extends Code4RequestBuilderBase {
 /* model_temp_start
 package [[pkg]];
 
-public class Code4Request {
+public class [[className]] {
                                                                                                     [<sub>][for][field]
     public static final int [name] = [value];
                                                                                                     [<sub>][for][field]

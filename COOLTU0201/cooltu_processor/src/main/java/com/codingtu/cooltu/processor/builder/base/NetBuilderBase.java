@@ -4,6 +4,7 @@ import java.util.List;
 
 public abstract class NetBuilderBase extends com.codingtu.cooltu.processor.builder.core.CoreBuilder {
     protected StringBuilder pkg;
+    protected StringBuilder className;
     protected java.util.Map<String, Boolean> fieldIfs;
     protected java.util.Map<String, Integer> fieldCounts;
     protected StringBuilder fieldSb;
@@ -17,6 +18,7 @@ public abstract class NetBuilderBase extends com.codingtu.cooltu.processor.build
     public NetBuilderBase(com.codingtu.cooltu.lib4j.data.java.JavaInfo info) {
         super(info);
         pkg = map.get("pkg");
+        className = map.get("className");
         fieldIfs = new java.util.HashMap<>();
         fieldCounts = new java.util.HashMap<>();
         fieldSb = map.get("field");
@@ -131,7 +133,7 @@ public abstract class NetBuilderBase extends com.codingtu.cooltu.processor.build
         lines.add("import okhttp3.ResponseBody;");
         lines.add("import retrofit2.adapter.rxjava2.Result;");
         lines.add("");
-        lines.add("public class Net {");
+        lines.add("public class [[className]] {");
         lines.add("[[field]]");
         lines.add("[[method]]");
         lines.add("");

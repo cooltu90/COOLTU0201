@@ -1,16 +1,18 @@
 package com.codingtu.cooltu.processor.builder.impl;
 
 import com.codingtu.cooltu.constant.FullName;
+import com.codingtu.cooltu.constant.Module;
 import com.codingtu.cooltu.constant.Pkg;
 import com.codingtu.cooltu.lib4j.data.kv.KV;
 import com.codingtu.cooltu.lib4j.es.BaseEs;
 import com.codingtu.cooltu.lib4j.es.Es;
 import com.codingtu.cooltu.lib4j.tools.ClassTool;
+import com.codingtu.cooltu.lib4j.tools.ConvertTool;
 import com.codingtu.cooltu.lib4j.tools.StringTool;
 import com.codingtu.cooltu.processor.builder.base.DataBuilderBase;
-import com.codingtu.cooltu.processor.lib.log.Logs;
 import com.codingtu.cooltu.processor.lib.param.Params;
 import com.codingtu.cooltu.processor.lib.path.CurrentPath;
+import com.codingtu.cooltu.processor.lib.tools.BuilderTools;
 import com.codingtu.cooltu.processor.lib.tools.ElementTools;
 
 import javax.lang.model.element.ExecutableElement;
@@ -22,7 +24,7 @@ public class DataBuilder extends DataBuilderBase {
     private BaseEs<ExecutableElement> methodEs = Es.es();
 
     private DataBuilder() {
-        super(CurrentPath.javaInfo(FullName.DATA_DM()));
+        super(CurrentPath.javaInfo(FullName.DATA_DM + BuilderTools.moduleSuffix()));
     }
 
     @Override
@@ -32,7 +34,8 @@ public class DataBuilder extends DataBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_DATA());
+        addTag(pkg, Pkg.CORE_DATA);
+        addTag(name, javaInfo.name);
         methodEs.ls(new Es.EachEs<ExecutableElement>() {
             @Override
             public boolean each(int position, ExecutableElement ee) {
@@ -119,7 +122,7 @@ public class DataBuilder extends DataBuilderBase {
 /* model_temp_start
 package [[pkg]];
 
-public class DataDM {
+public class [[name]] {
 [[methods]]
 }
 model_temp_end */

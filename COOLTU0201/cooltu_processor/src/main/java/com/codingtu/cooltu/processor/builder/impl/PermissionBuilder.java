@@ -7,6 +7,7 @@ import com.codingtu.cooltu.lib4j.tools.ConvertTool;
 import com.codingtu.cooltu.processor.annotation.ui.Permission;
 import com.codingtu.cooltu.processor.builder.base.PermissionBuilderBase;
 import com.codingtu.cooltu.processor.lib.path.CurrentPath;
+import com.codingtu.cooltu.processor.lib.tools.BuilderTools;
 import com.codingtu.cooltu.processor.lib.tools.ElementTools;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class PermissionBuilder extends PermissionBuilderBase {
     private List<ExecutableElement> ees = new ArrayList<>();
 
     public PermissionBuilder() {
-        super(CurrentPath.javaInfo(FullName.PERMISSIONS()));
+        super(CurrentPath.javaInfo(FullName.PERMISSIONS + BuilderTools.moduleSuffix()));
     }
 
     public void add(Permission permission, ExecutableElement ee) {
@@ -43,7 +44,8 @@ public class PermissionBuilder extends PermissionBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_TOOLS());
+        addTag(pkg, Pkg.CORE_TOOLS);
+        addTag(className, javaInfo.name);
         Es.es(backs).ls(new Es.EachEs<Permission>() {
             @Override
             public boolean each(int methodIndex, Permission permissionBack) {
@@ -77,7 +79,7 @@ package [[pkg]];
 
 import android.app.Activity;
 
-public class Permissions {
+public class [[className]] {
                                                                                                     [<sub>][for][field]
     public static final int CODE_[methodName]_IN_[act] = [value];
                                                                                                     [<sub>][for][field]

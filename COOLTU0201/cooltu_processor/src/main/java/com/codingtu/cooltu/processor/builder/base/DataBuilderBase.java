@@ -4,11 +4,13 @@ import java.util.List;
 
 public abstract class DataBuilderBase extends com.codingtu.cooltu.processor.builder.core.CoreBuilder {
     protected StringBuilder pkg;
+    protected StringBuilder name;
     protected StringBuilder methods;
 
     public DataBuilderBase(com.codingtu.cooltu.lib4j.data.java.JavaInfo info) {
         super(info);
         pkg = map.get("pkg");
+        name = map.get("name");
         methods = map.get("methods");
 
     }
@@ -25,7 +27,7 @@ public abstract class DataBuilderBase extends com.codingtu.cooltu.processor.buil
         List<String> lines = new ArrayList<>();
         lines.add("package [[pkg]];");
         lines.add("");
-        lines.add("public class DataDM {");
+        lines.add("public class [[name]] {");
         lines.add("[[methods]]");
         lines.add("}");
 

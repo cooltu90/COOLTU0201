@@ -4,6 +4,7 @@ import java.util.List;
 
 public abstract class PassBuilderBase extends com.codingtu.cooltu.processor.builder.core.CoreBuilder {
     protected StringBuilder pkg;
+    protected StringBuilder className;
     protected java.util.Map<String, Boolean> fieldIfs;
     protected java.util.Map<String, Integer> fieldCounts;
     protected StringBuilder fieldSb;
@@ -16,6 +17,7 @@ public abstract class PassBuilderBase extends com.codingtu.cooltu.processor.buil
     public PassBuilderBase(com.codingtu.cooltu.lib4j.data.java.JavaInfo info) {
         super(info);
         pkg = map.get("pkg");
+        className = map.get("className");
         fieldIfs = new java.util.HashMap<>();
         fieldCounts = new java.util.HashMap<>();
         fieldSb = map.get("field");
@@ -88,7 +90,7 @@ public abstract class PassBuilderBase extends com.codingtu.cooltu.processor.buil
         lines.add("");
         lines.add("import android.content.Intent;");
         lines.add("");
-        lines.add("public class Pass {");
+        lines.add("public class [[className]] {");
         lines.add("[[field]]");
         lines.add("[[method]]");
         lines.add("");

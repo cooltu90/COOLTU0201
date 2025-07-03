@@ -24,7 +24,7 @@ public class DefaultListAdapterBuilder extends DefaultListAdapterBuilderBase {
     protected void dealLines() {
         addTag(pkg, javaInfo.pkg);
         addTag(coreListAdapterFullName, FullName.CORE_LIST_ADAPTER);
-        addTag(vhPkg, Pkg.CORE_VH());
+        addTag(vhPkg, Pkg.CORE_VH);
         addTag(vhName, vhJavaInfo.name);
         addTag(name, javaInfo.name);
         addTag(coreListAdapterName, FullName.CORE_LIST_ADAPTER_SHORT_NAME);

@@ -26,7 +26,7 @@ public class DefaultListMoreAdapterBuilder extends DefaultListMoreAdapterBuilder
         addTag(rPkg, Pkg.R);
         addTag(coreMoreListAdapterFullName, FullName.CORE_MORE_LIST_ADAPTER);
         addTag(annotationVhFullName, FullName.ANNOTATION_VH);
-        addTag(vhPkg, Pkg.CORE_VH());
+        addTag(vhPkg, Pkg.CORE_VH);
         addTag(vhName, vhJavaInfo.name);
         addTag(layoutName, layoutSimpleName);
         addTag(name, javaInfo.name);

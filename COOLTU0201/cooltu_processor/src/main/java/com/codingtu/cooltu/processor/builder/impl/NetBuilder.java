@@ -16,6 +16,7 @@ import com.codingtu.cooltu.processor.bean.NetInfo;
 import com.codingtu.cooltu.processor.builder.base.NetBuilderBase;
 import com.codingtu.cooltu.processor.lib.param.Params;
 import com.codingtu.cooltu.processor.lib.path.CurrentPath;
+import com.codingtu.cooltu.processor.lib.tools.BuilderTools;
 import com.codingtu.cooltu.processor.lib.tools.ElementTools;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class NetBuilder extends NetBuilderBase {
     private List<NetInfo> infos = new ArrayList<>();
 
     public NetBuilder() {
-        super(CurrentPath.javaInfo(FullName.NET()));
+        super(CurrentPath.javaInfo(FullName.NET + BuilderTools.moduleSuffix()));
     }
 
 
@@ -59,7 +60,8 @@ public class NetBuilder extends NetBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_NET());
+        addTag(pkg, Pkg.CORE_NET);
+        addTag(className, javaInfo.name);
         Es.es(infos).ls(new Es.EachEs<NetInfo>() {
             @Override
             public boolean each(int position, NetInfo netInfo) {
@@ -199,7 +201,7 @@ import com.codingtu.cooltu.lib4a.net.bean.CoreSendParams;
 import okhttp3.ResponseBody;
 import retrofit2.adapter.rxjava2.Result;
 
-public class Net {
+public class [[className]] {
                                                                                                     [<sub>][for][field]
     private static final String [name] = "[value]";
                                                                                                     [<sub>][for][field]

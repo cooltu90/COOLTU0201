@@ -20,7 +20,7 @@ public class CacheBuilder extends CacheBuilderBase {
     public BaseEs<VariableElement> veEs = Es.es();
 
     public CacheBuilder() {
-        super(CurrentPath.javaInfo(FullName.CACHE_DM()));
+        super(CurrentPath.javaInfo(FullName.CACHE_DM));
     }
 
 
@@ -30,7 +30,7 @@ public class CacheBuilder extends CacheBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_TOOLS());
+        addTag(pkg, Pkg.CORE_TOOLS);
 
         veEs.ls(new Es.EachEs<VariableElement>() {
             @Override

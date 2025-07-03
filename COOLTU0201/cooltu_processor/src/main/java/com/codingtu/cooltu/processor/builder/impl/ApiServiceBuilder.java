@@ -53,7 +53,7 @@ public class ApiServiceBuilder extends ApiServiceBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_NET_API());
+        addTag(pkg, Pkg.CORE_NET_API);
         addTag(name, javaInfo.name);
 
         int[] count = {0};

@@ -725,13 +725,13 @@ public abstract class UiBaseBuilder {
 
                 JavaInfo fromJavaInfo = CurrentPath.javaInfo(fromClass);
 
-                uiBase.actBack(actBackIndex, actBackIndex == 0 ? "if" : "else if", FullName.CODE_4_REQUEST(), ConvertTool.toStaticType(fromJavaInfo.name), methodName);
+                uiBase.actBack(actBackIndex, actBackIndex == 0 ? "if" : "else if", FullName.CODE_4_REQUEST, ConvertTool.toStaticType(fromJavaInfo.name), methodName);
 
                 Params params = ElementTools.getMethodParamKvs(ee);
                 params.ls(new Es.EachEs<KV<String, String>>() {
                     @Override
                     public boolean each(int paramIndex, KV<String, String> kv) {
-                        uiBase.actBackParam(actBackIndex, paramIndex, FullName.PASS(), kv.v);
+                        uiBase.actBackParam(actBackIndex, paramIndex, FullName.PASS, kv.v);
                         uiBase.isActBackParamDivider(actBackIndex, paramIndex, paramIndex != (CountTool.count(ee.getParameters()) - 1));
                         return false;
                     }

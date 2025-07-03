@@ -25,7 +25,7 @@ public class CacheConfigDeal extends TypeBaseDeal {
         }
         Logs.i("cacheDmName:" + cacheDmName);
 
-        JavaInfo cacheDmJavaInfo = CurrentPath.javaInfo(Pkg.CORE_CACHE(), cacheDmName);
+        JavaInfo cacheDmJavaInfo = CurrentPath.javaInfo(Pkg.CORE_CACHE, cacheDmName);
         CacheDMBuilder cacheDMBuilder = new CacheDMBuilder(cacheDmJavaInfo);
 
 

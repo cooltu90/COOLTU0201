@@ -15,6 +15,7 @@ import com.codingtu.cooltu.processor.deal.ResForDeal;
 import com.codingtu.cooltu.processor.lib.param.Params;
 import com.codingtu.cooltu.processor.lib.path.CurrentPath;
 import com.codingtu.cooltu.processor.lib.tools.BaseTools;
+import com.codingtu.cooltu.processor.lib.tools.BuilderTools;
 import com.codingtu.cooltu.processor.lib.tools.ElementTools;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class ActStartBuilder extends ActStartBuilderBase {
     };
 
     public ActStartBuilder() {
-        super(CurrentPath.javaInfo(FullName.ACT_START()));
+        super(CurrentPath.javaInfo(FullName.ACT_START + BuilderTools.moduleSuffix()));
     }
 
     private void add(String actFullName, int index, KV<String, String> kv) {
@@ -62,7 +63,8 @@ public class ActStartBuilder extends ActStartBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_TOOLS());
+        addTag(pkg, Pkg.CORE_TOOLS);
+        addTag(className, javaInfo.name);
         //
         Es.es(ResForDeal.HAS_START_MAP.keySet()).ls(new Es.EachEs<String>() {
             @Override
@@ -134,9 +136,9 @@ public class ActStartBuilder extends ActStartBuilderBase {
                             @Override
                             public boolean each(int position, KV<String, String> kv) {
                                 if (ClassTool.isBaseClass(kv.k)) {
-                                    methodIntent(index[0], position, ConvertTool.toStaticType(kv.v), kv.v);
+                                    methodIntent(index[0], position, BuilderTools.moduleSuffix(), ConvertTool.toStaticType(kv.v), kv.v);
                                 } else {
-                                    methodIntent(index[0], position, ConvertTool.toStaticType(kv.v),
+                                    methodIntent(index[0], position, BuilderTools.moduleSuffix(), ConvertTool.toStaticType(kv.v),
                                             FullName.JSON_TOOL + ".toJson(" + kv.v + ")");
                                 }
 
@@ -145,7 +147,8 @@ public class ActStartBuilder extends ActStartBuilderBase {
                         });
                         Params params = Params.obtain(kvs);
                         String methodParams = params.getMethodParams(true, false);
-                        method(index[0], ConvertTool.toMethodType(CurrentPath.javaInfo(actFullName).name), methodParams, actFullName, FullName.ACT_TOOL, CurrentPath.actStaticName(actFullName));
+                        method(index[0], ConvertTool.toMethodType(CurrentPath.javaInfo(actFullName).name), methodParams, actFullName, BuilderTools.moduleSuffix(), FullName.ACT_TOOL,
+                                "Code4Request" + BuilderTools.moduleSuffix(), CurrentPath.actStaticName(actFullName));
                         index[0]++;
                         return false;
                     }
@@ -161,15 +164,15 @@ package [[pkg]];
 import android.app.Activity;
 import android.content.Intent;
 
-public class ActStart {
+public class [[className]] {
                                                                                                     [<sub>][for][method]
     public static final void [methodName](Activity act[param]) {
         Intent intent = new Intent(act, [actFullName].class);
-        intent.putExtra(Pass.FROM_ACT, act.getClass().getCanonicalName());
+        intent.putExtra(Pass[suffix].FROM_ACT, act.getClass().getCanonicalName());
                                                                                                     [<sub>][for][methodIntent]
-        intent.putExtra(Pass.[fieldName], [value]);
+        intent.putExtra(Pass[suffix1].[fieldName], [value]);
                                                                                                     [<sub>][for][methodIntent]
-        [actToolFullName].startActivityForResult(act, intent, Code4Request.[codeName]);
+        [actToolFullName].startActivityForResult(act, intent, [Code4RequestName].[codeName]);
     }
                                                                                                     [<sub>][for][method]
 }

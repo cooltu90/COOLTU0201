@@ -96,7 +96,7 @@ public class CurrentPath {
      *
      **************************************************/
     public static JavaInfo actRes(String packages, String name) {
-        String pkg = Pkg.ACT_RES();
+        String pkg = Pkg.ACT_RES;
 //        String pkg = Pkg.ACT_RES + packages.substring(Pkg.ACT.length());
         String resName = ConvertTool.toClassType(name) + Suffix.ACTIVITY_RES;
         return javaInfo(pkg + "." + resName);
@@ -110,7 +110,7 @@ public class CurrentPath {
      **************************************************/
     public static JavaInfo actBase(String actFullName) {
         JavaInfo actJavaInfo = javaInfo(actFullName);
-        String pkg = Pkg.ACT_BASE();
+        String pkg = Pkg.ACT_BASE;
 //        String pkg = Pkg.ACT_BASE + actJavaInfo.pkg.substring(Pkg.ACT.length());
         return javaInfo(pkg, actJavaInfo.name + Suffix.ACT_BASE);
     }
@@ -142,7 +142,7 @@ public class CurrentPath {
      *
      **************************************************/
     public static JavaInfo fragRes(String packages, String name) {
-        String pkg = Pkg.FRAGMENT_RES();
+        String pkg = Pkg.FRAGMENT_RES;
 //        String pkg = Pkg.FRAGMENT_RES + packages.substring(Pkg.ACT.length());
         String resName = ConvertTool.toClassType(name) + Suffix.FRAGMENT_RES;
         return javaInfo(pkg + "." + resName);
@@ -156,7 +156,7 @@ public class CurrentPath {
     public static JavaInfo fragBase(String fragFullName) {
         JavaInfo fragJavaInfo = javaInfo(fragFullName);
 //        String pkg = Pkg.FRAGMENT_BASE + fragJavaInfo.pkg.substring(Pkg.ACT.length());
-        String pkg = Pkg.FRAGMENT_BASE();
+        String pkg = Pkg.FRAGMENT_BASE;
         return javaInfo(pkg, fragJavaInfo.name + Suffix.FRAGMENT_BASE);
     }
 
@@ -183,7 +183,7 @@ public class CurrentPath {
      *
      **************************************************/
     public static String sendParamsFullName(String methodName) {
-        return Pkg.CORE_NET_PARAMS()
+        return Pkg.CORE_NET_PARAMS
                 + "."
                 + ConvertTool.toClassType(methodName)
                 + Suffix.NET_PARAMS;
@@ -200,7 +200,7 @@ public class CurrentPath {
      *
      **************************************************/
     public static String apiServiceFullName(String apiName) {
-        return Pkg.CORE_NET_API() + "." + apiName + Suffix.API_SERVICE;
+        return Pkg.CORE_NET_API + "." + apiName + Suffix.API_SERVICE;
     }
 
     public static JavaInfo apiService(String apiName) {
@@ -213,7 +213,7 @@ public class CurrentPath {
      *
      **************************************************/
     public static String netBackFullName(String methodName) {
-        return Pkg.CORE_NET_BACK()
+        return Pkg.CORE_NET_BACK
                 + "."
                 + ConvertTool.toClassType(methodName)
                 + Suffix.NET_BACK;
@@ -229,7 +229,7 @@ public class CurrentPath {
      *
      **************************************************/
     public static String vhFullName(String name) {
-        return Pkg.CORE_VH()
+        return Pkg.CORE_VH
                 + "."
                 + ConvertTool.toClassType(name)
                 + Suffix.VH;
@@ -243,7 +243,7 @@ public class CurrentPath {
      *
      **************************************************/
     public static String msThreadTypeFullName(String name) {
-        return Pkg.CORE_MSTHREAD()
+        return Pkg.CORE_MSTHREAD
                 + "."
                 + name
                 + Suffix.MSTHREAD_TYPE;
@@ -257,7 +257,7 @@ public class CurrentPath {
      *
      **************************************************/
     public static String msThreadInterfaceFullName(String name) {
-        return Pkg.CORE_MSTHREAD()
+        return Pkg.CORE_MSTHREAD
                 + "."
                 + name
                 + Suffix.MSTHREAD_INTERFACE;
@@ -266,12 +266,11 @@ public class CurrentPath {
     public static JavaInfo msThreadInterface(String name) {
         return javaInfo(msThreadInterfaceFullName(name));
     }
-
     /**************************************************
      *
      **************************************************/
     public static String msThreadFullName(String name) {
-        return Pkg.CORE_MSTHREAD()
+        return Pkg.CORE_MSTHREAD
                 + "."
                 + name
                 + Suffix.MSTHREAD;
@@ -280,12 +279,11 @@ public class CurrentPath {
     public static JavaInfo msThread(String name) {
         return javaInfo(msThreadFullName(name));
     }
-
     /**************************************************
      *
      **************************************************/
     public static String msThreadBaseFullName(String name) {
-        return Pkg.CORE_MSTHREAD()
+        return Pkg.CORE_MSTHREAD
                 + "."
                 + name
                 + Suffix.MS_THREAD_BASE;

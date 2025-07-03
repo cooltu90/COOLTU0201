@@ -23,6 +23,7 @@ import com.codingtu.cooltu.processor.deal.ActBaseDeal;
 import com.codingtu.cooltu.processor.lib.param.Params;
 import com.codingtu.cooltu.processor.lib.path.CurrentPath;
 import com.codingtu.cooltu.processor.lib.tools.BaseTools;
+import com.codingtu.cooltu.processor.lib.tools.BuilderTools;
 import com.codingtu.cooltu.processor.lib.tools.ElementTools;
 
 import java.util.ArrayList;
@@ -116,7 +117,7 @@ public class ActBaseBuilder extends ActBaseBuilderBase implements UiBaseInterfac
             @Override
             public boolean each(int position, KV<String, String> kv) {
                 addField(Constant.SIGN_PROTECTED, kv.k, kv.v);
-                startInit(position, kv.v, FullName.PASS());
+                startInit(position, kv.v, FullName.PASS + BuilderTools.moduleSuffix());
                 return false;
             }
         });
@@ -133,7 +134,7 @@ public class ActBaseBuilder extends ActBaseBuilderBase implements UiBaseInterfac
                 String actNameStatic = ConvertTool.toStaticType(actName);
 
                 permissionBack(permissionIndex, permissionIndex == 0 ? "if" : "else if",
-                        FullName.PERMISSIONS(), methodNameStatic, actNameStatic, methodName);
+                        FullName.PERMISSIONS + BuilderTools.moduleSuffix(), methodNameStatic, actNameStatic, methodName);
 
                 boolean isParam = !CountTool.isNull(ee.getParameters());
                 if (isParam) {
@@ -228,7 +229,7 @@ public class ActBaseBuilder extends ActBaseBuilderBase implements UiBaseInterfac
             addLnTag(otherLineSb, "        [tesUdMsThread] = null;", msThreadFieldName);
             addLnTag(otherLineSb, "    }");
 
-            addLnTag(onDestroySb,"        stopMsThread();");
+            addLnTag(onDestroySb, "        stopMsThread();");
         }
         otherIf(otherLineSb.toString());
         onCreateCompleteOtherIf(onCompleteOtherLineSb.toString());

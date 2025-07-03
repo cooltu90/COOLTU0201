@@ -10,6 +10,7 @@ import com.codingtu.cooltu.lib4j.tools.ConvertTool;
 import com.codingtu.cooltu.lib4j.tools.StringTool;
 import com.codingtu.cooltu.processor.builder.base.PassBuilderBase;
 import com.codingtu.cooltu.processor.lib.path.CurrentPath;
+import com.codingtu.cooltu.processor.lib.tools.BuilderTools;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +26,7 @@ public class PassBuilder extends PassBuilderBase {
 
 
     public PassBuilder() {
-        super(CurrentPath.javaInfo(FullName.PASS()));
+        super(CurrentPath.javaInfo(FullName.PASS+ BuilderTools.moduleSuffix()));
         add(new KV<>(FullName.STRING, Constant.FROM_ACT));
     }
 
@@ -55,7 +56,8 @@ public class PassBuilder extends PassBuilderBase {
 
     @Override
     protected void dealLines() {
-        addTag(pkg, Pkg.CORE_TOOLS());
+        addTag(pkg, Pkg.CORE_TOOLS);
+        addTag(className, javaInfo.name);
 
         Es.es(kvs).ls(new Es.EachEs<KV<String, String>>() {
             @Override
@@ -100,7 +102,7 @@ package [[pkg]];
 
 import android.content.Intent;
 
-public class Pass {
+public class [[className]] {
                                                                                                     [<sub>][for][field]
     public static final String [name] = "[value]";
                                                                                                     [<sub>][for][field]
