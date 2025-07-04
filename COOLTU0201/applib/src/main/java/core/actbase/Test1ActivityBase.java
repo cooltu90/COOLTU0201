@@ -100,8 +100,12 @@ public abstract class Test1ActivityBase extends com.codingtu.cooltu.lib4a.ui.act
     @Override
     public void back(int requestCode, String[] permissions, int[] grantResults) {
         super.back(requestCode, permissions, grantResults);
+        if (requestCode == core.tools.PermissionsForApplib.CODE_CHECK_IN_TEST1_ACTIVITY) {
+            check();
+        }
 
     }
+    protected void check() {}
 
 
 
