@@ -52,6 +52,16 @@ public abstract class StepOneFragmentBase extends com.codingtu.cooltu.ui.BaseSte
         return com.codingtu.cooltu.R.layout.fragment_step_one;
     }
 
+    protected android.widget.TextView tv2() {
+        return tv2;
+    }
+    protected androidx.recyclerview.widget.RecyclerView rv() {
+        return rv;
+    }
+    protected android.widget.TextView tv1() {
+        return tv1;
+    }
+
 
     @Override
     public void onCreateComplete() {

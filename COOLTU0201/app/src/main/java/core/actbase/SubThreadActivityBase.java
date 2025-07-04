@@ -36,6 +36,7 @@ public abstract class SubThreadActivityBase extends com.codingtu.cooltu.ui.base.
     }
 
 
+
     @Override
     public void onCreateComplete() {
         super.onCreateComplete();

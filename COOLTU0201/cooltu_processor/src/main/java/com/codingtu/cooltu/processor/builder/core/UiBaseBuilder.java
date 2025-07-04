@@ -1025,6 +1025,20 @@ public abstract class UiBaseBuilder {
         return BaseTools.getThisWithParents(this, getParentGetter());
     }
 
+    public void dealGetViewMethods(StringBuilder getViewMethods) {
+        Es.es(viewInfos).ls(new Es.EachEs<LayoutTools.ViewInfo>() {
+            @Override
+            public boolean each(int position, LayoutTools.ViewInfo viewInfo) {
+                if (!"android.widget.fragment".equals(viewInfo.tag)) {
+                    TagTools.addLnTag(getViewMethods, "    protected [LinearLayout] [baseUrlBt]() {", viewInfo.tag, viewInfo.fieldName);
+                    TagTools.addLnTag(getViewMethods, "        return [baseUrlBt];", viewInfo.fieldName);
+                    TagTools.addLnTag(getViewMethods, "    }");
+                }
+                return false;
+            }
+        });
+    }
+
 
     /**************************************************
      *

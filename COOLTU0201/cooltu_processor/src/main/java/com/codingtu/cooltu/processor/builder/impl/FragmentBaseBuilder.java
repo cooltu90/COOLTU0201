@@ -199,6 +199,8 @@ public class FragmentBaseBuilder extends FragmentBaseBuilderBase implements UiBa
             addLnTag(getLayout, "        return [-1];", uiBaseBuilder.layout.toString());
             addLnTag(getLayout, "    }");
         }
+
+        uiBaseBuilder.dealGetViewMethods(getViewMethods);
     }
 
     @Override
@@ -281,6 +283,7 @@ public abstract class [[name]] extends [[baseClass]] implements View.OnClickList
                                                                                                     [<sub>][if][layout]
 
 [[getLayout]]
+[[getViewMethods]]
 
     @Override
     public void onCreateComplete() {

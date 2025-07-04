@@ -17,6 +17,7 @@ public abstract class FragmentBaseBuilderBase extends com.codingtu.cooltu.proces
     protected StringBuilder layoutSb;
     protected com.codingtu.cooltu.lib4j.data.map.ListValueMap<String, String> layout;
     protected StringBuilder getLayout;
+    protected StringBuilder getViewMethods;
     protected StringBuilder useAdapters;
     protected java.util.Map<String, Boolean> listAdapterIfs;
     protected java.util.Map<String, Integer> listAdapterCounts;
@@ -137,6 +138,7 @@ public abstract class FragmentBaseBuilderBase extends com.codingtu.cooltu.proces
         layoutSb = map.get("layout");
         layout = new com.codingtu.cooltu.lib4j.data.map.ListValueMap<>();
         getLayout = map.get("getLayout");
+        getViewMethods = map.get("getViewMethods");
         useAdapters = map.get("useAdapters");
         listAdapterIfs = new java.util.HashMap<>();
         listAdapterCounts = new java.util.HashMap<>();
@@ -1013,6 +1015,7 @@ public abstract class FragmentBaseBuilderBase extends com.codingtu.cooltu.proces
         lines.add("[[layout]]");
         lines.add("");
         lines.add("[[getLayout]]");
+        lines.add("[[getViewMethods]]");
         lines.add("");
         lines.add("    @Override");
         lines.add("    public void onCreateComplete() {");

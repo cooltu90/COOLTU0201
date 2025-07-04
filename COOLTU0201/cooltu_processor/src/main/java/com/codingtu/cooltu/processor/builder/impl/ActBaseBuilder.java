@@ -246,6 +246,8 @@ public class ActBaseBuilder extends ActBaseBuilderBase implements UiBaseInterfac
             addLnTag(getLayout, "    }");
         }
 
+        uiBaseBuilder.dealGetViewMethods(getViewMethods);
+
     }
 
     @Override
@@ -337,6 +339,7 @@ public abstract class [[name]] extends [[baseClass]] implements View.OnClickList
     }
 
 [[getLayout]]
+[[getViewMethods]]
 
     @Override
     public void onCreateComplete() {

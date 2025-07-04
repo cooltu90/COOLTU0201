@@ -34,6 +34,7 @@ public abstract class FromActivityBase extends com.codingtu.cooltu.ui.FromBaseAc
     }
 
 
+
     @Override
     public void onCreateComplete() {
         super.onCreateComplete();

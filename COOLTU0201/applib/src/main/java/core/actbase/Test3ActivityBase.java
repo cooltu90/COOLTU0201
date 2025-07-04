@@ -34,6 +34,7 @@ public abstract class Test3ActivityBase extends com.codingtu.cooltu.lib4a.ui.act
     }
 
 
+
     @Override
     public void onCreateComplete() {
         super.onCreateComplete();

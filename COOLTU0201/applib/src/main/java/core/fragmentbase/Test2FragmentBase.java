@@ -39,6 +39,7 @@ public abstract class Test2FragmentBase extends com.codingtu.cooltu.lib4a.ui.fra
     }
 
 
+
     @Override
     public void onCreateComplete() {
         super.onCreateComplete();

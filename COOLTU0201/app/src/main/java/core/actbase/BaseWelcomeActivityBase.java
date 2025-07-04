@@ -58,6 +58,40 @@ public abstract class BaseWelcomeActivityBase extends com.codingtu.cooltu.ui.bas
         return com.codingtu.cooltu.R.layout.activity_welcome;
     }
 
+    protected android.widget.TextView showBt() {
+        return showBt;
+    }
+    protected android.widget.TextView tv1() {
+        return tv1;
+    }
+    protected android.widget.RelativeLayout tv3() {
+        return tv3;
+    }
+    protected android.widget.RelativeLayout tv3Rl() {
+        return tv3Rl;
+    }
+    protected android.widget.RelativeLayout tv4() {
+        return tv4;
+    }
+    protected android.widget.TextView tv6() {
+        return tv6;
+    }
+    protected android.widget.RelativeLayout tv4Rl() {
+        return tv4Rl;
+    }
+    protected android.widget.TextView tv3RlRlTv() {
+        return tv3RlRlTv;
+    }
+    protected android.widget.TextView backBt() {
+        return backBt;
+    }
+    protected android.widget.LinearLayout rootLl() {
+        return rootLl;
+    }
+    protected android.widget.TextView tv4RlRlTv() {
+        return tv4RlRlTv;
+    }
+
 
     @Override
     public void onCreateComplete() {

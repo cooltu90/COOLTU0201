@@ -51,6 +51,34 @@ public abstract class PermissionActivityBase extends com.codingtu.cooltu.ui.base
         return com.codingtu.cooltu.R.layout.activity_permission;
     }
 
+    protected android.widget.LinearLayout installLl() {
+        return installLl;
+    }
+    protected android.widget.TextView locationTv() {
+        return locationTv;
+    }
+    protected android.widget.TextView cameraTv() {
+        return cameraTv;
+    }
+    protected android.widget.TextView storeTv() {
+        return storeTv;
+    }
+    protected android.widget.TextView bluetoothTv() {
+        return bluetoothTv;
+    }
+    protected android.widget.TextView installBt() {
+        return installBt;
+    }
+    protected android.widget.LinearLayout version11Ll() {
+        return version11Ll;
+    }
+    protected android.widget.LinearLayout bluetoothLl() {
+        return bluetoothLl;
+    }
+    protected android.widget.TextView version11Bt() {
+        return version11Bt;
+    }
+
 
     @Override
     public void onCreateComplete() {

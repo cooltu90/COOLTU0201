@@ -43,6 +43,16 @@ public abstract class StepOneActivityBase extends com.codingtu.cooltu.ui.base.Ba
         return com.codingtu.cooltu.R.layout.activity_step_one;
     }
 
+    protected androidx.recyclerview.widget.RecyclerView rv() {
+        return rv;
+    }
+    protected android.widget.LinearLayout tvLl() {
+        return tvLl;
+    }
+    protected androidx.recyclerview.widget.RecyclerView rv1() {
+        return rv1;
+    }
+
 
     @Override
     public void onCreateComplete() {

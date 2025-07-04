@@ -37,6 +37,13 @@ public abstract class StepTwoActivityBase extends com.codingtu.cooltu.ui.base.Ba
         return com.codingtu.cooltu.R.layout.activity_step_two;
     }
 
+    protected android.widget.LinearLayout ll() {
+        return ll;
+    }
+    protected android.widget.LinearLayout ll1() {
+        return ll1;
+    }
+
 
     @Override
     public void onCreateComplete() {
