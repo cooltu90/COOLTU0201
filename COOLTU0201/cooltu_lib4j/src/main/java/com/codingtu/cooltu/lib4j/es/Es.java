@@ -1,6 +1,7 @@
 package com.codingtu.cooltu.lib4j.es;
 
 import com.codingtu.cooltu.lib4j.data.bean.CoreBean;
+import com.codingtu.cooltu.lib4j.data.symbol.LongIdSymbol;
 import com.codingtu.cooltu.lib4j.es.map.BaseMaps;
 import com.codingtu.cooltu.lib4j.tools.CountTool;
 import com.codingtu.cooltu.lib4j.es.impl.BooleanEs;
@@ -31,6 +32,24 @@ public class Es {
 
     public static interface IsThisOne<E> {
         boolean isThisOne(int position, E e);
+    }
+
+    public static class IsThisOneByLongId<E extends LongIdSymbol> implements IsThisOne<E> {
+
+        private long longId;
+
+        public IsThisOneByLongId(long longId) {
+            this.longId = longId;
+        }
+
+        public IsThisOneByLongId(E e) {
+            this.longId = e.obtainLongId();
+        }
+
+        @Override
+        public boolean isThisOne(int position, E e) {
+            return e.obtainLongId() == this.longId;
+        }
     }
 
     public static interface Convert<SRC, TARGET> {

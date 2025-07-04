@@ -34,5 +34,9 @@
     <item name="menuDialogItemsLl" type="id" />
     <!-- RadioGroup -->
     <!--    <item name="radioGroupItem" type="id" />-->
+    <!-- multi click-->
+    <item name="tagLastClickTime" type="id" />
+    <item name="tagClickTimes" type="id" />
+    <item name="tagCheckClickTimes" type="id" />
 
 </resources>
