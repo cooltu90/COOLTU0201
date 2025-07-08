@@ -1,6 +1,7 @@
 package com.codingtu.cooltu.lib4a.tools;
 
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.util.TypedValue;
 import android.view.View;
@@ -87,6 +88,16 @@ public class TextViewSetter {
 
     public TextViewSetter setBackgroundResource(int resId) {
         textView.setBackgroundResource(resId);
+        return this;
+    }
+
+    public TextViewSetter setDeleteLine() {
+        textView.setPaintFlags(textView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        return this;
+    }
+
+    public TextViewSetter removeDeleteLine() {
+        textView.setPaintFlags(textView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
         return this;
     }
 

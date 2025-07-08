@@ -155,4 +155,8 @@ public class RadioGroupBase<E, THIS extends RadioGroupBase> implements View.OnCl
     public int getSelected() {
         return selected == null ? -1 : selected;
     }
+
+    public void setItem(E e) {
+        setSelected(getItemIndex(e));
+    }
 }

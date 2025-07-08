@@ -32,8 +32,6 @@
     <item name="menuDialogItemTv" type="id" />
     <item name="menuDialogItemsSv" type="id" />
     <item name="menuDialogItemsLl" type="id" />
-    <!-- RadioGroup -->
-    <!--    <item name="radioGroupItem" type="id" />-->
     <!-- multi click-->
     <item name="tagLastClickTime" type="id" />
     <item name="tagClickTimes" type="id" />
