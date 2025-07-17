@@ -106,13 +106,11 @@ public final class Dialog implements View.OnClickListener, OnDestroy {
         int vId = v.getId();
         if (vId == R.id.dialogRightBt) {
             clickRightBt(v);
-            obj = null;
             return;
         }
 
         if (vId == R.id.dialogLeftBt) {
             clickLeftBt(v);
-            obj = null;
             return;
         }
     }
@@ -124,6 +122,7 @@ public final class Dialog implements View.OnClickListener, OnDestroy {
                 if (onBtClick != null) {
                     onBtClick.onRightClick(obj);
                 }
+                obj = null;
             }
         });
     }
@@ -135,6 +134,7 @@ public final class Dialog implements View.OnClickListener, OnDestroy {
                 if (onBtClick != null) {
                     onBtClick.onLeftClick(obj);
                 }
+                obj = null;
             }
         });
     }
