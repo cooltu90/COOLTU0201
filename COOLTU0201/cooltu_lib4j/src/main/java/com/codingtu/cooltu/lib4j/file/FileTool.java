@@ -19,6 +19,12 @@ import java.util.List;
 
 public class FileTool {
 
+    public static final String SEPARATOR = File.separator;
+
+    public static String addPrexSeparator(String dir) {
+        return SEPARATOR + dir;
+    }
+
     /**************************************************
      *
      * 获取项目目录
@@ -214,7 +220,7 @@ public class FileTool {
                 len += obtainTotalLength(files[i], filePass);
             }
         } else {
-            if (filePass != null && filePass.pass(file)) {
+            if (filePass != null && filePass.isPass(file)) {
                 return 0;
             }
             len = file.length();

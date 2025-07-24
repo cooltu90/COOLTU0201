@@ -117,5 +117,17 @@ public class FileReader<T> {
         return list;
     }
 
+    public String readToStr() {
+        StringBuilder sb = new StringBuilder();
+        readLine(new ReadLine<T>() {
+            @Override
+            public void readLine(T t) {
+                if (t != null) {
+                    sb.append(t);
+                }
+            }
+        });
+        return sb.toString();
+    }
 }
 

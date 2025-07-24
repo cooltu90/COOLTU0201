@@ -1,12 +1,9 @@
 package com.codingtu.cooltu.lib4j.zip;
 
-import com.codingtu.cooltu.constant.Constant;
+import com.codingtu.cooltu.lib4j.data.progress.Progress;
 import com.codingtu.cooltu.lib4j.destory.OnDestroy;
 import com.codingtu.cooltu.lib4j.file.FileTool;
-import com.codingtu.cooltu.lib4j.function.OnError;
-import com.codingtu.cooltu.lib4j.function.OnFinish;
-import com.codingtu.cooltu.lib4j.function.OnProgress;
-import com.codingtu.cooltu.lib4j.function.OnStart;
+import com.codingtu.cooltu.lib4j.function.OnCallBack;
 import com.codingtu.cooltu.lib4j.function.PathDeal;
 
 import java.io.File;
@@ -25,10 +22,10 @@ public class UnZip implements OnDestroy {
     private Integer cacheSize;
     private long totalLen;
 
-    private OnError onError;
-    private OnFinish<Long> onFinish;
-    private OnProgress onProgress;
-    private OnStart onStart;
+    private OnCallBack.P1<Throwable> onError;
+    private OnCallBack.P1<Long> onFinish;
+    private OnCallBack.P1<Progress> onProgress;
+    private OnCallBack.P0 onStart;
 
     private PathDeal zipedNameDeal;
 
@@ -63,17 +60,17 @@ public class UnZip implements OnDestroy {
         return this;
     }
 
-    public UnZip error(OnError onError) {
+    public UnZip error(OnCallBack.P1<Throwable> onError) {
         this.onError = onError;
         return this;
     }
 
-    public UnZip finish(OnFinish<Long> onFinish) {
+    public UnZip finish(OnCallBack.P1<Long> onFinish) {
         this.onFinish = onFinish;
         return this;
     }
 
-    public UnZip progress(OnProgress onProgress) {
+    public UnZip progress(OnCallBack.P1<Progress> onProgress) {
         this.onProgress = onProgress;
         return this;
     }
@@ -84,7 +81,7 @@ public class UnZip implements OnDestroy {
     }
 
 
-    public UnZip start(OnStart onStart) {
+    public UnZip start(OnCallBack.P0 onStart) {
         this.onStart = onStart;
         return this;
     }
@@ -114,7 +111,7 @@ public class UnZip implements OnDestroy {
         }
 
         if (onStart != null) {
-            onStart.onStart();
+            onStart.onCallBack();
         }
 
         InputStream in = null;
@@ -143,7 +140,7 @@ public class UnZip implements OnDestroy {
                     zipEntryName = zipedNameDeal.deal(zipEntryName);
                 }
                 //解决路径不兼容的问题
-                String outPath = (destDirPath + Constant.SEPARATOR + zipEntryName).replace('\\', '/');
+                String outPath = (destDirPath + FileTool.SEPARATOR + zipEntryName).replace('\\', '/');
                 File outFile = new File(outPath);
                 FileTool.createFileDir(outFile);
                 out = new FileOutputStream(outFile);
@@ -187,20 +184,20 @@ public class UnZip implements OnDestroy {
 
         onProgress(totalLen);
         if (onFinish != null) {
-            onFinish.onFinish(totalLen);
+            onFinish.onCallBack(totalLen);
         }
 
     }
 
     private void onProgress(long currentLen) {
         if (onProgress != null) {
-            onProgress.onProgress(totalLen, currentLen);
+            onProgress.onCallBack(new Progress(totalLen, currentLen));
         }
     }
 
     private void onError(Throwable throwable) {
         if (onError != null) {
-            onError.onError(throwable);
+            onError.onCallBack(throwable);
         }
         destroy();
     }

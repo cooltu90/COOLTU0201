@@ -23,11 +23,9 @@ public class CacheConfigDeal extends TypeBaseDeal {
         if (StringTool.isBlank(cacheDmName)) {
             cacheDmName = ElementTools.simpleName(te);
         }
-        Logs.i("cacheDmName:" + cacheDmName);
 
         JavaInfo cacheDmJavaInfo = CurrentPath.javaInfo(Pkg.CORE_CACHE, cacheDmName);
         CacheDMBuilder cacheDMBuilder = new CacheDMBuilder(cacheDmJavaInfo);
-
 
         ElementTools.getVariableElements(te).ls(new Es.EachEs<VariableElement>() {
             @Override
