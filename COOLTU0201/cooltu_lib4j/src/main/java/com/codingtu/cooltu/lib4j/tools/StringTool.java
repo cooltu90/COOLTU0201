@@ -1,6 +1,7 @@
 package com.codingtu.cooltu.lib4j.tools;
 
 import com.codingtu.cooltu.lib4j.es.Es;
+import com.codingtu.cooltu.lib4j.log.LibLogs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,61 +107,51 @@ public class StringTool {
     private static String absDoubleToString(Double num, int bit, boolean trim) {
         String numStr = String.valueOf(num);
         int dotIndex = numStr.indexOf(".");
-        if (dotIndex < 0) {
-            if (bit == 0 || trim) {
-                return numStr;
-            } else {
-                return numStr + "." + StringTool.repeatString(bit, "0");
-            }
-        }
 
         String zhengshuStr = numStr.substring(0, dotIndex);
         String xiaoshuStr = numStr.substring(dotIndex + 1);
 
-        int xiaoshuLen = xiaoshuStr.length();
-        if (xiaoshuLen < bit) {
+        if (xiaoshuStr.length() == bit) {
+            return numStr;
+        }
+
+        if (xiaoshuStr.length() < bit) {
             if (trim) {
-                return String.valueOf(num);
+                return numStr;
             } else {
-                return String.valueOf(num) + StringTool.repeatString(bit - xiaoshuLen, "0");
+                return zhengshuStr + "." + xiaoshuStr + repeatString(bit - xiaoshuStr.length(), "0");
             }
-        } else if (xiaoshuLen == bit) {
-            return String.valueOf(num);
         }
 
-        if (bit == 0) {
-            int zhengshu = Integer.parseInt(zhengshuStr);
-            if (Integer.parseInt(xiaoshuStr.substring(0, 1)) >= 5) {
-                zhengshu += 1;
+        int i = Integer.parseInt(zhengshuStr + xiaoshuStr.substring(0, bit));
+        if (Integer.parseInt(xiaoshuStr.substring(bit, bit + 1)) >= 5) {
+            i += 1;
+        }
+
+        zhengshuStr = String.valueOf(i);
+        if (zhengshuStr.length() == bit) {
+            if (trim) {
+                zhengshuStr = trimRight(zhengshuStr, '0');
             }
-            return String.valueOf(zhengshu);
+            return "0." + zhengshuStr;
         }
 
-        int xiaoshu1 = Integer.parseInt(xiaoshuStr.substring(0, bit));
-        int xiaoshu2 = Integer.parseInt(xiaoshuStr.substring(bit, bit + 1));
+        if (zhengshuStr.length() < bit) {
+            String bu = repeatString(bit - zhengshuStr.length(), "0");
+            if (trim) {
+                zhengshuStr = trimRight(zhengshuStr, '0');
+            }
+            return "0." + bu + zhengshuStr;
+        }
 
-        xiaoshuStr = String.valueOf(xiaoshu1);
-        if (xiaoshu2 >= 5) {
-            xiaoshu1 += 1;
-        }
-        String newXiaoshuStr = String.valueOf(xiaoshu1);
-        if (xiaoshuStr.length() == newXiaoshuStr.length()) {
-            xiaoshuStr = newXiaoshuStr;
-        } else {
-            xiaoshuStr = newXiaoshuStr.substring(1);
-            zhengshuStr = String.valueOf(Integer.parseInt(zhengshuStr) + 1);
-        }
+        int cutIndex = zhengshuStr.length() - bit;
+        String z2 = zhengshuStr.substring(0, cutIndex);
+        String x2 = zhengshuStr.substring(cutIndex);
 
         if (trim) {
-            xiaoshuStr = StringTool.trimRight(xiaoshuStr, '0');
-            if (StringTool.isBlank(xiaoshuStr)) {
-                return zhengshuStr;
-            } else {
-                return zhengshuStr + "." + xiaoshuStr;
-            }
-        } else {
-            return zhengshuStr + "." + xiaoshuStr;
+            trimRight(x2, '0');
         }
+        return z2 + "." + x2;
     }
 
     /**************************************************
